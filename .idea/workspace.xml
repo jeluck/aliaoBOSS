@@ -6,11 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="主播列表，M币收入。点击查看详情页面">
-      <change beforePath="$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java" afterDir="false" />
+    <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="5.充值记录">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/admincenter.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/admincenter.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,11 +88,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="vliaoSqlBoss_01150.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="331" selection-start-line="331" selection-end-line="331" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JyHelpManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyHelpManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="vliaoInoutBoss_01150.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="2386" column="44" selection-start-line="2386" selection-start-column="31" selection-end-line="2386" selection-end-column="44" />
+            <state relative-caret-position="321">
+              <caret line="2400" column="44" selection-start-line="2400" selection-start-column="35" selection-end-line="2400" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pay_table.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="261" column="163" selection-start-line="261" selection-start-column="155" selection-end-line="261" selection-end-column="163" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vliaoSqlMFace.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlMFace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -98,51 +140,17 @@
       <file leaf-file-name="vliaoServletInOut_01162.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoServletInOut_01162.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="98" column="46" lean-forward="true" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
+            <state relative-caret-position="123">
+              <caret line="85" column="32" lean-forward="true" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pay_table.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
+      <file leaf-file-name="admincenter.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="244" column="52" lean-forward="true" selection-start-line="244" selection-start-column="52" selection-end-line="244" selection-end-column="52" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="income_table.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="259" column="134" selection-start-line="259" selection-start-column="125" selection-end-line="259" selection-end-column="134" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vliaoSqlBoss_01150.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20212">
-              <caret line="306" column="73" lean-forward="true" selection-start-line="306" selection-start-column="73" selection-end-line="306" selection-end-column="73" />
+            <state relative-caret-position="285">
+              <caret line="95" column="121" selection-start-line="95" selection-start-column="121" selection-end-line="95" selection-end-column="121" />
             </state>
           </provider>
         </entry>
@@ -164,6 +172,12 @@
       <find>arg.length</find>
       <find>arg.length &gt;</find>
       <find>arg.length &gt; 8 &amp;&amp;</find>
+      <find>当前</find>
+      <find>String</find>
+      <find>充值记录表</find>
+      <find>记录</find>
+      <find>arg[arg.length - 2] = pages[2] + &quot;&quot;;</find>
+      <find>当页收入</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,9 +189,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/JyResultSetToListConverter.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp" />
         <option value="$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp" />
         <option value="$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java" />
+        <option value="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" />
+        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp" />
       </list>
     </option>
   </component>
@@ -359,7 +375,7 @@
       <updated>1539073065622</updated>
       <workItem from="1539073074203" duration="8657000" />
       <workItem from="1539169134738" duration="298000" />
-      <workItem from="1539169468149" duration="16891000" />
+      <workItem from="1539169468149" duration="19622000" />
     </task>
     <task id="LOCAL-00001" summary="idea  add">
       <created>1539078240769</created>
@@ -459,11 +475,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539178691962</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="5.充值记录">
+      <created>1539186690439</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1539186690439</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25846000" />
+    <option name="totallyTimeSpent" value="28577000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -476,6 +499,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
@@ -488,7 +512,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24962178" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39869988" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4989339" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49924356" weight="0.32936078" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -498,7 +522,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.5688525" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25479743" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25479743" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -519,11 +543,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="idea  add" />
     <MESSAGE value="主播列表，M币收入。点击查看详情页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="主播列表，M币收入。点击查看详情页面" />
+    <MESSAGE value="5.充值记录" />
+    <option name="LAST_COMMIT_MESSAGE" value="5.充值记录" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="29" />
+      <option name="time" value="37" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -533,51 +558,18 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>ressql</expression-string>
+        <expression-string>arg</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>arg</expression-string>
+        <expression-string>ressql</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/pay/util/TenpayUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3244">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/ctrlclass/CtrlClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/admin_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4756" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/zhufubao/Ordercreat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/pay/util/MD5Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -668,13 +660,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyInOutUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyHelpManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
@@ -838,6 +823,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/aboutus_mod.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1386" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/JyInOut.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="3439" column="26" selection-start-line="3439" selection-start-column="26" selection-end-line="3439" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyHelpManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="331" selection-start-line="331" selection-end-line="331" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlMFace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -847,52 +865,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="259" column="134" selection-start-line="259" selection-start-column="125" selection-end-line="259" selection-end-column="134" />
+        <state relative-caret-position="350">
+          <caret line="259" column="124" selection-start-line="259" selection-start-column="118" selection-end-line="259" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/charm_search.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2690">
+          <caret line="186" column="1" lean-forward="true" selection-start-line="186" selection-start-column="1" selection-end-line="186" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="2400" column="44" selection-start-line="2400" selection-start-column="35" selection-end-line="2400" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="261" column="163" selection-start-line="261" selection-start-column="155" selection-end-line="261" selection-end-column="163" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoServletInOut_01162.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="98" column="46" lean-forward="true" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
+        <state relative-caret-position="123">
+          <caret line="85" column="32" lean-forward="true" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="2386" column="44" selection-start-line="2386" selection-start-column="31" selection-end-line="2386" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20212">
-          <caret line="306" column="73" lean-forward="true" selection-start-line="306" selection-start-column="73" selection-end-line="306" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="244" column="52" lean-forward="true" selection-start-line="244" selection-start-column="52" selection-end-line="244" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="285">
+          <caret line="95" column="121" selection-start-line="95" selection-start-column="121" selection-end-line="95" selection-end-column="121" />
         </state>
       </provider>
     </entry>

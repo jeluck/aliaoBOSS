@@ -2396,7 +2396,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		log.send(DataType.basicType, "01170", "pay_table_search-sql2: ", sql2);
 		ArrayList<Map<String, Object>> list = sqlUtil.get_list(sql2);
 		log.send(DataType.basicType, "01170", "pay_table_search-sql2: ", list);
-		if ("tojsp".equals(arg[6])) {
+		if ("tojsp".equals(arg[7])) {
 			inOutUtil.return_listpage(list, pages,
 					"/uiface1/boss/pay_table.jsp");
 		} else {
