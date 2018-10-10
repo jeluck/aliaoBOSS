@@ -1319,7 +1319,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "recharge_set":
 			recharge_set(arg);
 			break;
-		case "anchor_search":
+		case "anchor_search":	//主播列表
 			anchor_search(arg);
 			break;
 		// 分销比例查询

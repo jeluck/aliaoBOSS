@@ -62,15 +62,15 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">认证图片</th>
 				<th width="40">用户名</th>
 				<th width="40">昵称</th>
-				<th width="40">星级</th>
+				<th width="40">推荐分类</th>
 				<th width="40">手机号码</th>
 				<th width="40">账户余额</th>
-				<th width="40">身高(单位：cm)</th>
-				<th width="40">体重(单位：kg)</th>
-				<th width="40">星座</th>
-				<th width="40">城市</th>
+				<%--<th width="40">身高(单位：cm)</th>--%>
+				<%--<th width="40">体重(单位：kg)</th>--%>
+				<%--<th width="40">星座</th>--%>
+				<%--<th width="40">城市</th>--%>
 				
-				<th width="40">M币收入</th>
+				<th width="40">钻石收入</th>
 				<th width="40">分享收入</th>
 				
 				<th width="40">是否在线</th>
@@ -94,14 +94,21 @@ String path = request.getContextPath()+"/uiface";
 					</td>
 					<td>${map['username']}</td>
 					<td>${map['nickname']}</td>
-					<td  id="xing${map['id']}">${map['star']}星  <br>
+					<c:choose>
+						<c:when test="${map['star']=='1' }"><td  id="xing${map['id']}">热门  <br></c:when>
+						<c:when test="${map['star']=='2' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>
+						<c:when test="${map['star']=='3' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>
+						<c:when test="${map['star']=='4' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>
+						<c:when test="${map['star']=='5' }"><td  id="xing${map['id']}">活跃  <br></c:when>
+					</c:choose>
+					<%--<td  id="xing${map['id']}">${map['star']}星  <br>--%>
 					<a title="编辑" href="javascript:;"onclick="xingmod(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>
 					<td>${map['phonenum']}</td>
 					<td>${map['money']}</td>
-					<td>${map['height']}</td>
-					<td>${map['weight']}</td>
-					<td>${map['constellation']}</td>
-					<td>${map['city']}</td>
+					<%--<td>${map['height']}</td>--%>
+					<%--<td>${map['weight']}</td>--%>
+					<%--<td>${map['constellation']}</td>--%>
+					<%--<td>${map['city']}</td>--%>
 					
 					<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
 					<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
