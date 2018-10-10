@@ -549,16 +549,38 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				}
 			}else if(current==1){
 				if(arg[3].equals("查ID")){
-					  ressql="select * from user_data where is_v!='1' and is_anchor!='1' and id='"+arg[2]+"' order by register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
+					  ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName " +
+							  "from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' and u1.id='"+arg[2]+"' order by u1.register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
 				}else if(arg[3].equals("查昵称")){
-					 ressql="select * from user_data where is_v!='1' and is_anchor!='1' and nickname like '%"+arg[2]+"%' order by register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
+					 ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName" +
+							 " from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' and u1.nickname like '%"+arg[2]+"%' order by u1.register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
 				}else if(arg[3].equals("查手机号")){
-					 ressql="select * from user_data where is_v!='1' and is_anchor!='1' and username='"+arg[2]+"' order by register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
+					 ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName" +
+							 " from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' and u1.username='"+arg[2]+"' order by u1.register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
 				}else if(arg[3].equals("")){
-					ressql="select * from user_data where is_v!='1' and is_anchor!='1' order by register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
+					ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName" +
+							" from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' order by u1.register_time desc limit "+arg[4]+","+JyHelpManager.item+"";
 				}
 			}
 			break;
+		case "userdataexecl":
+			if(current==1){
+				if(arg[3].equals("查ID")){
+					ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName " +
+							"from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' and u1.id='"+arg[2]+"' order by u1.register_time desc";
+				}else if(arg[3].equals("查昵称")){
+					ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName" +
+							" from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' and u1.nickname like '%"+arg[2]+"%' order by u1.register_time desc";
+				}else if(arg[3].equals("查手机号")){
+					ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName" +
+							" from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' and u1.username='"+arg[2]+"' order by u1.register_time desc";
+				}else if(arg[3].equals("")){
+					ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName" +
+							" from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1' order by u1.register_time desc";
+				}
+			}
+			break;
+
 		case "giftlist":
 			ressql = "select * from gift_table";
 			break;

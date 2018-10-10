@@ -4,7 +4,9 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -15,15 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
-
-
-
-
-
-
-
-
+import com.ssctrl.interface4.ExcelUtils;
 import net.coobird.thumbnailator.Thumbnails;
 
 import com.jspsmart.upload.SmartUpload;
@@ -66,6 +60,10 @@ public class vliaoServletInOut_01162 extends HttpServlet {
 			
 			
 			case "A-boss-search":
+				inOutFace=new vliaoInoutBoss_01150(arg, request, response);
+				inOutFace.searchface();
+				break;
+			case "A-boss-user-execl":
 				inOutFace=new vliaoInoutBoss_01150(arg, request, response);
 				inOutFace.searchface();
 				break;

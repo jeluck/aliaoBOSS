@@ -8,15 +8,15 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ssctrl.interface4.ExcelUtils;
 import org.apache.commons.httpclient.HttpConnection;
 
 import javax.servlet.ServletException;
@@ -45,6 +45,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	protected Main main;
 	// OkHttp okhttp=new OkHttp();
 	OkHttp okhttp = new OkHttp();
+
+	private ExcelUtils excelUtils = new ExcelUtils();
 
 	public vliaoInoutBoss_01150(String[] arg, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException,
@@ -1219,6 +1221,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "memberbackstage":// 会员后台
 			memberbackstage(arg);
+			break;
+		case "userdataexecl":// 会员导出
+			userDateExcel(arg);
 			break;
 		case "agentist"://
 			agentist(arg);
@@ -2805,6 +2810,47 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		}
 
 	}
+	public void userDateExcel(String[] arg) throws SQLException, IOException,
+			ServletException {
+		List<List<String>> listForExport = new ArrayList<List<String>>();
+		String sql = sqlmface.searchSqlface(1, arg);
+		list = sqlUtil.get_list(sql);
+		List<String> listOne = new ArrayList<String>();
+		listOne.add("ID");
+		listOne.add("头像");
+		listOne.add("用户名");
+		listOne.add("昵称");
+		listOne.add("邀请人昵称");
+		listOne.add("性别");
+		listOne.add("手机号码");
+		listOne.add("账户余额");
+		listOne.add("注册时间");
+		listOne.add("是否在线");
+		listForExport.add(listOne);
+		for (Map map : list) {
+			List<String> arrayList = new ArrayList<String>();
+			arrayList.add(map.get("id").toString());
+			arrayList.add(map.get("photo").toString());
+			arrayList.add(map.get("username").toString());
+			arrayList.add(map.get("nickname").toString());
+			arrayList.add(map.get("inviterName").toString());
+			arrayList.add(map.get("gender").toString());
+			arrayList.add(map.get("phonenum").toString());
+			arrayList.add(map.get("money").toString());
+			arrayList.add(map.get("register_time").toString());
+			if(map.get("register_time").toString().equals("0")){
+				arrayList.add("离线");
+			}else if(map.get("register_time").toString().equals("1")){
+				arrayList.add("在线");
+			}else{
+				arrayList.add("在聊");
+			}
+			listForExport.add(arrayList);
+		}
+		response.reset();
+		excelUtils.export("会员列表"+getDateString(),listForExport,response);
+	}
+
 
 	/**
 	 * arg[0]A-boss-search arg[1]giftlist
@@ -3158,5 +3204,10 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		inOutUtil
 				.return_list(list, "/uiface1/boss/member_album_list_01160.jsp");
 	}
-
+	public String getDateString() {
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		String dateString = formatter.format(date);
+		return dateString;
+	}
 }

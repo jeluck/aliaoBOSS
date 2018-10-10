@@ -53,6 +53,7 @@ String path = request.getContextPath()+"/uiface";
 				   <option value="查手机号">查手机号</option>
 				</select>
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜索</button>
+				<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div>	
 		</div>
 	<div class="mt-20">
@@ -65,16 +66,18 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">头像</th>
 				<th width="40">用户名</th>
 				<th width="40">昵称</th>
+				<th width="40">邀请人昵称</th>
 				<th width="40">性别</th>
 				<th width="40">手机号码</th>
 				<th width="40">账户余额</th>
-				<th width="40">身高(单位：cm)</th>
-				<th width="40">体重(单位：kg)</th>
-				<th width="40">星座</th>
+				<%--<th width="40">身高(单位：cm)</th>--%>
+				<%--<th width="40">体重(单位：kg)</th>--%>
+				<%--<th width="40">星座</th>--%>
 				<th width="40">注册时间</th>
-				<th width="40">城市</th>
+				<%--<th width="40">城市</th>--%>
 				<th width="40">是否在线</th>
 				<th width="40">分享收入</th>
+
 			</tr>
 		</thead>
 		<tbody id="list-content">
@@ -85,14 +88,15 @@ String path = request.getContextPath()+"/uiface";
 					<td><img alt="" src="${map['photo']}" style="width:80px"></td>
 					<td>${map['username']}</td>
 					<td>${map['nickname']}</td>
+					<td>${map['inviterName']}</td>
 					<td>${map['gender']}</td>
 					<td>${map['phonenum']}</td>
 					<td>${map['money']}</td>
-					<td>${map['height']}</td>
-					<td>${map['weight']}</td>
-					<td>${map['constellation']}</td>
+					<%--<td>${map['height']}</td>--%>
+					<%--<td>${map['weight']}</td>--%>
+					<%--<td>${map['constellation']}</td>--%>
 					<td>${map['register_time']}</td>
-					<td>${map['city']}</td>
+					<%--<td>${map['city']}</td>--%>
 					<c:choose>
 							<c:when test="${map['online']=='0' }"><td>离线</td></c:when>
 							<c:when test="${map['online']=='1' }"><td>在线</td></c:when>
@@ -168,6 +172,27 @@ $(function(){
 		}
 		
 	});
+
+
+    $("#inputExcel").click(function(){
+        var neirong = $("#searchtxt").val();
+        var fangshi = $("#select1").val();
+        var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=userdataexecl&p2="+neirong+"&p3="+fangshi;
+        window.open(url);
+        // $.ajax({
+        //     type: 'POST',
+        //     url:url,
+		// 	success: function(data){
+        //         /*$(obj).parents("tr").remove();*/
+        //
+        //         layer.msg('操作成功',{icon:1,time:1000});
+        //     },
+        //     error:function(data) {
+        //         alert('提交失败');
+        //     },
+        // });
+    });
+
 });
 
 /*刷新列表*/
@@ -207,14 +232,15 @@ function fresh_page(pageIndex){
 					+'<td><img alt="" src="'+json[i].photo+'" style="width:80px"></td>'
 					+'<td>'+json[i].username+'</td>'
 					+'<td>'+json[i].nickname+'</td>'
+				 	+'<td>'+json[i].inviterName+'</td>'
 					+'<td>'+json[i].gender+'</td>'
 					+'<td>'+json[i].phonenum+'</td>' 
 					+'<td>'+json[i].money+'</td>'
-					+'<td>'+json[i].height+'</td>' 
-					+'<td>'+json[i].weight+'</td>'
-					+'<td>'+json[i].constellation+'</td>' 
+					// +'<td>'+json[i].height+'</td>'
+					// +'<td>'+json[i].weight+'</td>'
+					// +'<td>'+json[i].constellation+'</td>'
 					+'<td>'+json[i].register_time+'</td>'
-					+'<td>'+json[i].city+'</td>'
+					// +'<td>'+json[i].city+'</td>'
 					+'<td>'+online+'</td>'
 					+'<td><a  style="color: blue;" href="http://119.23.16.29:8091/uiface/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
 					/* +'<td class="td-manage">'
