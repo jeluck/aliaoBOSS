@@ -32,6 +32,9 @@ String path = request.getContextPath()+"/uiface";
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
 </nav>
+<div  style="margin-top:10px;">
+	<button type="button" class="btn btn-primary radius" style="text-align: left;margin-left:10px;"  onclick="javascript:history.back(-1);"> 返回</button>
+</div>
 <div class="page-container">
 	  <div class="mt-20">
 			<!-- <div class="text-c">	
@@ -60,6 +63,31 @@ String path = request.getContextPath()+"/uiface";
 			<div class="text-c" id="xx3">	
 			<input type="text" id="d244" onclick="WdatePicker({dateFmt:'yyyy'})" class="input-text Wdate" style="width:120px;"  />
 			</div>
+		  <div class="text-c">
+			  <span>收入来源</span>
+			  <select id="check2" name="check2" >
+				  <option value="0" >全部</option>
+				  <option value="1" >付费短视频提成</option>
+				  <option value="2" >付费短视频收入提成</option>
+				  <option value="3" >充值</option>
+				  <option value="4" >充值分成</option>
+				  <option value="5" >充值提成</option>
+				  <option value="6" >打赏分成</option>
+				  <option value="7" >短视频收入</option>
+				  <option value="8" >礼物打赏</option>
+				  <option value="9" >礼物提成</option>
+				  <option value="10" >礼物收入提成</option>
+				  <option value="11" >红包打赏</option>
+				  <option value="12" >视频付费分成</option>
+				  <option value="13" >视频付费提成</option>
+				  <option value="14" >视频分成</option>
+				  <option value="15" >视频提成</option>
+				  <option value="16" >视频收入</option>
+				  <option value="17" >视频收入提成</option>
+				  <option value="18" >预约失败</option>
+				  <option value="19" >私信</option>
+			  </select>
+		  </div>
 		      <div class="text-c" style="margin-top:10px;">			
 				<button type="submit" class="btn btn-success radius" id="btn-search" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
 			</div> 
@@ -199,6 +227,11 @@ $(function(){
 <%-- <td><a title="个人提现明细" href="javascript:;" onclick="client_geren('个人提现明细','<%=path%>/TCQOServlet?/p0=A-boss-search&p1=cashwithdrawal&p2=1&p3=${map['user_id']}&p4=tojsp','','','510')" style="color:blue">个人提现明细</a></td> --%>
 
 function fresh_page(pageIndex) {
+    var sourceIncome = "";
+    if($("option:selected","#check2").val() != '0'){
+        sourceIncome = $("option:selected","#check2").text()
+    }
+
 	var pp="";
 	var startdate = $("#datemin").val();
 	var enddate = $("#datemax").val();
@@ -214,17 +247,17 @@ function fresh_page(pageIndex) {
 		startdate=$("#datemin").val();
 		enddate=$("#datemax").val();
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	$.ajax({
 		cache: true,
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
 		/* /rz?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp */
-		url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}",
+        url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");

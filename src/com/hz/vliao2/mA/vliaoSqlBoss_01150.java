@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import com.ssctrl.interface4.JyHelpManager;
 import com.ssctrl.interface4.JyLogDetect.DataType;
 import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
+import org.apache.commons.lang.StringUtils;
 
 public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace {
 
@@ -174,27 +175,57 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				if(current==0){
 					if(arg[3].equals("")&&arg[4].equals("")){
 						ressql="select count(*) from income_details c,user_data u where c.user_id=u.id  and c.user_id="+arg[7];
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
 					}else{
 						ressql="select count(*) from income_details c,user_data u where c.user_id=u.id  and c.user_id="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
 					}
 				}else if(current==1){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select * from income_details c,user_data u where c.user_id=u.id and c.user_id="+arg[7]+" order by c.time desc  limit "+arg[2]+","+JyHelpManager.item+" ";	
+					   ressql="select * from income_details c,user_data u where c.user_id=u.id and c.user_id="+arg[7];
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
+						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}else{
-						ressql="select * from income_details c,user_data u where c.user_id=u.id and c.user_id="+arg[7]+"  and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  order by c.time desc limit "+arg[2]+","+JyHelpManager.item+" ";
+						ressql="select * from income_details c,user_data u where c.user_id=u.id and c.user_id="+arg[7]+"  and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
+						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}
 				}else if(current==2){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select sum(money) from income_details where user_id="+arg[7]+" ";	
+					   ressql="select sum(money) from income_details where user_id="+arg[7]+" ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
 					}else{
 						ressql="select sum(money) from income_details where   user_id="+arg[7]+" and  time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
 					}
 				}else if(current==3){
 					ressql="select count(*) from income_details c,user_data u where c.user_id=u.id and c.user_id="+arg[7]+" and c.time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and type='"+arg[8]+"'";
+					}
 				}else if(current==4){
-					ressql="select * from income_details c,user_data u where c.user_id = u.id and c.user_id="+arg[7]+" and c.time like '%"+arg[6]+"%' order by c.time desc  limit "+arg[2]+","+JyHelpManager.item+"";
+					ressql="select * from income_details c,user_data u where c.user_id = u.id and c.user_id="+arg[7]+" and c.time like '%"+arg[6]+"%'";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and type='"+arg[8]+"'";
+					}
+					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
 					ressql="select sum(money) from income_details where   user_id="+arg[7]+" and  time like '%"+arg[6]+"%'";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and type='"+arg[8]+"'";
+					}
 				}
 				
 			}
