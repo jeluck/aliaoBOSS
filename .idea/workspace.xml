@@ -6,19 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="idea  add">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aliaoBOSS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aliaoBOSS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/WeixinUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/WeixinUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/WeixinUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/WeixinUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java" afterDir="false" />
+    <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="主播列表，M币收入。点击查看详情页面">
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/income_table.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/income_table.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,7 +92,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vliaoSqlBoss_01150.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vliaoSqlBoss_01150.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2134">
@@ -112,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="income_table.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="income_table.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="35" column="138" selection-start-line="35" selection-start-column="138" selection-end-line="35" selection-end-column="138" />
+            <state relative-caret-position="178">
+              <caret line="208" column="43" lean-forward="true" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -373,7 +362,7 @@
       <updated>1539073065622</updated>
       <workItem from="1539073074203" duration="8657000" />
       <workItem from="1539169134738" duration="298000" />
-      <workItem from="1539169468149" duration="8714000" />
+      <workItem from="1539169468149" duration="8961000" />
     </task>
     <task id="LOCAL-00001" summary="idea  add">
       <created>1539078240769</created>
@@ -466,11 +455,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539135505058</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="主播列表，M币收入。点击查看详情页面">
+      <created>1539178691962</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1539178691962</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17669000" />
+    <option name="totallyTimeSpent" value="17916000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -483,7 +479,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
@@ -506,7 +501,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.5688525" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25479743" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25479743" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -526,7 +521,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="idea  add" />
-    <option name="LAST_COMMIT_MESSAGE" value="idea  add" />
+    <MESSAGE value="主播列表，M币收入。点击查看详情页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="主播列表，M币收入。点击查看详情页面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -841,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2134">
-          <caret line="226" column="57" selection-start-line="226" selection-start-column="57" selection-end-line="226" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
@@ -857,8 +846,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/income_table.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="35" column="138" selection-start-line="35" selection-start-column="138" selection-end-line="35" selection-end-column="138" />
+        <state relative-caret-position="178">
+          <caret line="208" column="43" lean-forward="true" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="43" />
           <folding>
             <element signature="n#style#0;n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -869,6 +858,13 @@
             <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2134">
+          <caret line="226" column="57" selection-start-line="226" selection-start-column="57" selection-end-line="226" selection-end-column="57" />
         </state>
       </provider>
     </entry>
