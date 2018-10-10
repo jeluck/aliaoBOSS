@@ -120,7 +120,7 @@ String path = request.getContextPath()+"/uiface";
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['pay_price']}"/>
 		</c:forEach>
 		<tr>
-		<td colspan="6">当页收入:${nodeValue}</td>
+		<td colspan="12">当页收入:${nodeValue}</td>
 		</tr>
 		</tbody>
 	</table>
@@ -294,7 +294,7 @@ function fresh_page(pageIndex) {
 					sum = sum+a;
 			}
 			content +='<tr>'
-					+'<td  colspan="6"> 当页收入:'+sum+'</td>'
+					+'<td  colspan="12"> 当页收入:'+sum+'</td>'
 						+'</tr>';
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
