@@ -294,49 +294,80 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 		// p2开始时间 p4结束时间 p5 会员 p6积分
 		case "pay_table_search":
 			if (current == -1) {
-				if (arg[2].equals("") && arg[4].equals("") && arg[5].equals("")) {// 查询所有总条数
+				if (arg[2].equals("") && arg[4].equals("") && arg[5].equals("") && arg[6].equals("")) {// 查询所有总条数
 					ressql = "select count(*) " + "from order_management o,user_data b where o.user_id=b.id ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
 				} else if (!arg[2].equals("") && !arg[4].equals("")
 						&& arg[5].equals("")) {
 					ressql = "select count(*) " + "from order_management o,user_data b "
 							+ "where o.pay_time between '" + arg[2]
 							+ " 00:00:01' and '" + arg[4] + " 23:59:59' and o.user_id=b.id  ";
-				} else if (arg[2].equals("") && arg[4].equals("")
-						&& !arg[5].equals("")) {
-					ressql = "select count(*) " + "from order_management o,user_data b "
-							+ "where o.pay_status='" + arg[5] + "' and o.user_id=b.id ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
 				} else if (!arg[2].equals("") && !arg[4].equals("")
 						&& !arg[5].equals("")) {
 					ressql = "select count(*) " + "from order_management o,user_data b "
 							+ "where o.pay_time between '" + arg[2]
 							+ " 00:00:01' and '" + arg[4]
 							+ " 23:59:59' and o.pay_status='" + arg[5] + "' and o.user_id=b.id ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+				}else if(arg[2].equals("") && arg[4].equals("") &&
+						arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && arg[5].equals("")){
+					ressql = "select count(*) " + "from order_management o,user_data b where o.user_id=b.id and o.pay_time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+				} else if(arg[2].equals("") && arg[4].equals("") &&
+						arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && !arg[5].equals("")){
+					ressql = "select count(*) " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "' and o.pay_time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
 				}
 			} else if (current == 1) {// 查询所有集合
-				if (arg[2].equals("") && arg[4].equals("") && arg[5].equals("")) {
-					ressql = "select * " + "from order_management o,user_data b  where o.user_id=b.id "
-							+ "order by o.pay_time desc  " + "limit "
-							+ arg[arg.length - 2] + "," + JyHelpManager.item;
+				if (arg[2].equals("") && arg[4].equals("") && arg[5].equals("") && arg[6].equals("")) {
+					ressql = "select * " + "from order_management o,user_data b  where o.user_id=b.id ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				} else if (!arg[2].equals("") && !arg[4].equals("")
 						&& arg[5].equals("")) {
 					ressql = "select * " + "from order_management o,user_data b"
-							+ "where o.pay_time between '" + arg[2]
-							+ " 00:00:01' and '" + arg[4] + " 23:59:59' and o.user_id=b.id"
-							+ " limit " + arg[arg.length - 2] + ","
-							+ JyHelpManager.item;
-				} else if (arg[2].equals("") && arg[4].equals("")
-						&& !arg[5].equals("")) {
-					ressql = "select * " + "from order_management o,user_data b "
-							+ "where o.pay_status='" + arg[5] + "' and o.user_id=b.id " + "limit "
-							+ arg[arg.length - 2] + "," + JyHelpManager.item;
-				} else if (!arg[2].equals("") && !arg[4].equals("")
-						&& !arg[5].equals("")) {
+							+ " where o.pay_time between '" + arg[2]
+							+ " 00:00:01' and '" + arg[4] + " 23:59:59' and o.user_id=b.id";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
+				}  else if (!arg[2].equals("") && !arg[4].equals("") && !arg[5].equals("")) {
 					ressql = "select * " + "from order_management o,user_data b"
-							+ "where o.pay_time between '" + arg[2]
+							+ " where o.pay_time between '" + arg[2]
 							+ " 00:00:01' and '" + arg[4]
-							+ " 23:59:59' and o.pay_status='" + arg[5] + "' and o.user_id=b.id "
-							+ "limit " + arg[arg.length - 2] + ","
-							+ JyHelpManager.item;
+							+ " 23:59:59' and o.pay_status='" + arg[5] + "' and o.user_id=b.id ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
+				}else if(arg[2].equals("") && arg[4].equals("") &&
+						 arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && arg[5].equals("")){
+					ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
+				}else if(arg[2].equals("") && arg[4].equals("") &&
+						arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && !arg[5].equals("")){
+					ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "' and o.pay_time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}
 			}
 			break;
