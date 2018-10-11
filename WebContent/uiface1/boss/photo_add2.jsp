@@ -128,9 +128,9 @@ $(function(){
 		    }, 100);
 		}
 	});
-
-
 });
+
+
 
 /* function layer_close11(){
 	
@@ -145,6 +145,7 @@ $(function(){
 
 var flag="0";
 function upimg(){
+    alert(this.parent.$("#aaid").val());
     // var url = document.querySelector("#fileimg").value;
 	var oFiles = document.querySelector("#fileimg").files;
 	if(oFiles.length){
@@ -170,7 +171,9 @@ function upimg(){
 	}
 }
 //表单验证
+function upimg1(){
 
+}
 </script>
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>

@@ -82,12 +82,13 @@ String path = request.getContextPath()+"/uiface";
 		
 			</tr>
 		</thead>
+		<input type="hidden" name="aaid" id="aaid"  />
 		<tbody id="list-content">
 			<c:forEach var = "map" items="${reList }" varStatus="status">
 				<tr class="text-c">
 					<td>${status.count}</td><!-- 序号 -->
 					<td>${map['id']}</td>
-					<td><img alt="" src="${map['photo']}" style="width:80px" onclick="photo('修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')"></td>
+					<td><img alt="" src="${map['photo']}" style="width:80px" onclick="photo(${map['id']},'修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')"></td>
 					<td><a href="javascript:;"
 					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2=${map['id'] }&p3=0','600','510')"
 					style="text-decoration: none;color:blue;" class="ml-5">点击查看图片</a>
@@ -539,7 +540,25 @@ function anchor_phonenum(id){
     }
 }
 
-function photo(title,url,w,h){
+function anchor_photo(id){
+	$.ajax({
+		type:'POST',
+		url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_photo&p2='+id+'&p3='+age,
+		success: function(data){
+			if(data='1'){
+				fresh_page(Number($("#currentpage").html()));
+			}else{
+				layer.msg('操作失败',{icon:1,time:1000});
+			}
+		},
+		error:function(data) {
+			layer.msg('操作失败',{icon:1,time:1000});
+		},
+	});
+}
+
+function photo(id,title,url,w,h){
+    $("#aaid").val(id);
     layer_show(title,url,w,h);
 }
 </script> 

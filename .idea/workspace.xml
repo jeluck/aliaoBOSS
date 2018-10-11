@@ -8,13 +8,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150$BizRenderTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150$BizRenderTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/JyGlobalConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/JyGlobalConstant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/WeixinUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/WeixinUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/anchor_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/anchor_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/photo_add2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/photo_add2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,9 +53,9 @@
         <counts>
           <entry key="class" value="10" />
           <entry key="css" value="2" />
-          <entry key="java" value="99" />
-          <entry key="js" value="3" />
-          <entry key="jsp" value="15" />
+          <entry key="java" value="102" />
+          <entry key="js" value="5" />
+          <entry key="jsp" value="19" />
           <entry key="name" value="1" />
           <entry key="xml" value="8" />
         </counts>
@@ -64,17 +64,17 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="CSS" value="2" />
-          <entry key="JAVA" value="99" />
-          <entry key="JSP" value="15" />
-          <entry key="JavaScript" value="3" />
+          <entry key="JAVA" value="102" />
+          <entry key="JSP" value="19" />
+          <entry key="JavaScript" value="5" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="574" />
-          <entry key="JSP" value="389" />
+          <entry key="JAVA" value="598" />
+          <entry key="JSP" value="487" />
           <entry key="PLAIN_TEXT" value="32" />
           <entry key="XML" value="11" />
         </counts>
@@ -86,8 +86,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="9" />
-          <entry key="java" value="574" />
-          <entry key="jsp" value="389" />
+          <entry key="java" value="598" />
+          <entry key="jsp" value="487" />
           <entry key="txt" value="23" />
           <entry key="xml" value="11" />
         </counts>
@@ -96,32 +96,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="153" column="16" lean-forward="true" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="143">
+              <caret line="149" column="58" lean-forward="true" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -129,26 +108,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="261" column="47" selection-start-line="261" selection-start-column="8" selection-end-line="261" selection-end-column="47" />
+            <state relative-caret-position="4710">
+              <caret line="256" lean-forward="true" selection-start-line="256" selection-end-line="256" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
+        <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="955" column="44" lean-forward="true" selection-start-line="955" selection-start-column="44" selection-end-line="955" selection-end-column="44" />
+            <state relative-caret-position="530">
+              <caret line="565" column="7" lean-forward="true" selection-start-line="565" selection-start-column="7" selection-end-line="565" selection-end-column="7" />
+              <folding>
+                <element signature="e#1634#1638#1#HTML" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/uiface1/static/h-ui.admin/js/H-ui.admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+            <state relative-caret-position="494">
+              <caret line="204" column="20" lean-forward="true" selection-start-line="204" selection-start-column="20" selection-end-line="204" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="392" column="60" selection-start-line="392" selection-start-column="60" selection-end-line="392" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,12 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>+=</find>
-      <find>arg.length&gt;8</find>
-      <find>arg.length&gt;</find>
-      <find>arg.length</find>
-      <find>arg.length &gt;</find>
-      <find>arg.length &gt; 8 &amp;&amp;</find>
       <find>当前</find>
       <find>String</find>
       <find>充值记录表</find>
@@ -216,8 +204,14 @@
       <find>添加图片</find>
       <find>、</find>
       <find>imges</find>
-      <find>@WebServlet(&quot;</find>
       <find>FileUpload</find>
+      <find>@WebServlet(&quot;</find>
+      <find>主播列表</find>
+      <find>anchor_phonenum</find>
+      <find>anchor_photo</find>
+      <find>photo_add</find>
+      <find>changeprice</find>
+      <find>aaid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -233,16 +227,16 @@
         <option value="$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp" />
         <option value="$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/JyGlobalConstant.java" />
-        <option value="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" />
         <option value="$PROJECT_DIR$/WebContent/uiface1/boss/recycle_photo.jsp" />
         <option value="$PROJECT_DIR$/WebContent/uiface1/static/h-ui.admin/js/H-ui.admin.js" />
-        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpUtils.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/FtpJsch.java" />
-        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" />
+        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp" />
       </list>
     </option>
   </component>
@@ -387,7 +381,7 @@
     <property name="SearchEverywhereHistoryKey" value="JyFileUploadServlet&#9;FILE&#9;file://E:/aliaoboss/src/com/ssctrl/interface4/JyFileUploadServlet.java&#10;photo_add&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/photo_add.jsp&#10;recycle_photo&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/recycle_photo.jsp&#10;photo_mod&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/photo_mod.jsp&#10;in_tabl&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/income_table.jsp&#10;pay_table&#9;FILE&#9;file://D:/aliaoBOSS/WebContent/uiface1/boss/pay_table.jsp&#10;income_table&#9;FILE&#9;file://D:/aliaoBOSS/WebContent/uiface1/boss/income_table.jsp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539249652997" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539252503160" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/WebContent/WEB-INF/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -793,7 +787,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54105000" />
+    <option name="totallyTimeSpent" value="56755000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -808,7 +802,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -944,11 +938,6 @@
     <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/fenxiao_search_set.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/grade_privilege.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1386" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/modify_persent.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-330" />
@@ -1022,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_mod.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/admincenter.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
@@ -1057,13 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/static/h-ui.admin/js/H-ui.admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="214" column="27" lean-forward="true" selection-start-line="214" selection-start-column="27" selection-end-line="214" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/recycle_photo.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -1085,27 +1060,6 @@
           <folding>
             <element signature="e#949#950#0" expanded="true" />
             <element signature="e#993#994#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="3119" column="48" selection-start-line="3119" selection-start-column="35" selection-end-line="3119" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="94" column="47" selection-start-line="94" selection-start-column="47" selection-end-line="94" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#td#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1191,13 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoServletInOut_01162.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JsonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -1208,27 +1155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="170" column="47" selection-start-line="170" selection-start-column="28" selection-end-line="170" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="261" column="47" selection-start-line="261" selection-start-column="8" selection-end-line="261" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/commons-fileupload-1.2.2.jar!/org/apache/commons/fileupload/FileItem.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -1236,34 +1162,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="955" column="44" lean-forward="true" selection-start-line="955" selection-start-column="44" selection-end-line="955" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/FtpJsch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
           <caret line="63" column="27" lean-forward="true" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="153" column="16" lean-forward="true" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1280,13 +1182,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+        <state relative-caret-position="361">
+          <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao2/mA/vliaoSqlBoss_01150.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="955" column="44" lean-forward="true" selection-start-line="955" selection-start-column="44" selection-end-line="955" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoServletInOut_01162.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4532">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_mod.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/grade_privilege.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1188" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-673">
+          <caret line="80" column="79" lean-forward="true" selection-start-line="80" selection-start-column="79" selection-end-line="80" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="392" column="60" selection-start-line="392" selection-start-column="60" selection-end-line="392" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/static/h-ui.admin/js/H-ui.admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="204" column="20" lean-forward="true" selection-start-line="204" selection-start-column="20" selection-end-line="204" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="565" column="7" lean-forward="true" selection-start-line="565" selection-start-column="7" selection-end-line="565" selection-end-column="7" />
+          <folding>
+            <element signature="e#1634#1638#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/pay_table.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4710">
+          <caret line="256" lean-forward="true" selection-start-line="256" selection-end-line="256" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="149" column="58" lean-forward="true" selection-start-line="149" selection-start-column="58" selection-end-line="149" selection-end-column="58" />
         </state>
       </provider>
     </entry>

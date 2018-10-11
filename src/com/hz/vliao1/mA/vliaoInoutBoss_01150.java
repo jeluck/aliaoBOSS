@@ -330,6 +330,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "anchor_phonenum":
 			anchor_phonenum(arg);
 			break;
+		case "anchor_photo":
+			anchor_photo(arg);
+			break;
 		case "automsg_num":
 			automsg_num(arg);
 			break;
@@ -384,6 +387,13 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		inOutUtil.return_ajax("1");
 	}
 
+	private void anchor_photo(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update user_data set photo='"+arg[3]+"' where id="+arg[2];
+		log.send(DataType.basicType, "01162", "头像修改",  sql);
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
 
 	private void sortmod(String[] arg) throws SQLException, IOException,
 	ServletException {
