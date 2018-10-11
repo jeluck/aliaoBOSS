@@ -29,6 +29,15 @@
     <servlet-name>JyFileUpload</servlet-name>
     <url-pattern>/uiface1/FileUpload</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UploadFtp</servlet-name>
+    <servlet-class>com.ssctrl.interface4.UploadFtpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadFtp</servlet-name>
+    <url-pattern>/uiface1/UploadFtp</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>Image</servlet-name>

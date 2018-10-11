@@ -87,13 +87,13 @@ String path = request.getContextPath()+"/uiface";
 				<tr class="text-c">
 					<td>${status.count}</td><!-- 序号 -->
 					<td>${map['id']}</td>
-					<td><img alt="" src="${map['photo']}" style="width:80px"></td>
+					<td><img alt="" src="${map['photo']}" style="width:80px" onclick="photo('修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')"></td>
 					<td><a href="javascript:;"
 					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2=${map['id'] }&p3=0','600','510')"
 					style="text-decoration: none;color:blue;" class="ml-5">点击查看图片</a>
 					</td>
 					<td>${map['username']}</td>
-					<td>${map['nickname']}</td>
+					<td>${map['nickname']}<a title="编辑" href="javascript:;"onclick="anchor_nickname(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<c:choose>
 						<c:when test="${map['star']=='1' }"><td  id="xing${map['id']}">热门  <br></c:when>
 						<c:when test="${map['star']=='2' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>
@@ -103,7 +103,7 @@ String path = request.getContextPath()+"/uiface";
 					</c:choose>
 					<%--<td  id="xing${map['id']}">${map['star']}星  <br>--%>
 					<a title="编辑" href="javascript:;"onclick="xingmod(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>
-					<td>${map['phonenum']}</td>
+					<td>${map['phonenum']}<a title="编辑" href="javascript:;"onclick="anchor_phonenum(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<td>${map['money']}</td>
 					<%--<td>${map['height']}</td>--%>
 					<%--<td>${map['weight']}</td>--%>
@@ -253,25 +253,43 @@ function fresh_page(pageIndex){
 				}else{
 					tuijian='<td id="tuijian'+json[i].id+'"><a title="设为推荐" onclick="tuijian('+json[i].id+')" class="ml-5" style="text-decoration:none;    color: blue;"><i class="Hui-iconfont">设为推荐</i></a></td>';
 				}
+                <%--<c:choose>--%>
+                <%--<c:when test="${map['star']=='1' }"><td  id="xing${map['id']}">热门  <br></c:when>--%>
+                    <%--<c:when test="${map['star']=='2' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>--%>
+                    <%--<c:when test="${map['star']=='3' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>--%>
+                    <%--<c:when test="${map['star']=='4' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>--%>
+                    <%--<c:when test="${map['star']=='5' }"><td  id="xing${map['id']}">活跃  <br></c:when>--%>
+                <%--</c:choose>--%>
+                var xj = "";
+				if(json[i].star == '1'){
+                    xj = "热门";
+                }else if(json[i].star == '5'){
+                    xj = "活跃";
+                }else{
+                    xj = json[i].star+"星";
+                }
 				 content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].id+'</td>'
 					+'<td><img alt="" src="'+json[i].photo+'" style="width:80px"></td>'
 					+'<td><a href="javascript:;" onclick="system_category_edit(\'认证图片\',\'<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2='+json[i].id+'&p3=0\',\'600\',\'510\')"  ><span style="color:blue;">点击查看图片</span></a></td>'
 					+'<td>'+json[i].username+'</td>'
-					+'<td>'+json[i].nickname+'</td>'
-					+'<td id="xing"'+json[i].id+'>'+json[i].id+'星<br><a title="编辑" href="javascript:;"onclick="xingmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
-					+'<td>'+json[i].phonenum+'</td>' 
+					+'<td>'+json[i].nickname+''
+				 	+'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
+					+'<td id="xing"'+json[i].id+'>'+xj+'<br>'
+				 	+'<a title="编辑" href="javascript:;"onclick="xingmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
+					+'<td>'+json[i].phonenum+''
+					 +'<a title="编辑" href="javascript:;"onclick="anchor_phonenum('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 					+'<td>'+json[i].money+'</td>'
-					+'<td>'+json[i].height+'</td>' 
-					+'<td>'+json[i].weight+'</td>'
-					+'<td>'+json[i].constellation+'</td>' 
-					+'<td>'+json[i].city+'</td>'
+					// +'<td>'+json[i].height+'</td>'
+					// +'<td>'+json[i].weight+'</td>'
+					// +'<td>'+json[i].constellation+'</td>'
+					// +'<td>'+json[i].city+'</td>'
 					+'<td><a style="color: blue;"  href="http://47.105.33.230:8090/uiface/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
 					+'<td><a style="color: blue;"  href="http://47.105.33.230:8090/uiface/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
 					+'<td>'+online+'</td>'
 					+tuijian
-					+'<td>'+json[i].id+'<br><a title="编辑" href="javascript:;"onclick="sortmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
+					+'<td>'+json[i].sort_id+'<br><a title="编辑" href="javascript:;"onclick="sortmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
 					+'<td>'+banned+'</td>'
 					+'<td class="td-manage">'
 					+'<a title="封禁" href="javascript:;" onclick="banned('+json[i].id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">封禁</i></a>'
@@ -450,8 +468,8 @@ function xingmod(id){
 				success: function(data){
 					/*$(obj).parents("tr").remove();*/
 					if(data='1'){
-						$("#xing"+id).html(age+'星  <br><a title="编辑" href="javascript:;"onclick="xingmod('+id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> ');
-						
+						// $("#xing"+id).html(age+'星  <br><a title="编辑" href="javascript:;"onclick="xingmod('+id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> ');
+                        fresh_page(Number($("#currentpage").html()));
 						layer.msg('操作成功',{icon:1,time:1000});
 					}else{
 						layer.msg('操作失败',{icon:1,time:1000});
@@ -473,6 +491,56 @@ function xingmod(id){
 		 });
 	}
 	
+}
+
+function anchor_nickname(id){
+    var age = prompt("请输入昵称","");
+    if(age!=null && age!=""){
+        layer.confirm('确认输入以上内容？',function(index){
+            $.ajax({
+                type:'POST',
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_nickname&p2='+id+'&p3='+age,
+                success: function(data){
+                    if(data='1'){
+                        fresh_page(Number($("#currentpage").html()));
+                        layer.msg('操作成功',{icon:1,time:1000});
+                    }else{
+                        layer.msg('操作失败',{icon:1,time:1000});
+                    }
+                },
+                error:function(data) {
+                    layer.msg('操作失败',{icon:1,time:1000});
+                },
+            });
+        });
+    }
+}
+
+function anchor_phonenum(id){
+    var age = prompt("请输入手机号","");
+    if(age!=null && age!=""){
+        layer.confirm('确认输入以上内容？',function(index){
+            $.ajax({
+                type:'POST',
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_phonenum&p2='+id+'&p3='+age,
+                success: function(data){
+                    if(data='1'){
+                        fresh_page(Number($("#currentpage").html()));
+                        layer.msg('操作成功',{icon:1,time:1000});
+                    }else{
+                        layer.msg('操作失败',{icon:1,time:1000});
+                    }
+                },
+                error:function(data) {
+                    layer.msg('操作失败',{icon:1,time:1000});
+                },
+            });
+        });
+    }
+}
+
+function photo(title,url,w,h){
+    layer_show(title,url,w,h);
 }
 </script> 
 </body>

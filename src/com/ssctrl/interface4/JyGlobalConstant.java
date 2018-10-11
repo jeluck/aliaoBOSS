@@ -3,7 +3,7 @@ package com.ssctrl.interface4;
 
 public class JyGlobalConstant {
 
-	private static String ipAddr = "119.23.16.29";
+	private static String ipAddr = "localhost";
 	//private static String ipAddr = "121.42.136.119";
 	private static String dbPort = "3306";
 	//private static String dbUser = "wxjd";
@@ -17,8 +17,8 @@ public class JyGlobalConstant {
 //    private static String dbBaseName = "redpacket";
 //	private static String appid = "wx15034b1300905282";
 //	private static String appsecret = "82ed6a9e231232bb0c63fcbe645e95e6";
-	private static String dbUser = "db_user";
-	private static String dbPwd = "aliao123";
+	private static String dbUser = "root";
+	private static String dbPwd = "123456";
 	
 	public static String getAppid() {
 		return appid;

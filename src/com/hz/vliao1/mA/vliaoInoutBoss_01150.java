@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -71,11 +73,11 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "notification_add":
 			notification_add(arg);
 			break;
-			
+
 		case "automsg_add":
 			automsg_add(arg);
 			break;
-			
+
 		case "admin_add":
 			admin_add(arg);
 			break;
@@ -112,7 +114,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		log.send(DataType.basicType, "01162", "轮播图修改1", sql);
 		sqlUtil.sql_exec(sql);
 	}
-	
+
 	private void notification_add(String[] arg) throws SQLException,
 			IOException, ServletException {
 		String sql = sqlmface.addSqlface(0, arg);
@@ -183,11 +185,11 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 增加用户 arg[0]:A-boss-add arg[1]:bossand
-	 * 
+	 *
 	 * @throws IOException
 	 * @throws SQLException
 	 * @throws ServletException
-	 * 
+	 *
 	 */
 	private void bossand(String[] arg) throws SQLException, IOException,
 			ServletException {
@@ -209,8 +211,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "fencheng_mod1":
 			fencheng_mod1(arg);
-			break;	
-			
+			break;
+
 		case "cash_mod":
 			cash_mod(arg);
 			break;
@@ -306,53 +308,58 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "gift_mod1":
 			gift_mod1(arg);
 			break;
-			
+
 		case "anchor_tuijian":
 			anchor_tuijian(arg);
 			break;
 		case "is_zhouxing":
 			is_zhouxing(arg);
-			break;	
-			
-			
+			break;
+
+
 		case "sortmod":
 			sortmod(arg);
-			break;	
-			
+			break;
+
 		case "xingmod":
 			xingmod(arg);
-			break;	
-			
+			break;
+		case "anchor_nickname":
+			anchor_nickname(arg);
+			break;
+		case "anchor_phonenum":
+			anchor_phonenum(arg);
+			break;
 		case "automsg_num":
 			automsg_num(arg);
-			break;		
-			
-			
+			break;
+
+
 		}
 	}
-	
-	
+
+
 	private void automsg_num(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql="update auto_num set auto_num="+arg[2]+" where id=1";
 		log.send(DataType.basicType, "01162", "代理对应等级修改",  sql);
     	sqlUtil.sql_exec(sql);
-    	
+
 	}
-	
+
 	private void is_zhouxing(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql="update gift_list set is_tuijian=1 where id="+arg[2];
 		log.send(DataType.basicType, "01162", "代理对应等级修改",  sql);
     	sqlUtil.sql_exec(sql);
-    	
+
     	sql="update gift_list set is_tuijian=0 where id !="+arg[2];
 		log.send(DataType.basicType, "01162", "代理对应等级修改",  sql);
     	sqlUtil.sql_exec(sql);
-    	
+
     	inOutUtil.return_ajax("1");
 	}
-	
+
 	private void xingmod(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql="update user_data set star="+arg[3]+" where id="+arg[2];
@@ -360,6 +367,24 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
     	sqlUtil.sql_exec(sql);
     	inOutUtil.return_ajax("1");
 	}
+
+	private void anchor_nickname(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update user_data set nickname='"+arg[3]+"' where id="+arg[2];
+		log.send(DataType.basicType, "01162", "昵称修改",  sql);
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
+
+	private void anchor_phonenum(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update user_data set phonenum='"+arg[3]+"' where id="+arg[2];
+		log.send(DataType.basicType, "01162", "手机号修改",  sql);
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
+
+
 	private void sortmod(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql="update user_data set sort_id="+arg[3]+" where id="+arg[2];
@@ -379,7 +404,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
         	sqlUtil.sql_exec(sql);
         	inOutUtil.return_ajax("0");
         }
-        
+
 
 	}
 	private void gift_mod1(String[] arg) throws SQLException, IOException,
@@ -501,7 +526,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * arg[0] A-boss-mod arg[1] response_money arg[2] id
-	 * 
+	 *
 	 * @param arg
 	 * @throws IOException
 	 * @throws SQLException
@@ -673,7 +698,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * v币充值修改
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -688,7 +713,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * v币充值查询 arg[2]id
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -703,7 +728,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 认证审核未通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -722,7 +747,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 认证审核通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -793,7 +818,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 头像审核未通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -807,7 +832,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 头像审核通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -829,7 +854,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 相册审核未通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -846,7 +871,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 相册审核通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -887,7 +912,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 代理商通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -919,7 +944,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 代理商不通过
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -939,7 +964,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 修改通知
-	 * 
+	 *
 	 * @param arg
 	 * @throws ServletException
 	 * @throws IOException
@@ -976,7 +1001,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 修改通知
-	 * 
+	 *
 	 * @param arg
 	 * @throws ServletException
 	 * @throws IOException
@@ -992,7 +1017,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 不予通过 arg[2]视频id
-	 * 
+	 *
 	 * @param arg
 	 */
 	private void video_checknopass(String[] arg) throws SQLException,
@@ -1005,7 +1030,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 设置视频标签 arg[2]视频id arg[3]标签编号
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1021,7 +1046,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 取消主播资格
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1037,7 +1062,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 成为主播
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1064,15 +1089,15 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		list = sqlUtil.get_list(sql);
 		inOutUtil.return_list(list, "/uiface1/boss/cash_modify_persent.jsp");
 	}
-	
+
 	private void fencheng_mod1(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql = sqlmface.modSqlface(0, arg);
 		list = sqlUtil.get_list(sql);
 		inOutUtil.return_list(list, "/uiface1/boss/cash_modify_persent1.jsp");
 	}
-		
-	
+
+
 
 	@Override
 	public void deleteface() throws SQLException, ServletException, IOException {
@@ -1098,12 +1123,12 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 		case "del_xitong_one":
 			del_xitong_one(arg);
-			break;	
-			
+			break;
+
 		case "del_automsg":
 			del_automsg(arg);
-			break;	
-			
+			break;
+
 		}
 	}
 
@@ -1112,7 +1137,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		String sql = sqlmface.deleteSqlface(arg);
 		int a = sqlUtil.sql_exec(sql);
 	}
-	
+
 	private void del_xitong_one(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql = "delete from notification_table where id='"+arg[2]+"'";
@@ -1124,8 +1149,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		String sql = "delete from automsg where id='"+arg[2]+"'";
 		int a = sqlUtil.sql_exec(sql);
 		}
-	
-	
+
+
 	private void photorecord_del(String[] arg) throws SQLException,
 			IOException, ServletException {
 		String sql = sqlmface.deleteSqlface(arg);
@@ -1153,7 +1178,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 删除
-	 * 
+	 *
 	 * @param arg
 	 * @throws ServletException
 	 * @throws IOException
@@ -1352,10 +1377,10 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "app_search":
 			app_search(arg);
-			break;	
-			
-			
-			
+			break;
+
+
+
 		case "automsg_search":
 			automsg_search(arg);
 			break;
@@ -1365,7 +1390,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "gift_list":
 			gift_list(arg);
 			break;
-			
+
 		case "fenxiang_search":
 			fenxiang_search(arg);
 			break;
@@ -1375,7 +1400,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "fenxiang_mod":
 			fenxiang_mod(arg);
 			break;
-			
+
 		}
 	}
 
@@ -1404,22 +1429,22 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		inOutUtil.return_listpage(list, pages,
 				"/uiface1/boss/fenxiang_setmod.jsp");
 	}
-	
-	
+
+
 	private void fenxiang_search(String[] arg) throws SQLException, IOException,
 	ServletException {
 		String sql = "select * from reward_percentmanager";
 		list = sqlUtil.get_list(sql);
 		sql = "select * from fixed_percentmanager";
 		list2 = sqlUtil.get_list(sql);
-		
+
 		list.addAll(list2);
-		
+
 		inOutUtil.return_listpage(list, pages,
 				"/uiface1/boss/fenxiang_set.jsp");
 	}
-	
-	
+
+
 	private void gift_list(String[] arg) throws SQLException, IOException,
 			ServletException {
 		String sql = sqlmface.searchSqlface(0, arg);
@@ -1474,16 +1499,16 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		}
 
 	}
-	
-	
-	
+
+
+
 	private void app_search(String[] arg) throws SQLException,
 	IOException, ServletException {
 		String sql = "select count(*) from app_analyse";
 		int a = sqlUtil.get_countint(sql);
 		pages = hm.pages(arg[2], a);
-		
-		
+
+
 		arg[2] = pages[2] + "";
 		sql = "select * from app_analyse order by id desc limit "+arg[2]+","+JyHelpManager.item+"";
 		list = sqlUtil.get_list(sql);
@@ -1495,16 +1520,16 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		}
 
    }
-	
+
 	private void automsg_search(String[] arg) throws SQLException,
 	IOException, ServletException {
 		String sql = "select count(*) from automsg";
 		int a = sqlUtil.get_countint(sql);
 		pages = hm.pages(arg[2], a);
-		
+
 		sql="select auto_num from auto_num where id=1";
 		pages[0]=sqlUtil.get_int(sql);
-		
+
 		arg[2] = pages[2] + "";
 		sql = "select * from automsg order by id desc limit "+arg[2]+","+JyHelpManager.item+"";
 		list = sqlUtil.get_list(sql);
@@ -1516,8 +1541,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		}
 
    }
-	
-	
+
+
 
 	private void agent_set(String[] arg) throws SQLException, IOException,
 			ServletException {
@@ -1548,7 +1573,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	 * 查看鉴黄上传图片列表 arg[0]: A-boss-search arg[1]: jianhuang_list arg[2]: out
 	 * tojsp/tojson arg[3]: pagenum ---- 页码 ---------------------------------
 	 * arg[4]: pagefirst
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1671,7 +1696,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 后台充值设置查询
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1687,7 +1712,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 用户以及主播列表图片查看
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1704,7 +1729,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 认证图片查看
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1732,7 +1757,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 大V认证申请 arg[2]分页信息 arg[3]tojsp/tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1815,7 +1840,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 相册图片--点击查看
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1831,7 +1856,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 相册图片审核--列表显示 arg[2]page arg[3]查询条件 arg[4]tojsp/tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1905,7 +1930,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 头像图片--点击查看
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1921,7 +1946,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 头像图片审核--列表显示 arg[2]page arg[3]查询条件 arg[4]tojsp/tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -1962,7 +1987,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 点击播放视频 arg[2]视频id
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2006,17 +2031,17 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		 * JSONObject jsonObject = JSONObject.fromObject(json);
 		 * log.send(DataType.basicType, "01150", "jsonObject:=========",
 		 * jsonObject);
-		 * 
+		 *
 		 * Map<String, Object> mapJson = JSONObject.fromObject(jsonObject);
 		 * log.send(DataType.basicType, "01150", "mapJson:=========", mapJson);
-		 * 
+		 *
 		 * for(Entry<String,Object> entry : mapJson.entrySet()){ Object strval1
 		 * = entry.getValue(); JSONObject jsonObjectStrval1 =
 		 * JSONObject.fromObject(strval1);
-		 * 
+		 *
 		 * if(entry.getKey().equals("PlayURL")){ url =
 		 * entry.getValue().toString(); }
-		 * 
+		 *
 		 * // Map<String, Object> mapJsonObjectStrval1 =
 		 * JSONObject.fromObject(jsonObjectStrval1); //
 		 * System.out.println("KEY:"
@@ -2025,7 +2050,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		 * System
 		 * .out.println("KEY:"+entry1.getKey()+"  -->  Value:"+entry1.getValue
 		 * ()+"\n"); // }
-		 * 
+		 *
 		 * } log.send(DataType.basicType, "01150",
 		 * "url===========111===============", url); // Map maps =
 		 * (Map)JSON.parse(json); //
@@ -2065,7 +2090,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 短视频审核 arg[2]page arg[3]条件查询 arg[4]tojsp/tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2156,7 +2181,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * 查询二级下属 arg[0]A-boss-search arg[1]low_second arg[3]用户id arg[2]page
 	 * arg[4]tojsp/tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2186,7 +2211,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * 查询一级下属 arg[0]A-boss-search arg[1]low_first arg[3]用户id arg[2]page
 	 * arg[4]tojsp/tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2324,7 +2349,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 搜索 arg[0]:A-boss-search arg[1]:hot arg[2]:page arg[3]:gift_sum（礼物的个数）
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2352,7 +2377,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 进后台 arg[0]:A-boss-search arg[1]:subject arg[2]:page
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2381,7 +2406,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0] A-boss-search arg[1] pay_table_search arg[2] startTime arg[3] page
 	 * arg[4] endTime arg[5] vip 元宝充值 arg[6] tojsp tojson arg[7] arg[8]
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2513,7 +2538,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0] A-boss-search arg[1] gift_details_search arg[2] page arg[3]
 	 * startdate arg[4] enddate arg[5] tojsp tojson arg[6] arg[7]
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2544,7 +2569,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0] A-boss-search arg[1] Wealth_value_search arg[2] user_id arg[3]
 	 * page arg[4] startdate arg[5] enddate arg[6] tojsp tojson arg[7] arg[8]
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2582,7 +2607,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0]A-boss-search arg[1]charm_search arg[2]user_id arg[3]page
 	 * arg[4]startdate arg[5]enddate arg[6]tojsp tojson arg[7] arg[8]
-	 * 
+	 *
 	 * @param arg
 	 * @throws IOException
 	 * @throws SQLException
@@ -2642,7 +2667,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * arg[0]A-boss-search arg[1]grade_privilege
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2661,7 +2686,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0]A-boss-search arg[1]cash_withdrawal arg[2]page arg[3]startdate
 	 * arg[4]enddate arg[5]tojsp tojson arg[6] arg[7]
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2738,7 +2763,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0] A-boss-search arg[1] pay_list arg[2] pageIndex arg[3] user_id
 	 * arg[4] tojson arg[5] arg[6]
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2854,7 +2879,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * arg[0]A-boss-search arg[1]giftlist
-	 * 
+	 *
 	 * @param arg
 	 * @throws SQLException
 	 * @throws IOException
@@ -2872,7 +2897,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0]A-boss-search arg[1]tyrants_week_search arg[2]0 本周 1 上周 arg[3]tojsp
 	 * tojson
-	 * 
+	 *
 	 * @throws IOException
 	 * @throws SQLException
 	 * @throws ServletException
@@ -2897,7 +2922,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	/**
 	 * arg[0] A-boss-search arg[1] charm_week_search arg[2] 0本周 1上周 arg[3] tojsp
 	 * tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws IOException
 	 * @throws SQLException
@@ -2923,7 +2948,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	 * 查询某userid收入明细列表 arg[0]: A-boss-search arg[1]: auditapply arg[2]:
 	 * pageIndex 页码(jsp页面翻页的页码) arg[3]: startdate: 第一个时间 arg[4]: enddate 第二个时间
 	 * arg[5]: sele_condition 搜索条件 atg[6]: tojson 返回jsp tojson: 返回json数据
-	 * 
+	 *
 	 * @param arg
 	 * @throws IOException
 	 * @throws SQLException
@@ -2958,7 +2983,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	 * 查询cash_withdrawal表提现记录，带翻页，不带搜索 arg[0]: A-boss-search arg[1]:
 	 * cashwithdrawal arg[2]: pageIndex 页码(jsp页面翻页的页码) arg[3]: user_id atg[4]:
 	 * tojsp tojson
-	 * 
+	 *
 	 * @param arg
 	 * @throws IOException
 	 * @throws SQLException
@@ -2992,7 +3017,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	}
 
 	/**
-	 * 
+	 *
 	 * 钻石支出明细 arg[0]A-boss-search arg[1]diamond_pay_detail arg[2]page arg[3]用户id
 	 */
 	private void diamond_pay_detail(String[] arg) throws SQLException,
@@ -3016,7 +3041,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	}
 
 	/**
-	 * 
+	 *
 	 * 提现明细 arg[0]A-boss-search arg[1]withdrawal_detail arg[2]page arg[3]用户id
 	 */
 	private void withdrawal_detail(String[] arg) throws SQLException,
@@ -3139,7 +3164,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	 * 页码(jsp页面翻页的页码) arg[3]: tojsp: 返回jsp tojson: 返回json数据 arg[4]: time1
 	 * arg[5]: time2 -------------------------------------------- arg[6]:
 	 * curIndex 页面首元素索引 arg[7]: items 一页显示的元素个数
-	 * 
+	 *
 	 * @param arg
 	 *            未付款，未评价，已付款
 	 * @throws IOException
@@ -3172,7 +3197,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 显示会员的视频 arg[0]:A-boss-search arg[1]:member_video arg[2]:id
-	 * 
+	 *
 	 * @throws IOException
 	 * @throws SQLException
 	 * @throws ServletException
@@ -3189,7 +3214,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 
 	/**
 	 * 显示会员的相册 arg[0]:A-boss-search arg[1]:member_album arg[2]:id
-	 * 
+	 *
 	 * @param arg
 	 * @throws IOException
 	 * @throws SQLException
