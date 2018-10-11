@@ -6,20 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="idea  add">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/WEB-INF/lib/commons-net-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/WEB-INF/lib/jakarta-oro-2.0.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/WEB-INF/lib/jsch-0.1.51.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/WEB-INF/lib/jzlib-1.1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ssctrl/interface4/FtpJsch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/aliaoBOSS_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/aliaoBOSS_war_exploded.xml" afterDir="false" />
+    <list default="true" id="ac28f772-956c-4b4a-a0a2-2fc66097d7a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150$BizRenderTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150$BizRenderTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" afterDir="false" />
@@ -27,17 +15,6 @@
       <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/JyGlobalConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/JyGlobalConstant.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/WeixinUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/WeixinUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150$BizRenderTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150$BizRenderTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao1/mA/vliaoInoutBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/hz/vliao2/mA/vliaoSqlBoss_01150.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/JyGlobalConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/JyGlobalConstant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/WeixinUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/WeixinUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/classes/com/ssctrl/interface4/pay/util/http/HttpConnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/anchor_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/aliaoBOSS_war_exploded/uiface1/boss/anchor_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hz/vliao1/mA/vliaoInoutBoss_01150.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ssctrl/interface4/JyGlobalConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ssctrl/interface4/JyGlobalConstant.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,7 +53,7 @@
         <counts>
           <entry key="class" value="10" />
           <entry key="css" value="2" />
-          <entry key="java" value="98" />
+          <entry key="java" value="99" />
           <entry key="js" value="3" />
           <entry key="jsp" value="15" />
           <entry key="name" value="1" />
@@ -87,7 +64,7 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="CSS" value="2" />
-          <entry key="JAVA" value="98" />
+          <entry key="JAVA" value="99" />
           <entry key="JSP" value="15" />
           <entry key="JavaScript" value="3" />
           <entry key="PLAIN_TEXT" value="1" />
@@ -96,9 +73,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="572" />
-          <entry key="JSP" value="388" />
-          <entry key="PLAIN_TEXT" value="22" />
+          <entry key="JAVA" value="574" />
+          <entry key="JSP" value="389" />
+          <entry key="PLAIN_TEXT" value="32" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
@@ -109,9 +86,9 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="9" />
-          <entry key="java" value="572" />
-          <entry key="jsp" value="388" />
-          <entry key="txt" value="13" />
+          <entry key="java" value="574" />
+          <entry key="jsp" value="389" />
+          <entry key="txt" value="23" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
@@ -119,11 +96,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="163" column="27" selection-start-line="163" selection-start-column="27" selection-end-line="163" selection-end-column="27" />
+            <state relative-caret-position="187">
+              <caret line="153" column="16" lean-forward="true" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -140,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="94" column="97" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="94" selection-end-column="97" />
+            <state relative-caret-position="361">
+              <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,11 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+            <state relative-caret-position="295">
+              <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -261,11 +238,11 @@
         <option value="$PROJECT_DIR$/WebContent/uiface1/static/h-ui.admin/js/H-ui.admin.js" />
         <option value="$PROJECT_DIR$/WebContent/uiface1/boss/anchor_list.jsp" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpUtils.java" />
-        <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java" />
         <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/FtpJsch.java" />
         <option value="$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp" />
+        <option value="$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java" />
       </list>
     </option>
   </component>
@@ -410,7 +387,7 @@
     <property name="SearchEverywhereHistoryKey" value="JyFileUploadServlet&#9;FILE&#9;file://E:/aliaoboss/src/com/ssctrl/interface4/JyFileUploadServlet.java&#10;photo_add&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/photo_add.jsp&#10;recycle_photo&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/recycle_photo.jsp&#10;photo_mod&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/photo_mod.jsp&#10;in_tabl&#9;FILE&#9;file://E:/aliaoboss/WebContent/uiface1/boss/income_table.jsp&#10;pay_table&#9;FILE&#9;file://D:/aliaoBOSS/WebContent/uiface1/boss/pay_table.jsp&#10;income_table&#9;FILE&#9;file://D:/aliaoBOSS/WebContent/uiface1/boss/income_table.jsp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539249434684" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539249652997" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/WebContent/WEB-INF/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -805,11 +782,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539189450924</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="修改主播头像">
+      <created>1539249617450</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1539249617450</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53857000" />
+    <option name="totallyTimeSpent" value="54105000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -824,7 +808,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -867,7 +851,8 @@
     <MESSAGE value="idea  add" />
     <MESSAGE value="主播列表，M币收入。点击查看详情页面" />
     <MESSAGE value="5.充值记录" />
-    <option name="LAST_COMMIT_MESSAGE" value="5.充值记录" />
+    <MESSAGE value="修改主播头像" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改主播头像" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1168,16 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/servlet-api.jar!/javax/servlet/ServletRequest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -1268,16 +1243,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="94" column="97" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="94" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/FtpJsch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -1288,20 +1253,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+        <state relative-caret-position="187">
+          <caret line="153" column="16" lean-forward="true" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/JyFileUploadServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/uiface1/boss/photo_add2.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="163" column="27" selection-start-line="163" selection-start-column="27" selection-end-line="163" selection-end-column="27" />
+        <state relative-caret-position="-49">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ssctrl/interface4/UploadFtpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
