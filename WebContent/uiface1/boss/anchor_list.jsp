@@ -45,9 +45,19 @@ String path = request.getContextPath()+"/uiface";
 	<div class="text-c">
 		<div class="mt-20">
 			<div class="text-c">
-					昵称：
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">	
+				昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:
+				<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
+				<%--<br/>--%>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID:
+				<input type="text" class="input-text" style="width:250px"  placeholder="请输入id" id="uid" name="uid">
+				<%--<br/>--%>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用&nbsp;&nbsp;户&nbsp;&nbsp;名:
+				<input type="text" class="input-text" style="width:250px"  placeholder="请输入用户名" id="username" name="username">
+				<%--<br/>--%>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号码:
+				<input type="text" class="input-text" style="width:250px"  placeholder="请输入手机号码" id="phonenum" name="phonenum">
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜用户</button>
+				<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div>	
 		</div>
 		
@@ -62,6 +72,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">认证图片</th>
 				<th width="40">用户名</th>
 				<th width="40">昵称</th>
+				<th width="40">邀请人昵称</th>
 				<th width="40">推荐分类</th>
 				<th width="40">手机号码</th>
 				<th width="40">账户余额</th>
@@ -76,6 +87,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">是否在线</th>
 				<th width="40">是否推荐</th>
 				<th width="40">排序参数</th>
+				<th width="40">注册时间</th>
 				<th width="40">账号状态</th>
 				<th width="40">操作</th>
 				
@@ -95,6 +107,7 @@ String path = request.getContextPath()+"/uiface";
 					</td>
 					<td>${map['username']}</td>
 					<td>${map['nickname']}<a title="编辑" href="javascript:;"onclick="anchor_nickname(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
+					<td>${map['inviterName']}</td>
 					<c:choose>
 						<c:when test="${map['star']=='1' }"><td  id="xing${map['id']}">热门  <br></c:when>
 						<c:when test="${map['star']=='2' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>
@@ -124,6 +137,7 @@ String path = request.getContextPath()+"/uiface";
 					</c:choose>
 					<td>${map['sort_id']}  <br>
 					<a title="编辑" href="javascript:;"onclick="sortmod(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>
+					<td>${map['register_time']}</td>
 					<c:choose>
 							<c:when test="${map['is_banned']!='1' }"><td>正常</td></c:when>
 							<c:when test="${map['is_banned']=='1' }"><td>封禁</td></c:when>
@@ -205,8 +219,7 @@ $(function(){
 			fresh_page(1);
 		}else if(sele_condition != ''){
 			fresh_page(1);
-		}
-		else if(sele_condition==''){
+		}else if(sele_condition==''){
 			fresh_page(1);
 		} 
 	});
@@ -218,13 +231,16 @@ function fresh_page(pageIndex){
 	var enddate = $("#datemax").val(); */
 	var sele_condition = $("#searchname").val();
 	var mil_id = $("#searchtxt").val();
+    var uid = $("#uid").val();
+    var username = $("#username").val();
+    var phonenum = $("#phonenum").val();
 	/* 获取输入的性别 */
 	/* 获取输入的起始时间和结束时间 */
 	/* 固定死判断条件，如性别，时间段：开始时间---结束时间 */
 	$.ajax({
 		cache: true,
 		type: "POST",
-		url: "<%=path%>/rp?p0=A-boss-search&p1=anchor_search&p2="+pageIndex+"&p3="+mil_id+"&p4=tojson&p5=${param.p5}",
+		url: "<%=path%>/rp?p0=A-boss-search&p1=anchor_search&p2="+pageIndex+"&p3="+mil_id+"&p4=tojson&p5=${param.p5}"+"&p6="+uid+"&p7="+username+"&p8="+phonenum,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -232,7 +248,7 @@ function fresh_page(pageIndex){
 		success: function(data){
 			var json=eval("("+data+")");
 			var content = '';
-			
+
 			for(var i = 0; i < json.length-1; i++) {
 				var online="";
 				if(json[i].online=='1'){
@@ -254,13 +270,6 @@ function fresh_page(pageIndex){
 				}else{
 					tuijian='<td id="tuijian'+json[i].id+'"><a title="设为推荐" onclick="tuijian('+json[i].id+')" class="ml-5" style="text-decoration:none;    color: blue;"><i class="Hui-iconfont">设为推荐</i></a></td>';
 				}
-                <%--<c:choose>--%>
-                <%--<c:when test="${map['star']=='1' }"><td  id="xing${map['id']}">热门  <br></c:when>--%>
-                    <%--<c:when test="${map['star']=='2' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>--%>
-                    <%--<c:when test="${map['star']=='3' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>--%>
-                    <%--<c:when test="${map['star']=='4' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>--%>
-                    <%--<c:when test="${map['star']=='5' }"><td  id="xing${map['id']}">活跃  <br></c:when>--%>
-                <%--</c:choose>--%>
                 var xj = "";
 				if(json[i].star == '1'){
                     xj = "热门";
@@ -272,11 +281,12 @@ function fresh_page(pageIndex){
 				 content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].id+'</td>'
-					+'<td><img alt="" src="'+json[i].photo+'" style="width:80px"></td>'
+					+'<td><img alt="" src="'+json[i].photo+'" onclick="photo('+json[i].id+',\'修改头像\',\'<%=path%>1/boss/photo_add2.jsp\',\'600\',\'160\')" style="width:80px"></td>'
 					+'<td><a href="javascript:;" onclick="system_category_edit(\'认证图片\',\'<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2='+json[i].id+'&p3=0\',\'600\',\'510\')"  ><span style="color:blue;">点击查看图片</span></a></td>'
 					+'<td>'+json[i].username+'</td>'
 					+'<td>'+json[i].nickname+''
 				 	+'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
+					+'<td>'+json[i].inviterName+'</td>'
 					+'<td id="xing"'+json[i].id+'>'+xj+'<br>'
 				 	+'<a title="编辑" href="javascript:;"onclick="xingmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
 					+'<td>'+json[i].phonenum+''
@@ -291,12 +301,13 @@ function fresh_page(pageIndex){
 					+'<td>'+online+'</td>'
 					+tuijian
 					+'<td>'+json[i].sort_id+'<br><a title="编辑" href="javascript:;"onclick="sortmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
+				 	+'<td>'+json[i].register_time+'</td>'
 					+'<td>'+banned+'</td>'
 					+'<td class="td-manage">'
 					+'<a title="封禁" href="javascript:;" onclick="banned('+json[i].id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">封禁</i></a>'
 					+'<a title="解封" href="javascript:;" onclick="no_banned('+json[i].id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">解封</i></a>'
 					+'</td>'
-				; 
+				;
 			}
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
@@ -556,6 +567,12 @@ function anchor_photo(id){
 		},
 	});
 }
+
+$("#inputExcel").click(function(){
+    var neirong = $("#searchtxt").val();
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorexecl&p2=1&p3="+neirong+"&p4=tojson&p5=1";
+    window.open(url);
+});
 
 function photo(id,title,url,w,h){
     $("#aaid").val(id);

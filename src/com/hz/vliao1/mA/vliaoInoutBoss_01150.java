@@ -36,6 +36,7 @@ import com.ssctrl.interface4.JyHelpManager;
 import com.ssctrl.interface4.JyLogDetect.DataType;
 import com.ssctrl.interface4.OkHttp;
 import com.ssctrl.interface4.zhufubao.Ordercreat;
+import org.apache.commons.lang.StringUtils;
 
 public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		vliaoInOutFace {
@@ -1259,6 +1260,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "userdataexecl":// 会员导出
 			userDateExcel(arg);
+			break;
+		case "anchorexecl":// 主播导出
+			anchorexecl(arg);
 			break;
 		case "agentist"://
 			agentist(arg);
@@ -2845,6 +2849,70 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		}
 
 	}
+
+	public void anchorexecl(String[] arg) throws SQLException, IOException,
+			ServletException {
+		List<List<String>> listForExport = new ArrayList<List<String>>();
+		String sql = sqlmface.searchSqlface(1, arg);
+		list = sqlUtil.get_list(sql);
+		List<String> listOne = new ArrayList<String>();
+		listOne.add("ID");
+		listOne.add("用户名");
+		listOne.add("昵称");
+		listOne.add("邀请人昵称");
+		listOne.add("推荐分类");
+		listOne.add("手机号码");
+		listOne.add("账户余额");
+		listOne.add("是否在线");
+		listOne.add("排序参数");
+		listOne.add("注册时间");
+		listOne.add("账号状态");
+		listForExport.add(listOne);
+		for (Map map : list) {
+			List<String> arrayList = new ArrayList<String>();
+			arrayList.add(map.get("id").toString());
+			arrayList.add(map.get("username").toString());
+			arrayList.add(map.get("nickname").toString());
+			arrayList.add(map.get("inviterName").toString());
+			if(StringUtils.isNotEmpty(map.get("star").toString())){
+				if(map.get("star").toString().equals("1")){
+					arrayList.add("热门");
+				}else if(map.get("star").toString().equals("5")){
+					arrayList.add("活跃");
+				}else{
+					arrayList.add((map.get("star").toString()+"星"));
+				}
+			}
+			arrayList.add(map.get("phonenum").toString());
+			arrayList.add(map.get("money").toString());
+			if(StringUtils.isNotEmpty(map.get("online").toString())){
+				if(map.get("online").toString().equals("0")){
+					arrayList.add("离线");
+				}else if(map.get("online").toString().equals("1")){
+					arrayList.add("在线");
+				}else if(map.get("online").toString().equals("2")){
+					arrayList.add("忙碌");
+				}else{
+					arrayList.add("");
+				}
+			}
+			arrayList.add(map.get("sort_id").toString());
+			arrayList.add(map.get("register_time").toString());
+			if(StringUtils.isNotEmpty(map.get("is_banned").toString())){
+				if(map.get("is_banned").toString().equals("1")){
+					arrayList.add("封禁");
+				}else{
+					arrayList.add("正常");
+				}
+			}else{
+				arrayList.add("正常");
+			}
+			listForExport.add(arrayList);
+		}
+		response.reset();
+		excelUtils.export("主播列表"+getDateString(),listForExport,response);
+	}
+
 	public void userDateExcel(String[] arg) throws SQLException, IOException,
 			ServletException {
 		List<List<String>> listForExport = new ArrayList<List<String>>();
@@ -2852,7 +2920,6 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		list = sqlUtil.get_list(sql);
 		List<String> listOne = new ArrayList<String>();
 		listOne.add("ID");
-		listOne.add("头像");
 		listOne.add("用户名");
 		listOne.add("昵称");
 		listOne.add("邀请人昵称");
@@ -2865,7 +2932,6 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		for (Map map : list) {
 			List<String> arrayList = new ArrayList<String>();
 			arrayList.add(map.get("id").toString());
-			arrayList.add(map.get("photo").toString());
 			arrayList.add(map.get("username").toString());
 			arrayList.add(map.get("nickname").toString());
 			arrayList.add(map.get("inviterName").toString());
@@ -2873,9 +2939,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("phonenum").toString());
 			arrayList.add(map.get("money").toString());
 			arrayList.add(map.get("register_time").toString());
-			if(map.get("register_time").toString().equals("0")){
+			if(map.get("online").toString().equals("0")){
 				arrayList.add("离线");
-			}else if(map.get("register_time").toString().equals("1")){
+			}else if(map.get("online").toString().equals("1")){
 				arrayList.add("在线");
 			}else{
 				arrayList.add("在聊");

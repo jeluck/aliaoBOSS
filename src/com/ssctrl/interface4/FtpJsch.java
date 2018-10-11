@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Properties;
-import java.util.UUID;
 import java.util.Vector;
 
 import com.jcraft.jsch.Channel;
@@ -25,7 +24,7 @@ public class FtpJsch {
     //端口
     private static int port = 22;
     //上传地址
-    private static String directory = "/img/imgheadpic";
+    private static String directory = "/data/wwwroot/ysaliao/img/imgheadpic";
     //下载目录
     private static String saveFile = "D:\\VMware\\XuNiJi\\imgs";
 
@@ -75,7 +74,7 @@ public class FtpJsch {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return file == null ? null : "http://119.23.16.29:8090/img/imgheadpic/"+fileName;
+        return file == null ? null : "http://39.108.62.244:8090/img/imgheadpic/"+fileName;
     }
 
     /**

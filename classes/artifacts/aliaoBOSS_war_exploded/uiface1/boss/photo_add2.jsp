@@ -145,7 +145,7 @@ $(function(){
 
 var flag="0";
 function upimg(){
-    alert(this.parent.$("#aaid").val());
+    var id = this.parent.$("#aaid").val();
     // var url = document.querySelector("#fileimg").value;
 	var oFiles = document.querySelector("#fileimg").files;
 	if(oFiles.length){
@@ -162,7 +162,9 @@ function upimg(){
 			success : function(data) {
 				var img = data;
 				document.getElementById("imges").value = img;
-				alert("上传成功");
+				// alert(this.parent.$("#aaid").val());
+                anchor_photo(id,img);
+				// alert("上传成功");
 			}
 		})
 	flag="1";
@@ -170,9 +172,30 @@ function upimg(){
 		alert("请选择需要上传的图片");
 	}
 }
-//表单验证
-function upimg1(){
 
+//主播头像
+function anchor_photo(id,imgsrc){
+    if(imgsrc == ""){
+        layer.msg('操作失败',{icon:1,time:1000});
+        return;
+	}
+    var currentpageindex =  Number(this.parent.$("#currentpage").html());
+    $.ajax({
+        type:'POST',
+        url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_photo&p2='+id+'&p3='+imgsrc,
+        success: function(data){
+            if(data='1'){
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            }else{
+                layer.msg('操作失败',{icon:1,time:1000});
+            }
+        },
+        error:function(data) {
+            layer.msg('操作失败',{icon:1,time:1000});
+        },
+    });
+    window.parent.fresh_page(currentpageindex);
 }
 </script>
 	<!--/请在上方写此页面业务相关的脚本-->

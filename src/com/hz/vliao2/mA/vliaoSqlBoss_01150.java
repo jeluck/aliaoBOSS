@@ -935,22 +935,74 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				ressql="select c.*,u.* from complaint c,user_data u where c.user_id=u.id order by c.time desc limit "+arg[2]+","+JyHelpManager.item+" ";
 			}
 			break;
+			//主播列表
 		case "anchor_search":
 			if(current==0){
 				ressql="select count(*) from user_data where is_v='"+arg[5]+"' and is_anchor='1' ";
+				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
+					ressql+=" and id ="+arg[6];
+				}
+				if(arg.length > 7 && StringUtils.isNotEmpty(arg[7])){
+					ressql+=" and username like '%"+arg[7]+"%'";
+				}
+				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+					ressql+=" and phonenum like '%"+arg[8]+"%'";
+				}
 			}else if(current==1){
-				ressql="select * from user_data where is_v='"+arg[5]+"' and is_anchor='1'  order by is_tuijian desc,sort_id desc limit "+arg[2]+","+JyHelpManager.item+"";
+				ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1'";
+				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
+					ressql+=" and u1.id ="+arg[6];
+				}
+				if(arg.length > 7 && StringUtils.isNotEmpty(arg[7])){
+					ressql+=" and u1.username like '%"+arg[7]+"%'";
+				}
+				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+					ressql+=" and u1.phonenum like '%"+arg[8]+"%'";
+				}
+				ressql+=" order by u1.is_tuijian desc,u1.sort_id desc limit "+arg[2]+","+JyHelpManager.item+"";
 			}else if(current==2){
 				ressql="select count(*) from user_data where is_v='"+arg[5]+"' and is_anchor='1' and nickname like '%"+arg[3]+"%'";
+				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
+					ressql+=" and id ="+arg[6];
+				}
+				if(arg.length > 7 && StringUtils.isNotEmpty(arg[7])){
+					ressql+=" and username like '%"+arg[7]+"%'";
+				}
+				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+					ressql+=" and phonenum like '%"+arg[8]+"%'";
+				}
 			}else if(current==3){
-				ressql="select * from user_data where is_v='"+arg[5]+"' and is_anchor='1' and nickname like '%"+arg[3]+"%' ";
+				ressql="select  u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1' and u1.nickname like '%"+arg[3]+"%' ";
+				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
+					ressql+=" and u1.id ="+arg[6];
+				}
+				if(arg.length > 7 && StringUtils.isNotEmpty(arg[7])){
+					ressql+=" and u1.username like '%"+arg[7]+"%'";
+				}
+				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+					ressql+=" and u1.phonenum like '%"+arg[8]+"%'";
+				}
+				ressql+=" order by u1.is_tuijian desc,u1.sort_id desc limit "+arg[2]+","+JyHelpManager.item+"";
 			}else if(current==4){
 				ressql="";
 			}else if(current==5){
 				ressql="";
 			}
 		break;
-		
+		case "anchorexecl":
+			if(current==1){
+				ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1' and u1.nickname like '%"+arg[3]+"%' order by u1.is_tuijian desc,u1.sort_id desc ";
+				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
+					ressql+=" and u1.id ="+arg[6];
+				}
+				if(arg.length > 7 && StringUtils.isNotEmpty(arg[7])){
+					ressql+=" and u1.username like '%"+arg[7]+"%'";
+				}
+				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+					ressql+=" and u1.phonenum like '%"+arg[8]+"%'";
+				}
+			}
+			break;
 		// 分销比例查询
 		case "fenxiao_search_set":
 			ressql="SELECT * FROM cash_set";
