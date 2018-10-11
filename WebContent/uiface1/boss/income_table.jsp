@@ -88,8 +88,13 @@ String path = request.getContextPath()+"/uiface";
 				  <option value="19" >私信</option>
 			  </select>
 		  </div>
-		      <div class="text-c" style="margin-top:10px;">			
+
+		  <div class="text-c" style="margin-top:10px;">
+			  昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
+		  </div>
+		  <div class="text-c" style="margin-top:10px;">
 				<button type="submit" class="btn btn-success radius" id="btn-search" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
+			  <button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div> 
 			<span id="sum1">总收入（A币）:${reList[0].sum}</span>
 		</div>
@@ -235,6 +240,7 @@ function fresh_page(pageIndex) {
 	var pp="";
 	var startdate = $("#datemin").val();
 	var enddate = $("#datemax").val();
+    var mil_id = $("#searchtxt").val();
 	if($("option:selected","#check1").val() == '1'){
 		pp=$("#d243").val();
 		startdate="";
@@ -257,7 +263,7 @@ function fresh_page(pageIndex) {
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
 		/* /rz?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp */
-        url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome,
+        url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -322,7 +328,11 @@ function seek(){
 function client_geren(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
-
+$("#inputExcel").click(function(){
+    var neirong = $("#searchtxt").val();
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorexecl&p2=1&p3="+neirong+"&p4=tojson&p5=1";
+    window.open(url);
+});
 
 </script>
 </body>

@@ -149,27 +149,75 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				if(current==0){
 					if(arg[3].equals("")&&arg[4].equals("")){
 						ressql="select count(*) from income_details c,user_data u where c.user_id=u.id ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
 					}else{
 						ressql="select count(*) from income_details c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
 					}
 				}else if(current==1){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select * from income_details c,user_data u where c.user_id=u.id  order by c.time desc  limit "+arg[2]+","+JyHelpManager.item+" ";	
+					   ressql="select * from income_details c,user_data u where c.user_id=u.id  ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}else{
-						ressql="select * from income_details c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'   order by c.time desc limit "+arg[2]+","+JyHelpManager.item+" ";
+						ressql="select * from income_details c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'   ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}
 				}else if(current==2){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select sum(money) from income_details  ";	
+					   ressql="select sum(money) from income_details where 1=1 ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
 					}else{
 						ressql="select sum(money) from income_details where    time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and type='"+arg[8]+"'";
+						}
 					}
 				}else if(current==3){
 					ressql="select count(*) from income_details c,user_data u where c.user_id=u.id  and c.time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and type='"+arg[8]+"'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
 				}else if(current==4){
-					ressql="select * from income_details c,user_data u where c.user_id = u.id  and c.time like '%"+arg[6]+"%' order by c.time desc  limit "+arg[2]+","+JyHelpManager.item+"";
+					ressql="select * from income_details c,user_data u where c.user_id = u.id  and c.time like '%"+arg[6]+"%' ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and type='"+arg[8]+"'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
-					ressql="select sum(money) from income_details where    time like '%"+arg[6]+"%'";
+					ressql="select sum(money) from income_details where   time like '%"+arg[6]+"%'";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and type='"+arg[8]+"'";
+					}
 				}
 			}else{
 				if(current==0){
@@ -178,10 +226,16 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and type='"+arg[8]+"'";
 						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
 					}else{
 						ressql="select count(*) from income_details c,user_data u where c.user_id=u.id  and c.user_id="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and type='"+arg[8]+"'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 					}
 				}else if(current==1){
@@ -190,11 +244,17 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and type='"+arg[8]+"'";
 						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
 						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}else{
 						ressql="select * from income_details c,user_data u where c.user_id=u.id and c.user_id="+arg[7]+"  and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and type='"+arg[8]+"'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}
@@ -215,10 +275,16 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and type='"+arg[8]+"'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
 				}else if(current==4){
 					ressql="select * from income_details c,user_data u where c.user_id = u.id and c.user_id="+arg[7]+" and c.time like '%"+arg[6]+"%'";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and type='"+arg[8]+"'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
@@ -991,7 +1057,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 		break;
 		case "anchorexecl":
 			if(current==1){
-				ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1' and u1.nickname like '%"+arg[3]+"%' order by u1.is_tuijian desc,u1.sort_id desc ";
+				ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1' and u1.nickname like '%"+arg[3]+"%'  ";
 				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
 					ressql+=" and u1.id ="+arg[6];
 				}
@@ -1001,6 +1067,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 					ressql+=" and u1.phonenum like '%"+arg[8]+"%'";
 				}
+				ressql+="order by u1.is_tuijian desc,u1.sort_id desc";
 			}
 			break;
 		// 分销比例查询
