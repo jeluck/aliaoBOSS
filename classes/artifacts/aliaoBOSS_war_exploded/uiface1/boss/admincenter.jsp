@@ -93,7 +93,7 @@ if(request.getSession().getAttribute("admin")!=null&&!"".equals(request.getSessi
 			<dt><i class="Hui-iconfont">&#xe63a;</i> 账务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2=&p3=1&p4=&p5=&p6=tojsp" data-title="充值记录表" href="javascript:void(0)">充值记录表</a></li>
+					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2=&p3=1&p4=&p5=&p6=&p7=tojsp&p8=" data-title="充值记录表" href="javascript:void(0)">充值记录表</a></li>
 					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="充值记录表" href="javascript:void(0)">主播收入明细</a></li>
 					
 					<% if(b.equals("1")){%>

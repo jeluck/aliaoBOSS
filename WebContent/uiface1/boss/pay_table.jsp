@@ -41,13 +41,39 @@ String path = request.getContextPath()+"/uiface";
 			
 			- <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;" name=""> -->
 			
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
 		    <select class="input-text" style="width:150px" id="searchname" name="">
 				<option value=""></option>
 				<option value="已付款">已付款</option>
 				<option value="未付款">未付款</option>
-			</select> 
+			</select>
+
+			<div class="text-c" style="margin-top:10px;">
+				<div class="text-c">
+					<span>查询方式</span>
+					<select id="check1" name="check1" >
+						<option value="0" >时间段查询</option>
+						<option value="1" >按月查询</option>
+						<option value="2" >按年查询</option>
+					</select>
+				</div>
+				<div class="text-c" id="xx1">
+					<span>开始日期:</span><input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;" name="">
+					<span>结束日期:</span><input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;" name="">
+				</div>
+				<div class="text-c" id="xx2">
+					<input type="text" id="d243" onclick="WdatePicker({dateFmt:'yyyy-MM'})" class="input-text Wdate" style="width:120px;"  />
+				</div>
+				<div class="text-c" id="xx3">
+					<input type="text" id="d244" onclick="WdatePicker({dateFmt:'yyyy'})" class="input-text Wdate" style="width:120px;"  />
+				</div>
+			</div>
+			<div class="text-c" style="margin-top:10px;">
+				用户昵称 <input type="text" style="width:230px" id = "nickName"class="input-text" placeholder="请输入内容"/>
+			</div>
+			<div class="text-c" style="margin-top:10px;">
 			<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜索充值记录</button>
+			</div>
 		</div>
 	</div>
 	<div id="Tables_Table_0_wrapper" class="Tables_wrapper ">
@@ -94,7 +120,7 @@ String path = request.getContextPath()+"/uiface";
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['pay_price']}"/>
 		</c:forEach>
 		<tr>
-		<td colspan="6">当页收入:${nodeValue}</td>
+		<td colspan="12">当页收入:${nodeValue}</td>
 		</tr>
 		</tbody>
 	</table>
@@ -127,6 +153,8 @@ String path = request.getContextPath()+"/uiface";
 
 var totalpage = Number('${pageNo[0]}');
 $(function(){
+    $("#xx2").hide();
+    $("#xx3").hide();
 	// 上一页
 	$("#DataTables_Table_0_previous").click(function() {
 		var currentpage = Number($("#currentpage").html());
@@ -153,6 +181,13 @@ $(function(){
 	$("#searchbtn").click(function() {
 		//var startdate = $("#datemin").val();
 		//var enddate = $("#datemax").val();
+        var startdate = $("#datemin").val();
+        var enddate = $("#datemax").val();
+        if(startdate=="" && enddate!=""){
+            alert('请选择开始时间');
+        }else if(enddate=="" && startdate!=""){
+            alert('请选择结束时间时间');
+        }
 		var searchname = $("#searchname").val();
 			fresh_page(1);
 	});
@@ -173,19 +208,58 @@ $(function(){
 		$("#vi").html("");
 		fresh_page(1);
 	}); */
-	
+    $("#check1").on("change",function(){
+        //alert('执行');
+        if ($("option:selected",this).val()==2) {
+            //alert('执行1');
+            //var a=$("#xx1").html();
+            //alert(a);
+            $("#xx1").hide();
+            $("#xx2").hide();
+            $("#xx3").show();
+            //pp="年";
+        }else if($("option:selected",this).val() == '1'){
+            //alert('执行2');
+            //var c='<input type="text" id="d243" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月'})" class="Wdate"/>';
+            //$("#xx1").html();
+            $("#xx1").hide();
+            $("#xx2").show();
+            $("#xx3").hide();
+            //pp=$("#d243").val();
+        }else{
+            //alert('执行3');
+            $("#xx1").show();
+            $("#xx2").hide();
+            $("#xx3").hide();
+        }
+    });
 });
 
 <%-- <td><a title="个人充值记录" href="javascript:;" onclick="client_geren('个人充值记录','<%=path%>/rz?p0=A-boss-search&p1=pay_list&p2=1&p3=${map['user_id']}&p4=tojsp','','','510')" class="ml-5" style="text-decoration:none">个人充值记录</a></td> --%>
 function fresh_page(pageIndex) {
-		var startdate = "";
-		var enddate = "";
-		var searchname = $("#searchname").val();
+    var searchname = $("#searchname").val();
+    var nickName = $("#nickName").val();
+    var startdate = $("#datemin").val();
+    var enddate = $("#datemax").val();
+    var pp = "";
+    if($("option:selected","#check1").val() == '1'){
+        pp=$("#d243").val();
+        startdate="";
+        enddate="";
+    }else if($("option:selected","#check1").val() == '2'){
+        pp=$("#d244").val();
+        startdate="";
+        enddate="";
+    }else{
+        startdate=$("#datemin").val();
+        enddate=$("#datemax").val();
+    }
+
 	$.ajax({
 		cache: true,
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
-		url:"<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2="+startdate+"&p3="+pageIndex+"&p4="+enddate+"&p5="+searchname+"&p7=tojson",
+		url:"<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2="+startdate+"&p3="+pageIndex+"&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -220,7 +294,7 @@ function fresh_page(pageIndex) {
 					sum = sum+a;
 			}
 			content +='<tr>'
-					+'<td  colspan="6"> 当页收入:'+sum+'</td>'
+					+'<td  colspan="12"> 当页收入:'+sum+'</td>'
 						+'</tr>';
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
