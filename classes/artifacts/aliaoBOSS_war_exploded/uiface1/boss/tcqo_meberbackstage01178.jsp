@@ -41,6 +41,7 @@ String path = request.getContextPath()+"/uiface";
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
 </nav>
+<input type="hidden" name="aaid" id="aaid"  />
 <div class="page-container">
 	<div class="text-c">
 		<div class="mt-20">
@@ -85,12 +86,12 @@ String path = request.getContextPath()+"/uiface";
 				<tr class="text-c">
 					<td>${status.count}</td>
 					<td>${map['id']}</td>
-					<td><img alt="" src="${map['photo']}" style="width:80px"></td>
+					<td><img alt="" src="${map['photo']}" onclick="photo(${map['id']},'修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')" style="width:80px"></td>
 					<td>${map['username']}</td>
-					<td>${map['nickname']}</td>
+					<td>${map['nickname']} <a title="编辑" href="javascript:;"onclick="anchor_nickname(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<td>${map['inviterName']}</td>
 					<td>${map['gender']}</td>
-					<td>${map['phonenum']}</td>
+					<td>${map['phonenum']} <a title="编辑" href="javascript:;"onclick="anchor_phonenum(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<td>${map['money']}</td>
 					<%--<td>${map['height']}</td>--%>
 					<%--<td>${map['weight']}</td>--%>
@@ -229,12 +230,14 @@ function fresh_page(pageIndex){
 				 content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].id+'</td>'
-					+'<td><img alt="" src="'+json[i].photo+'" style="width:80px"></td>'
+					+'<td><img alt="" src="'+json[i].photo+'" onclick="photo(\'+json[i].id+\',\\\'修改头像\\\',\\\'<%=path%>1/boss/photo_add2.jsp\\\',\\\'600\\\',\\\'160\\\')" style="width:80px"></td>'
 					+'<td>'+json[i].username+'</td>'
-					+'<td>'+json[i].nickname+'</td>'
+					+'<td>'+json[i].nickname+''
+					 +'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 				 	+'<td>'+json[i].inviterName+'</td>'
 					+'<td>'+json[i].gender+'</td>'
-					+'<td>'+json[i].phonenum+'</td>' 
+					+'<td>'+json[i].phonenum+''
+					 +'<a title="编辑" href="javascript:;"onclick="anchor_phonenum('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 					+'<td>'+json[i].money+'</td>'
 					// +'<td>'+json[i].height+'</td>'
 					// +'<td>'+json[i].weight+'</td>'
@@ -296,6 +299,52 @@ function go(id,userid){
 	/* }); */
 }
 
+function anchor_nickname(id){
+    var age = prompt("请输入昵称","");
+    if(age!=null && age!=""){
+        layer.confirm('确认输入以上内容？',function(index){
+            $.ajax({
+                type:'POST',
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_nickname&p2='+id+'&p3='+age,
+                success: function(data){
+                    if(data='1'){
+                        fresh_page(Number($("#currentpage").html()));
+                        layer.msg('操作成功',{icon:1,time:1000});
+                    }else{
+                        layer.msg('操作失败',{icon:1,time:1000});
+                    }
+                },
+                error:function(data) {
+                    layer.msg('操作失败',{icon:1,time:1000});
+                },
+            });
+        });
+    }
+}
+
+function anchor_phonenum(id){
+    var age = prompt("请输入手机号","");
+    if(age!=null && age!=""){
+        layer.confirm('确认输入以上内容？',function(index){
+            $.ajax({
+                type:'POST',
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_phonenum&p2='+id+'&p3='+age,
+                success: function(data){
+                    if(data='1'){
+                        fresh_page(Number($("#currentpage").html()));
+                        layer.msg('操作成功',{icon:1,time:1000});
+                    }else{
+                        layer.msg('操作失败',{icon:1,time:1000});
+                    }
+                },
+                error:function(data) {
+                    layer.msg('操作失败',{icon:1,time:1000});
+                },
+            });
+        });
+    }
+}
+
 /**查看用户相册*/
 function client_xiangce(title,url,id,w,h){
 	layer_show(title,url,w,h);	
@@ -303,6 +352,11 @@ function client_xiangce(title,url,id,w,h){
 /**查看用户相册*/
 function client_shipin(title,url,id,w,h){
 	layer_show(title,url,w,h);	
+}
+
+function photo(id,title,url,w,h){
+    $("#aaid").val(id);
+    layer_show(title,url,w,h);
 }
 </script> 
 </body>
