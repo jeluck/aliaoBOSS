@@ -374,7 +374,12 @@ $("#inputExcel").click(function(){
     var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=tgtxexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=1&p8="+uid+"&p9="+nickname+"&p10="+txaccount+"&p11="+txname+"&p12="+txstatus;
     window.open(url);
 });
-
+function timec() {
+    $("#datemin").val("");
+    $("#datemax").val("");
+    $("#d244").val("");
+    $("#d243").val("");
+}
 </script>
 </body>
 </html>
