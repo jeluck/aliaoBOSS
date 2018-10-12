@@ -9,6 +9,8 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -114,6 +116,26 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		String sql = "insert into automsg (msg) value ('"+arg[2]+"')";
 		log.send(DataType.basicType, "01162", "轮播图修改1", sql);
 		sqlUtil.sql_exec(sql);
+	}
+
+	private void czAmount(String[] arg) throws SQLException, IOException,
+			ServletException {
+		int i=(int)(Math.random()*900)+100;
+		String s = getDate() + i;
+		String money = sqlUtil.get_string("select (" + arg[3] + "-money) mo from user_data where id=" + arg[2]);
+		String sql="update user_data set money='"+arg[3]+"' where id="+arg[2];
+		log.send(DataType.basicType, "01162", "充值",  sql);
+		sqlUtil.sql_exec(sql);
+		sql = "INSERT INTO order_management(`user_id`, `pay_type`, `pay_price`, `pay_value`, `pay_what`, `pay_status`, `order_num`, `pay_time`) " +
+				"VALUES ("+arg[2]+", '现金', '"+money+"', '"+money+"', '充值', '已付款', '"+s+"', now());";
+		log.send(DataType.basicType, "01162", "充值记录", sql);
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
+
+	public static String getDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+		return formatter.format(new Date());
 	}
 
 	private void notification_add(String[] arg) throws SQLException,
@@ -327,6 +349,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "anchor_nickname":
 			anchor_nickname(arg);
+			break;
+		case "czAmount":
+			czAmount(arg);
 			break;
 		case "anchor_phonenum":
 			anchor_phonenum(arg);

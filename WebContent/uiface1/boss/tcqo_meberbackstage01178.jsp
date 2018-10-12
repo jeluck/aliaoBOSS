@@ -92,7 +92,7 @@ String path = request.getContextPath()+"/uiface";
 					<td>${map['inviterName']}</td>
 					<td>${map['gender']}</td>
 					<td>${map['phonenum']} <a title="编辑" href="javascript:;"onclick="anchor_phonenum(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
-					<td>${map['money']}</td>
+					<td>${map['money']} <a title="编辑" href="javascript:;"onclick="czAmount(${map['id']},${map['money']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<%--<td>${map['height']}</td>--%>
 					<%--<td>${map['weight']}</td>--%>
 					<%--<td>${map['constellation']}</td>--%>
@@ -238,7 +238,8 @@ function fresh_page(pageIndex){
 					+'<td>'+json[i].gender+'</td>'
 					+'<td>'+json[i].phonenum+''
 					 +'<a title="编辑" href="javascript:;"onclick="anchor_phonenum('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
-					+'<td>'+json[i].money+'</td>'
+					+'<td>'+json[i].money+''
+					 +'<a title="编辑" href="javascript:;"onclick="czAmount('+json[i].id+','+json[i].money+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 					// +'<td>'+json[i].height+'</td>'
 					// +'<td>'+json[i].weight+'</td>'
 					// +'<td>'+json[i].constellation+'</td>'
@@ -344,6 +345,30 @@ function anchor_phonenum(id){
         });
     }
 }
+function czAmount(id,m){
+    var age = prompt("请充值输入金额","");
+    var men = parseInt(age)+parseInt(m);
+    if(age!=null && age!=""){
+        layer.confirm('确认输入以上内容？',function(index){
+            $.ajax({
+                type:'POST',
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=czAmount&p2='+id+'&p3='+men,
+                success: function(data){
+                    if(data='1'){
+                        fresh_page(Number($("#currentpage").html()));
+                        layer.msg('操作成功',{icon:1,time:1000});
+                    }else{
+                        layer.msg('操作失败',{icon:1,time:1000});
+                    }
+                },
+                error:function(data) {
+                    layer.msg('操作失败',{icon:1,time:1000});
+                },
+            });
+        });
+    }
+}
+
 
 /**查看用户相册*/
 function client_xiangce(title,url,id,w,h){
