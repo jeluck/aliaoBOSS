@@ -11,10 +11,10 @@ import org.apache.commons.lang.StringUtils;
 
 public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace {
 
-	
+
 	@Override
 	public String searchSqlface(int current, String[] arg) throws SQLException {
-		
+
 		switch (arg[1]) {
 		case "recharge_set":
 			ressql = "select * from recharge_set";
@@ -34,7 +34,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				ressql = "select * from renzheng_list where status='已通过' order by id desc limit "
 						+ arg[2] + "," + JyHelpManager.item + "";
 			}
-			break;				
+			break;
 		case "renzheng_v_no":
 			if (current == 0) {
 				ressql = "select count(*) from renzheng_list where status='未通过'";
@@ -42,7 +42,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				ressql = "select * from renzheng_list where status='未通过' order by id desc limit "
 						+ arg[2] + "," + JyHelpManager.item + "";
 			}
-			break;				
+			break;
 		case "renzheng_photosearch":
 			ressql = "select * from renzheng_list where user_id='" + arg[2] + "'";
 			break;
@@ -93,12 +93,12 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 		//查询系统通知列表
 		case "boll_systemnews_search":
 			if(current==0){
-					ressql = "SELECT COUNT(*) FROM news_table ";	
+					ressql = "SELECT COUNT(*) FROM news_table ";
 			}else if(current==1){
 					ressql = "SELECT * FROM news_table  limit "+arg[2]+","+JyHelpManager.item;
-			}				
+			}
 			break;
-		
+
 		case "video_manage":
 			if(current == 1){
 				ressql = "select count(*) from video_table ";
@@ -142,8 +142,8 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			ressql = "select * from login where username='" + arg[3]
 					+ "' and password='" + arg[4] + "'";
 			break;
-			
-			
+
+
 		case "income_table_search":
 			if(arg[7].equals("0")){
 				if(current==0){
@@ -293,10 +293,10 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and type='"+arg[8]+"'";
 					}
 				}
-				
+
 			}
-			
-			
+
+
 			break;
 		case "anchorsrexecl":
 			if(current==0){
@@ -319,7 +319,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			}
 			break;
 		case "income_table_search1":
-			
+
 			if(arg[7].equals("0")){
 				if(current==0){
 					if(arg[3].equals("")&&arg[4].equals("")){
@@ -541,7 +541,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 				}
 			}
-			
+
 			break;
 		case "tgsrexecl":
 				if (current == 1) {
@@ -897,7 +897,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			break;
 
 		case "cash_withdrawal":
-			
+
 			if(current==0){
 				if(arg[3].equals("")&&arg[4].equals("")){
 					ressql="select count(*) from cash_withdrawl c,user_data u where c.user_id=u.id and c.c_type="+arg[7];
@@ -917,7 +917,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.status='"+arg[12]+"'";
 					}
 				}else{
-					ressql="select count(*) from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59' and c.c_type="+arg[7];
+					ressql="select count(*) from cash_withdrawl c,user_data u where c.user_id=u.id and c.c_type="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59' and c.c_type="+arg[7];
 					if(arg.length>8 && !arg[8].equals("")){
 						ressql += " and u.id="+arg[8];
 					}
@@ -954,7 +954,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item+"";
 				}else{
-					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
+					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
 					if(arg.length>8 && !arg[8].equals("")){
 						ressql += " and u.id="+arg[8];
 					}
@@ -1100,7 +1100,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					ressql += " order by c.time desc";
 				}else if(!arg[3].equals("")&&!arg[4].equals("")){
-					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
+					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
 					if(arg.length>8 && !arg[8].equals("")){
 						ressql += " and u.id="+arg[8];
 					}
@@ -1191,6 +1191,118 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				}
 			}
 			break;
+			case "tgtxexecl":
+				if (current == 1) {
+					if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+						ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7];
+						if(arg.length>8 &&! arg[8].equals("")){
+							ressql += " and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+						}
+						if(arg.length>11 && !arg[11].equals("")){
+							ressql += " and u.account_name like '%"+arg[11]+"%'";
+						}
+						if(arg.length>12 && !arg[12].equals("")){
+							ressql += " and c.status='"+arg[12]+"'";
+						}
+						ressql += " order by c.time desc";
+					}else if(!arg[3].equals("")&&!arg[4].equals("")){
+						ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql += " and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+						}
+						if(arg.length>11 && !arg[11].equals("")){
+							ressql += " and u.account_name like '%"+arg[11]+"%'";
+						}
+						if(arg.length>12 && !arg[12].equals("")){
+							ressql += " and c.status='"+arg[12]+"'";
+						}
+						ressql += " order by c.time desc";
+					}else{
+						ressql="select * from cash_withdrawl c,user_data u where c.user_id = u.id  and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%' ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql += " and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+						}
+						if(arg.length>11 && !arg[11].equals("")){
+							ressql += " and u.account_name like '%"+arg[11]+"%'";
+						}
+						if(arg.length>12 && !arg[12].equals("")){
+							ressql += " and c.status='"+arg[12]+"'";
+						}
+						ressql+=" order by c.time desc";
+					}
+				}else{
+					if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+						ressql="select sum(cash) from cash_withdrawl  c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+"";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql += " and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+						}
+						if(arg.length>11 && !arg[11].equals("")){
+							ressql += " and u.account_name like '%"+arg[11]+"%'";
+						}
+						if(arg.length>12 && !arg[12].equals("")){
+							ressql += " and c.status='"+arg[12]+"'";
+						}
+					}else if(!arg[3].equals("")&&!arg[4].equals("")){
+						ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and  c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql += " and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+						}
+						if(arg.length>11 && !arg[11].equals("")){
+							ressql += " and u.account_name like '%"+arg[11]+"%'";
+						}
+						if(arg.length>12 && !arg[12].equals("")){
+							ressql += " and c.status='"+arg[12]+"'";
+						}
+					}else{
+						ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql += " and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+						}
+						if(arg.length>11 && !arg[11].equals("")){
+							ressql += " and u.account_name like '%"+arg[11]+"%'";
+						}
+						if(arg.length>12 && !arg[12].equals("")){
+							ressql += " and c.status='"+arg[12]+"'";
+						}
+					}
+				}
+				break;
 		// 通过Id查询个人消费信息
 		case "pay_list":
 			if (current == 1) {
@@ -1209,7 +1321,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			   }else{
 				   ressql = "select * from user_data where is_agent=1 order by id desc limit "+arg[2]+","+JyHelpManager.item;
 			   }
-	  			break;	
+	  			break;
 		case "memberbackstage":
 //			if(current == 0) {	//会员列表
 //				if(arg[5].equals("") && arg[3].equals("") && arg[4].equals("")){
@@ -1252,7 +1364,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 //			}else if(current==4){
 //				ressql = "select count(*) from user_data where id = '"+arg[7]+"' ";
 //			}
-			
+
 			if(current==0){
 				if(arg[3].equals("查ID")){
 				   ressql="select count(*) from user_data where is_v!='1' and is_anchor!='1' and id='"+arg[2]+"'";
@@ -1524,13 +1636,13 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			} else if (current == 1) {
 				ressql = "select * from blacklist where type = '举报' order by id desc limit " + arg[2] + ","
 						+ JyHelpManager.item + "";
-			}else if(current==2){ 
+			}else if(current==2){
 				ressql = "select * from user_data where id='"+arg[5]+"' ";
 			}else if(current==3){
 				ressql = "select * from user_data where id='"+arg[6]+"' ";
 			}
 			break;
-			
+
 		case "agentist_manage":
 			if (current == 0) {
 				ressql = "select count(id) from agentup_list  ";
@@ -1538,7 +1650,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				ressql = "select * from agentup_list as a ,user_data as b  where a.user_id=b.id  order by a.id desc limit " + arg[2] + ","
 						+ JyHelpManager.item + "";
 			}
-			break;	
+			break;
 
 		case "aboutus":
 			ressql = "select * from aboutus";
@@ -1661,7 +1773,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 		// 分销比例查询
 		case "fenxiao_search_set":
 			ressql="SELECT * FROM cash_set";
-			break;		
+			break;
 		case "recycle_photo":
 			  if(current==0){
 				  ressql="select count(*) from recycle_photo";
@@ -1680,7 +1792,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						+ "(select id,nickname from user_data)as b on a.user_id=b.id";
 				break;
 			}
-		
+
 		}
 		break;
 		case "agent_set":
@@ -1689,11 +1801,11 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			}else if(current==1){
 				ressql="select * from agent_set  limit "+arg[2]+","+JyHelpManager.item+"";
 			}
-			
-			break;	
+
+			break;
 		case "notification_search":
 			if(current==0){
-			  ressql="select count(*) from notification_table";	
+			  ressql="select count(*) from notification_table";
 			}else if(current==1){
 			  ressql="select * from notification_table  order by time desc limit "+arg[2]+","+JyHelpManager.item+"";
 			}
@@ -1711,15 +1823,15 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			}else if(current==1){
 				ressql="select * from gift_list order by gift_price+0 asc limit "+arg[3]+","+JyHelpManager.item+"";
 			}
-			
+
 			break;
-			
-			
-		
-		
+
+
+
+
 		}
 		return ressql;
-		
+
 	}
 
 	@Override
@@ -1733,7 +1845,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			}else if(current == 2){
 				ressql = "SELECT content from news_table ORDER BY id DESC LIMIT 1 ";
 			}
-		
+
 			break;
 		case "photo_add":
 			 ressql="insert into recycle_photo(photo,photo_item) values('http://taovip88.cn"+arg[2]+"','"+arg[3]+"') ";
@@ -1758,7 +1870,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			if(current==0){
 				ressql="insert into login(username,password,power) values('"+arg[2]+"','"+arg[3]+"','2')";
 			}
-			
+
 			break;
 		case "gift_add":
 			if(current==0){
@@ -1788,9 +1900,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			break;
 		case "fencheng_mod1":
 			ressql = "select * from anchor_reward ";
-			break;	
-			
-			
+			break;
+
+
 		case "zhubo_pass":
 			if(current==1){
 				ressql = "update user_data set iszhubo = '1' where id = '"+arg[2]+"' ";
@@ -1835,7 +1947,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				ressql = "update user_data set pictures = '"+arg[4]+"' where id = '"+arg[3]+"' ";
 			}
 			break;
-			
+
 	   case "agent_checkpass":
 		   if (current == 0) {
 	  			ressql = "update agentup_list set status='已通过' where id='" + arg[2]
@@ -1915,13 +2027,13 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			if(current==0){
 			ressql="UPDATE cash_set SET cash_onefee='"+arg[3]+"',cash_twofee='"+arg[4]+"' WHERE id='1'";
 			}
-			break;   			
+			break;
 		case "jujue_money":
 			if(current==0){
 				ressql = "update cash_withdrawl " + "set `status` = '拒绝提现"
 						+ "' where id = '" + arg[2] + "'";
 			}
-			break;  
+			break;
 		case "response_money":
 			if(current==0){
 				ressql = "select a.*,b.tixian_account from cash_withdrawl as a ,user_data as b  where a.id="+arg[2]+" and a.status='申请中' and a.user_id=b.id";
@@ -1961,7 +2073,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			break;
 		case "agentlevel_mod":
 			if(current==0){
-			   ressql="update user_data set agent_level="+arg[3]+" where id="+arg[2]+"";	
+			   ressql="update user_data set agent_level="+arg[3]+" where id="+arg[2]+"";
 			}
 			break;
 		case "agentlevel_mod1":
@@ -2014,10 +2126,10 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 		case "admin_del":
 			ressql="delete from login where id='"+arg[2]+"'";
 			break;
-		
-		}	
+
+		}
 			return ressql;
 	}
 
-	
+
 }

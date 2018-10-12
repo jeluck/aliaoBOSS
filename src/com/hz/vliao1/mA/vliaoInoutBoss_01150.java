@@ -137,7 +137,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		BizRenderTask send = new BizRenderTask(user_id + "卍" + content);
 		send.run();
 		log.send(DataType.basicType, "01160", "最新一条内容 ", "通过并返回");
-		inOutUtil.return_ajax("添加成功");
+		inOutUtil.return_ajax("修改成功");
 	}
 
 	private void photo2(String[] arg) throws SQLException, IOException,
@@ -1270,11 +1270,14 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "payexecl":// 充值记录导出
 			payexecl(arg);
 			break;
-		case "anchortxexecl":// 充值记录导出
+		case "anchortxexecl":// 主播提现导出
 			anchortxexecl(arg);
 			break;
-		case "tgsrexecl":// 充值记录导出
+		case "tgsrexecl":// 推广收入明细导出
 			tgsrexecl(arg);
+			break;
+		case "tgtxexecl":// 推广提现明细导出
+			tgtxexecl(arg);
 			break;
 		case "agentist"://
 			agentist(arg);
@@ -2754,7 +2757,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			 log.send(DataType.basicType, "01162", "提现明细", sql);
 			 String sum = sqlUtil.get_string(sql);
 			 log.send(DataType.basicType, "01162", "提现明细---总和", sum);
-			 list.get(0).put("sum", sum);
+			if(list!=null && list.size()>0){
+				list.get(0).put("sum", sum);
+			}
 			if (arg[5].equals("tojsp")) {
 				if (arg[7].equals("0")) {
 					inOutUtil.return_listpage(list, pages,
@@ -3115,6 +3120,43 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		excelUtils.export("主播提现明细"+getDateString(),listForExport,response);
 	}
 
+	public void tgtxexecl(String[] arg) throws SQLException, IOException,
+			ServletException {
+		List<List<String>> listForExport = new ArrayList<List<String>>();
+		String sql = sqlmface.searchSqlface(0, arg);
+		String sum = sqlUtil.get_string(sql);
+		List<String> listOne1 = new ArrayList<String>();
+		listOne1.add("总收入:");
+		listOne1.add(sum);
+		listForExport.add(listOne1);
+		sql = sqlmface.searchSqlface(1, arg);
+		log.send(DataType.basicType, "01162", "昵称修改",  sql);
+		list = sqlUtil.get_list(sql);
+		List<String> listOne = new ArrayList<String>();
+		listOne.add("ID");
+		listOne.add("用户昵称");
+		listOne.add("提现时间");
+		listOne.add("提现金额");
+		listOne.add("提现账号");
+		listOne.add("提现名称");
+		listOne.add("提现状态");
+		listOne.add("提现操作状态");
+		listForExport.add(listOne);
+		for (Map map : list) {
+			List<String> arrayList = new ArrayList<String>();
+			arrayList.add(map.get("user_id").toString());
+			arrayList.add(map.get("nickname").toString());
+			arrayList.add(map.get("time").toString());
+			arrayList.add(map.get("cash").toString()+"元");
+			arrayList.add(map.get("tixian_account").toString());
+			arrayList.add(map.get("account_name").toString());
+			arrayList.add(map.get("status").toString());
+			arrayList.add(map.get("msg").toString());
+			listForExport.add(arrayList);
+		}
+		response.reset();
+		excelUtils.export("推广提现明细"+getDateString(),listForExport,response);
+	}
 
 
 	/**

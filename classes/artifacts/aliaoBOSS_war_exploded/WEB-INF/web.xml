@@ -43,7 +43,7 @@
     <servlet-name>Image</servlet-name>
     <servlet-class>com.ssctrl.interface4.ImageServlet</servlet-class>
   </servlet>
-  <servlet-mapping>ac
+  <servlet-mapping>
     <servlet-name>Image</servlet-name>
     <url-pattern>/uiface1/image.do</url-pattern>
   </servlet-mapping>

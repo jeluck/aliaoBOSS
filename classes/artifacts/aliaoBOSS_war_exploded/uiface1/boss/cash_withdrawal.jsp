@@ -353,6 +353,13 @@ $("#inputExcel").click(function(){
     var pp="";
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
+    if(startdate=="" && enddate!=""){
+        alert('请选择开始时间');
+        return;
+    }else if(enddate=="" && startdate!=""){
+        alert('请选择结束时间时间');
+        return;
+    }
     if($("option:selected","#check1").val() == '1'){
         pp=$("#d243").val();
         startdate="";
@@ -370,7 +377,7 @@ $("#inputExcel").click(function(){
     var txaccount = $("#txaccount").val();
     var txname = $("#txname").val();
     var txstatus = $("#txstatus").val();
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchortxexecl&p2=1&&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=0&p8="+uid+"&p9="+nickname+"&p10="+txaccount+"&p11="+txname+"&p12="+txstatus;
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchortxexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=0&p8="+uid+"&p9="+nickname+"&p10="+txaccount+"&p11="+txname+"&p12="+txstatus;
     window.open(url);
 });
 </script>
