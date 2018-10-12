@@ -1745,7 +1745,13 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			if(current==0){
 			ressql="insert into notification_table(content,time,status) values('"+arg[2]+"',now(),'1')";
 			}else if(current==1){
-				ressql="select id from user_data";
+				if(arg[3].equals("0")){
+					ressql="select id from user_data u1 where u1.is_v!='1' and u1.is_anchor!='1'";
+				}else if (arg[3].equals("1")){
+					ressql="select id from user_data u1 where u1.is_v='1' and u1.is_anchor='1'";
+				}else{
+					ressql="select id from user_data u1";
+				}
 			}
 			break;
 		case "admin_add":

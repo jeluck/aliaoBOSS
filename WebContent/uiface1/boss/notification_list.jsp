@@ -43,7 +43,8 @@ String path = request.getContextPath()+"/uiface";
 </nav>
 <div class="page-container">
 <div class="cl pd-5 bg-1 bk-gray mt-20">
-		     <a href="javascript:;" onclick="go()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>发布通知</a> 
+			<a href="javascript:;" onclick="system_category_edit1('发布通知','<%=path %>1/boss/notification_add.jsp','600','600')"  class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 发布通知</a>
+		     <!--  <a href="javascript:;" onclick="go()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>发布通知</a> -->
 			<span class="r">共有数据：<strong>${pageNo[1]}</strong> 条
 			</span>
 		</div>
