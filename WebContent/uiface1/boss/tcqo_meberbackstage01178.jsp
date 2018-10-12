@@ -230,7 +230,7 @@ function fresh_page(pageIndex){
 				 content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].id+'</td>'
-					+'<td><img alt="" src="'+json[i].photo+'" onclick="photo(\'+json[i].id+\',\\\'修改头像\\\',\\\'<%=path%>1/boss/photo_add2.jsp\\\',\\\'600\\\',\\\'160\\\')" style="width:80px"></td>'
+					+'<td><img alt="" src="'+json[i].photo+'" onclick="photo('+json[i].id+',\'修改头像\',\'<%=path%>1/boss/photo_add2.jsp\',\'600\',\'160\')" style="width:80px"></td>'
 					+'<td>'+json[i].username+'</td>'
 					+'<td>'+json[i].nickname+''
 					 +'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
