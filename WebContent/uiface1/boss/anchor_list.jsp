@@ -102,7 +102,7 @@ String path = request.getContextPath()+"/uiface";
 					<td>${map['id']}</td>
 					<td><img alt="" src="${map['photo']}" style="width:80px" onclick="photo(${map['id']},'修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')"></td>
 					<td><a href="javascript:;"
-					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2=${map['id'] }&p3=0','600','510')"
+					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2=${map['id'] }&p3=0','650','510')"
 					style="text-decoration: none;color:blue;" class="ml-5">点击查看图片</a>
 					</td>
 					<td>${map['username']}</td>

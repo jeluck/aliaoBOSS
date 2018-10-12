@@ -36,17 +36,25 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 图片管理 <span class="c-gray en">&gt;</span> 用户相册 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="portfolio-content">
+		<input value="${reList[0].picture}" type="hidden" id="url"></input>
+		<input value="${reList[0].id}" type="hidden" id="userid"/>
+		<input  type="hidden" id="oldurl"/>
 		<ul class="cl portfolio-area">
 			<c:set var="a" value="${reList[0].picture}" ></c:set>
-			<c:forEach var="map" items= "${fn:split(a,',')}" varStatus="status">
-			<li class="item">
-				<div class="portfoliobox">
-					<div class="picbox">
-						<img src="${map}">
-					</div>
-				</div>
-			</li>
-			</c:forEach>
+			<c:if test="${a!='' and a!=null}">
+				<c:forEach var="map" items= "${fn:split(a,',')}" varStatus="status">
+					<li class="item">
+						<div class="portfoliobox">
+							<div class="picbox" style="line-height: 50px;">
+								<img src="${map}">
+								<span><a title="编辑" href="javascript:;" onclick="photo('${map}','修改图片','<%=path%>1/boss/album_search_edit.jsp','600','160')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></span>
+								<span><a title="删除" href="javascript:;" onclick="client_del('${map}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></span>
+							</div>
+						</div>
+					</li>
+				</c:forEach>
+			</c:if>
+			
 		</ul>
 	</div>
 </div>
@@ -63,6 +71,46 @@
 /* $(function(){
 	$(".portfolio-area li").Huihover();
 }); */
+function photo(imgurl,title,url,w,h){
+    $("#oldurl").val(imgurl);
+    layer_show(title,url,w,h);
+}
+function reload_page(){
+	location.reload();
+}
+
+function client_del(delurl){
+	 var url = $("#url").val();
+     var id = $("#userid").val();
+	layer.confirm('确认要删除吗？',function(index){
+		var imgArr=url.split(",");
+		var imgsrc="";
+		 for (var i = 0; i <imgArr.length; i++){
+			   if(imgArr[i]==delurl){
+				   imgArr.splice($.inArray(imgArr[i],imgArr),1);
+			   }
+			}
+		 var imgsrc=imgArr.join(",");
+		$.ajax({
+			type: 'POST',
+			url: '<%=path%>/rp?p0=A-boss-mod&p1=album_picture&p2='+id+'&p3='+imgsrc,
+			success: function(data){
+				 if(data='1'){
+					 layer.msg('已删除!',{icon:1,time:1000});
+						setTimeout(function () { 
+						javascript:location.replace(location.href);
+					    }, 1000);
+				 }else{
+					 layer.msg('操作失败',{icon:1,time:1000});
+				 }
+				
+			},
+			error:function(data) {
+				layer.msg('操作失败',{icon:1,time:1000});
+			},
+		});
+	});
+}
 </script>
 </body>
 </html>

@@ -357,8 +357,14 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "anchor_photo":
 			anchor_photo(arg);
 			break;
+		case "anchor_pictures":
+			anchor_pictures(arg);
+			break;
 		case "automsg_num":
 			automsg_num(arg);
+			break;
+		case "album_picture":
+			album_picture(arg);
 			break;
 
 
@@ -411,10 +417,24 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		inOutUtil.return_ajax("1");
 	}
 
+	private void album_picture(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update modinfo_list set picture='"+arg[3]+"' where id="+arg[2];
+		log.send(DataType.basicType, "01162", "相册审核修改",  sql);
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
 	private void anchor_photo(String[] arg) throws SQLException, IOException,
 			ServletException {
 		String sql="update user_data set photo='"+arg[3]+"' where id="+arg[2];
 		log.send(DataType.basicType, "01162", "头像修改",  sql);
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
+	private void anchor_pictures(String[] arg) throws SQLException, IOException,
+		ServletException {
+		String sql="update user_data set pictures='"+arg[3]+"' where id="+arg[2];
+		log.send(DataType.basicType, "01162", "认证图片修改",  sql);
 		sqlUtil.sql_exec(sql);
 		inOutUtil.return_ajax("1");
 	}
