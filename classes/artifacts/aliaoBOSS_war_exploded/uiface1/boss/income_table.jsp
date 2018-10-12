@@ -170,7 +170,6 @@ String path = request.getContextPath()+"/uiface";
 
 var totalpage = Number('${pageNo[0]}');
 $(function(){
-    alert(1);
 	$("#xx2").hide();
 	$("#xx3").hide();
 	

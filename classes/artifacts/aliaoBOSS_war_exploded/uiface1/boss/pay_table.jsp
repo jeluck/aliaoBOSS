@@ -48,7 +48,7 @@ String path = request.getContextPath()+"/uiface";
 				<option value="未付款">未付款</option>
 			</select>
 
-			<div class="text-c" style="margin-top:10px;">
+			<div class="text-c" style="margin-top:10px;" onchange="timec()" >
 				<div class="text-c">
 					<span>查询方式</span>
 					<select id="check1" name="check1" >
@@ -338,6 +338,12 @@ $("#inputExcel").click(function(){
     var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=payexecl&p2="+startdate+"&p3=1&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName;
     window.open(url);
 });
+function timec() {
+    $("#datemin").val("");
+    $("#datemax").val("");
+    $("#d244").val("");
+    $("#d243").val("");
+}
 </script>
 </body>
 </html>
