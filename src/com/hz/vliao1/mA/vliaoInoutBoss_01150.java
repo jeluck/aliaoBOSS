@@ -137,7 +137,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		BizRenderTask send = new BizRenderTask(user_id + "卍" + content);
 		send.run();
 		log.send(DataType.basicType, "01160", "最新一条内容 ", "通过并返回");
-		inOutUtil.return_ajax("修改成功");
+		inOutUtil.return_ajax("添加成功");
 	}
 
 	private void photo2(String[] arg) throws SQLException, IOException,
