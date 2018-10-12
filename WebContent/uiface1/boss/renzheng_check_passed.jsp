@@ -34,12 +34,12 @@
 				<th width="40">用户ID</th>
 				<th width="40">昵称</th>
 				<th width="40">手机号码</th>
-				<th width="40">身高</th>
-				<th width="40">体重</th>
+				<!--<th width="40">身高</th>-->
+				<!--<th width="40">体重</th>-->
 				<th width="40">认证图片</th>
 				
 				
-				<th width="40">星座</th>
+				<!--<th width="40">星座</th>-->
 				<th width="40">所在城市</th>
 				<th width="40">个人介绍</th>
 				<th width="40">形象标签</th>
@@ -55,13 +55,13 @@
 				<td>${map['user_id']}</td>
 				<td>${map['nickname']}</td>
 				<td>${map['phonenum'] }</td>
-				<td>${map['height'] }</td>
-				<td>${map['weight'] }</td>
+				<!-- <td>${map['height'] }</td> -->
+				<!-- <td>${map['weight'] }</td> -->
 				<td><a href="javascript:;"
 					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch&p2=${map['user_id'] }&p3=0','600','510')"
 					style="text-decoration: none;color:blue;" class="ml-5">点击查看图片</a>
 				</td>
-				<td>${map['constellation'] }</td>
+				<!--<td>${map['constellation'] }</td>-->
 				<td>${map['city'] }</td>
 				<td>${map['intro'] }</td>
 				<td>${map['label'] }</td>
