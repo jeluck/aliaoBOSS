@@ -42,7 +42,7 @@ String path = request.getContextPath()+"/uiface";
 			</div>	 -->
 			<div class="text-c">
 	          <span>查询方式</span>
-	          <select id="check1" name="check1" >
+	          <select id="check1" name="check1" onchange="timec()" >
 	            <option value="0" >时间段查询</option>
 	            <option value="1" >按月查询</option>
 	            <option value="2" >按年查询</option> 

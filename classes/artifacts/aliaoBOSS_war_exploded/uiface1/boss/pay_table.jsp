@@ -316,6 +316,13 @@ $("#inputExcel").click(function(){
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
     var pp = "";
+    if(startdate=="" && enddate!=""){
+        alert('请选择开始时间');
+        return;
+    }else if(enddate=="" && startdate!=""){
+        alert('请选择结束时间时间');
+        return;
+    }
     if($("option:selected","#check1").val() == '1'){
         pp=$("#d243").val();
         startdate="";

@@ -43,7 +43,7 @@ String path = request.getContextPath()+"/uiface";
 			</div>	 -->
 			<div class="text-c">
 	          <span>查询方式</span>
-	          <select id="check1" name="check1" >
+	          <select id="check1" name="check1" onchange="timec()"  >
 	            <option value="0" >时间段查询</option>
 	            <option value="1" >按月查询</option>
 	            <option value="2" >按年查询</option> 
@@ -317,6 +317,13 @@ $("#inputExcel").click(function(){
     var pp="";
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
+    if(startdate=="" && enddate!=""){
+        alert('请选择开始时间');
+        return;
+    }else if(enddate=="" && startdate!=""){
+        alert('请选择结束时间时间');
+        return;
+    }
     if($("option:selected","#check1").val() == '1'){
         pp=$("#d243").val();
         startdate="";
@@ -337,6 +344,12 @@ $("#inputExcel").click(function(){
     var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=tgsrexecl&p2=1&&&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}&p8="+uid+"&p9="+nickname+"&p10="+srly;
     window.open(url);
 });
+function timec() {
+    $("#datemin").val("");
+    $("#datemax").val("");
+    $("#d244").val("");
+    $("#d243").val("");
+}
 </script>
 </body>
 </html>

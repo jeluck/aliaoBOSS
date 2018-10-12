@@ -49,18 +49,18 @@ String path = request.getContextPath()+"/uiface";
 			</div>	 -->
 			<div class="text-c">
 	          <span>查询方式</span>
-	          <select id="check1" name="check1" >
+	          <select id="check1" name="check1" onchange="timec()" >
 	            <option value="0" >时间段查询</option>
 	            <option value="1" >按月查询</option>
-	            <option value="2" >按年查询</option> 
+	            <option value="2" >按年查询</option>
 	          </select>
 	       </div>
 			<div class="text-c" id="xx1">	
-			<span>开始日期:</span><input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;" name="">
-		    <span>结束日期:</span><input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;" name="">
+			<span>开始日期:</span><input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin"  class="input-text Wdate" style="width:120px;" name="">
+		    <span>结束日期:</span><input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax"   class="input-text Wdate" style="width:120px;" name="">
 			</div>
 			<div class="text-c" id="xx2">	
-			<input type="text" id="d243" onclick="WdatePicker({dateFmt:'yyyy-MM'})" class="input-text Wdate" style="width:120px;"  />
+			<input type="text" id="d243" onclick="WdatePicker({dateFmt:'yyyy-MM'})" class="input-text Wdate" style="width:120px;"   />
 			</div>
 			<div class="text-c" id="xx3">	
 			<input type="text" id="d244" onclick="WdatePicker({dateFmt:'yyyy'})" class="input-text Wdate" style="width:120px;"  />
@@ -170,6 +170,7 @@ String path = request.getContextPath()+"/uiface";
 
 var totalpage = Number('${pageNo[0]}');
 $(function(){
+    alert(1);
 	$("#xx2").hide();
 	$("#xx3").hide();
 	
@@ -234,6 +235,7 @@ $(function(){
 });
 
 <%-- <td><a title="个人提现明细" href="javascript:;" onclick="client_geren('个人提现明细','<%=path%>/TCQOServlet?/p0=A-boss-search&p1=cashwithdrawal&p2=1&p3=${map['user_id']}&p4=tojsp','','','510')" style="color:blue">个人提现明细</a></td> --%>
+
 
 function fresh_page(pageIndex) {
     var sourceIncome = "";
@@ -341,6 +343,13 @@ $("#inputExcel").click(function(){
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
     var mil_id = $("#searchtxt").val();
+    if(startdate=="" && enddate!=""){
+        alert('请选择开始时间');
+        return;
+    }else if(enddate=="" && startdate!=""){
+        alert('请选择结束时间时间');
+        return;
+    }
     if($("option:selected","#check1").val() == '1'){
         pp=$("#d243").val();
         startdate="";
@@ -356,7 +365,12 @@ $("#inputExcel").click(function(){
     var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorsrexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id;
     window.open(url);
 });
-
+function timec() {
+    $("#datemin").val("");
+    $("#datemax").val("");
+    $("#d244").val("");
+    $("#d243").val("");
+}
 </script>
 </body>
 </html>
