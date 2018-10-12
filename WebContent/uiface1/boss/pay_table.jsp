@@ -73,6 +73,7 @@ String path = request.getContextPath()+"/uiface";
 			</div>
 			<div class="text-c" style="margin-top:10px;">
 			<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜索充值记录</button>
+				<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div>
 		</div>
 	</div>
@@ -237,7 +238,7 @@ $(function(){
 
 <%-- <td><a title="个人充值记录" href="javascript:;" onclick="client_geren('个人充值记录','<%=path%>/rz?p0=A-boss-search&p1=pay_list&p2=1&p3=${map['user_id']}&p4=tojsp','','','510')" class="ml-5" style="text-decoration:none">个人充值记录</a></td> --%>
 function fresh_page(pageIndex) {
-    var searchname = $("#searchname").val();
+    var searchname = $("#searchname").val(); //状态
     var nickName = $("#nickName").val();
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
@@ -309,6 +310,27 @@ function fresh_page(pageIndex) {
 function client_geren(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
+$("#inputExcel").click(function(){
+    var searchname = $("#searchname").val(); //状态
+    var nickName = $("#nickName").val();
+    var startdate = $("#datemin").val();
+    var enddate = $("#datemax").val();
+    var pp = "";
+    if($("option:selected","#check1").val() == '1'){
+        pp=$("#d243").val();
+        startdate="";
+        enddate="";
+    }else if($("option:selected","#check1").val() == '2'){
+        pp=$("#d244").val();
+        startdate="";
+        enddate="";
+    }else{
+        startdate=$("#datemin").val();
+        enddate=$("#datemax").val();
+    }
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=payexecl&p2="+startdate+"&p3=1&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName;
+    window.open(url);
+});
 </script>
 </body>
 </html>

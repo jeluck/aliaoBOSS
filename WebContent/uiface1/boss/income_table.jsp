@@ -32,9 +32,11 @@ String path = request.getContextPath()+"/uiface";
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
 </nav>
-<div  style="margin-top:10px;">
-	<button type="button" class="btn btn-primary radius" style="text-align: left;margin-left:10px;"  onclick="javascript:history.back(-1);"> 返回</button>
-</div>
+<c:if test="${reList[0].pagesign == '1'}">
+	<div  style="margin-top:10px;">
+		<button type="button" class="btn btn-primary radius" style="text-align: left;margin-left:10px;"  onclick="javascript:history.back(-1);"> 返回</button>
+	</div>
+</c:if>
 <div class="page-container">
 	  <div class="mt-20">
 			<!-- <div class="text-c">	
@@ -94,8 +96,10 @@ String path = request.getContextPath()+"/uiface";
 		  </div>
 		  <div class="text-c" style="margin-top:10px;">
 				<button type="submit" class="btn btn-success radius" id="btn-search" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
-			  <button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
-			</div> 
+			  <c:if test="${reList[0].pagesign != '1'}">
+			  	<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
+			  </c:if>
+			</div>
 			<span id="sum1">总收入（A币）:${reList[0].sum}</span>
 		</div>
 		
@@ -329,8 +333,27 @@ function client_geren(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
 $("#inputExcel").click(function(){
-    var neirong = $("#searchtxt").val();
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorexecl&p2=1&p3="+neirong+"&p4=tojson&p5=1";
+    var sourceIncome = "";
+    if($("option:selected","#check2").val() != '0'){
+        sourceIncome = $("option:selected","#check2").text()
+    }
+    var pp="";
+    var startdate = $("#datemin").val();
+    var enddate = $("#datemax").val();
+    var mil_id = $("#searchtxt").val();
+    if($("option:selected","#check1").val() == '1'){
+        pp=$("#d243").val();
+        startdate="";
+        enddate="";
+    }else if($("option:selected","#check1").val() == '2'){
+        pp=$("#d244").val();
+        startdate="";
+        enddate="";
+    }else{
+        startdate=$("#datemin").val();
+        enddate=$("#datemax").val();
+    }
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorsrexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id;
     window.open(url);
 });
 

@@ -124,7 +124,7 @@ String path = request.getContextPath()+"/uiface";
 					<%--<td>${map['constellation']}</td>--%>
 					<%--<td>${map['city']}</td>--%>
 					
-					<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
+					<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
 					<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
 					<c:choose>
 							<c:when test="${map['online']=='0' }"><td>离线</td></c:when>
@@ -296,8 +296,8 @@ function fresh_page(pageIndex){
 					// +'<td>'+json[i].weight+'</td>'
 					// +'<td>'+json[i].constellation+'</td>'
 					// +'<td>'+json[i].city+'</td>'
-					+'<td><a style="color: blue;"  href="http://47.105.33.230:8090/uiface/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
-					+'<td><a style="color: blue;"  href="http://47.105.33.230:8090/uiface/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
+					+'<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
+					+'<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
 					+'<td>'+online+'</td>'
 					+tuijian
 					+'<td>'+json[i].sort_id+'<br><a title="编辑" href="javascript:;"onclick="sortmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
@@ -569,8 +569,11 @@ function anchor_photo(id){
 }
 
 $("#inputExcel").click(function(){
-    var neirong = $("#searchtxt").val();
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorexecl&p2=1&p3="+neirong+"&p4=tojson&p5=1";
+    var mil_id = $("#searchtxt").val();
+    var uid = $("#uid").val();
+    var username = $("#username").val();
+    var phonenum = $("#phonenum").val();
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorexecl&p2=1&&p3="+mil_id+"&p4=tojson&p5=${param.p5}"+"&p6="+uid+"&p7="+username+"&p8="+phonenum;
     window.open(url);
 });
 

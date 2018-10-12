@@ -298,6 +298,26 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			
 			
 			break;
+		case "anchorsrexecl":
+			if(current==0){
+				ressql="select * from income_details c,user_data u where c.user_id = u.id  ";
+				if(arg.length > 4 && StringUtils.isNotEmpty(arg[3]) && StringUtils.isNotEmpty(arg[4])) {
+					ressql += "and  time between '" + arg[3] + " 00:00:01' and '" + arg[4] + " 23:59:59'";
+				}
+				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])) {
+					ressql += "and c.time like '%" + arg[6] + "%'";
+				}
+				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+					ressql +=" and type='"+arg[8]+"'";
+				}
+				if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+					ressql +=" and u.nickname like '%"+arg[9]+"%'";
+				}
+				ressql+=" order by c.time desc";
+			}else{
+				ressql="select sum(money) from income_details";
+			}
+			break;
 		case "income_table_search1":
 			
 			if(arg[7].equals("0")){
@@ -394,6 +414,12 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+				}else if(arg[2].equals("") && arg[4].equals("") &&
+						arg[6].equals("") && !arg[5].equals("")){
+					ressql = "select count(*) " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "'  ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
 				}
 			} else if (current == 1) {// 查询所有集合
 				if (arg[2].equals("") && arg[4].equals("") && arg[5].equals("") && arg[6].equals("")) {
@@ -435,10 +461,63 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}
+				else if(arg[2].equals("") && arg[4].equals("") &&
+						arg[6].equals("") && !arg[5].equals("")){
+					ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "'  ";
+					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
+				}
 			}
 			break;
+			case "payexecl":
+				 if (current == 1) {// 查询所有集合
+					if (arg[2].equals("") && arg[4].equals("") && arg[5].equals("") && arg[6].equals("")) {
+						ressql = "select * " + "from order_management o,user_data b  where o.user_id=b.id ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+					} else if (!arg[2].equals("") && !arg[4].equals("")
+							&& arg[5].equals("")) {
+						ressql = "select * " + "from order_management o,user_data b"
+								+ " where o.pay_time between '" + arg[2]
+								+ " 00:00:01' and '" + arg[4] + " 23:59:59' and o.user_id=b.id";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+					}  else if (!arg[2].equals("") && !arg[4].equals("") && !arg[5].equals("")) {
+						ressql = "select * " + "from order_management o,user_data b"
+								+ " where o.pay_time between '" + arg[2]
+								+ " 00:00:01' and '" + arg[4]
+								+ " 23:59:59' and o.pay_status='" + arg[5] + "' and o.user_id=b.id ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+					}else if(arg[2].equals("") && arg[4].equals("") &&
+							arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && arg[5].equals("")){
+						ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_time like '%"+arg[6]+"%' ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+					}else if(arg[2].equals("") && arg[4].equals("") &&
+							arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && !arg[5].equals("")){
+						ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "' and o.pay_time like '%"+arg[6]+"%' ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+					}
+					else if(arg[2].equals("") && arg[4].equals("") &&
+							arg[6].equals("") && !arg[5].equals("")){
+						ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "'  ";
+						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
+							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+					}
+				}
+				break;
 
-		// 礼物收入 arg[2]开始时间 arg[3] 结束时间
+			// 礼物收入 arg[2]开始时间 arg[3] 结束时间
 		/*
 		 *  * arg[0] A-boss-search arg[1] gift_details_search arg[2] page arg[3]
 		 * startdate arg[4] enddate arg[5] tojsp tojson arg[6] arg[7]
@@ -1057,7 +1136,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 		break;
 		case "anchorexecl":
 			if(current==1){
-				ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1' and u1.nickname like '%"+arg[3]+"%'  ";
+				ressql="select u1.*,IFNULL((select nickname from user_data u2 where u1.up_agentid = u2.id),\"\") inviterName from user_data u1 where u1.is_v='"+arg[5]+"' and u1.is_anchor='1' ";
 				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])){
 					ressql+=" and u1.id ="+arg[6];
 				}
