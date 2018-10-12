@@ -658,30 +658,296 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			if(current==0){
 				if(arg[3].equals("")&&arg[4].equals("")){
 					ressql="select count(*) from cash_withdrawl c,user_data u where c.user_id=u.id and c.c_type="+arg[7];
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
 				}else{
 					ressql="select count(*) from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59' and c.c_type="+arg[7];
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
 				}
 			}else if(current==1){
 				if(arg[3].equals("")&&arg[4].equals("")){
-				   ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7]+" order by c.time desc  limit "+arg[2]+","+JyHelpManager.item+" ";	
+				   ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7];
+					if(arg.length>8 &&! arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item+"";
 				}else{
-					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7]+" order by c.time desc limit "+arg[2]+","+JyHelpManager.item+" ";
+					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item+"";
 				}
 			}else if(current==2){
-				if(arg[3].equals("")&&arg[4].equals("")){
-				   ressql="select sum(cash) from cash_withdrawl  where c_type="+arg[7]+"";	
+				if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+					ressql="select sum(cash) from cash_withdrawl  c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+"";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+				}else if(!arg[3].equals("")&&!arg[4].equals("")){
+					ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and  c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
 				}else{
-					ressql="select sum(cash) from cash_withdrawl where    c_type="+arg[7]+" and  time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+					ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%'";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
 				}
 			}else if(current==3){
 				ressql="select count(*) from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%' ";
+				if(arg.length>8 && !arg[8].equals("")){
+					ressql += " and u.id="+arg[8];
+				}
+				if(arg.length>9 && !arg[9].equals("")){
+					ressql+=" and u.nickname like '%"+arg[9]+"%'";
+				}
+				if(arg.length>10 && !arg[10].equals("")){
+					ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+				}
+				if(arg.length>11 && !arg[11].equals("")){
+					ressql += " and u.account_name like '%"+arg[11]+"%'";
+				}
+				if(arg.length>12 && !arg[12].equals("")){
+					ressql += " and c.status='"+arg[12]+"'";
+				}
 			}else if(current==4){
-				ressql="select * from cash_withdrawl c,user_data u where c.user_id = u.id  and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%' order by c.time desc  limit "+arg[2]+","+JyHelpManager.item+"";
+				ressql="select * from cash_withdrawl c,user_data u where c.user_id = u.id  and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%' ";
+				if(arg.length>8 && !arg[8].equals("")){
+					ressql += " and u.id="+arg[8];
+				}
+				if(arg.length>9 && !arg[9].equals("")){
+					ressql+=" and u.nickname like '%"+arg[9]+"%'";
+				}
+				if(arg.length>10 && !arg[10].equals("")){
+					ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+				}
+				if(arg.length>11 && !arg[11].equals("")){
+					ressql += " and u.account_name like '%"+arg[11]+"%'";
+				}
+				if(arg.length>12 && !arg[12].equals("")){
+					ressql += " and c.status='"+arg[12]+"'";
+				}
+				ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item+"";
 			}else if(current==5){
-				ressql="select sum(cash) from cash_withdrawl where  c_type="+arg[7]+" and time like '%"+arg[6]+"%'";
+				ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%'";
+				if(arg.length>8 && !arg[8].equals("")){
+					ressql += " and u.id="+arg[8];
+				}
+				if(arg.length>9 && !arg[9].equals("")){
+					ressql+=" and u.nickname like '%"+arg[9]+"%'";
+				}
+				if(arg.length>10 && !arg[10].equals("")){
+					ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+				}
+				if(arg.length>11 && !arg[11].equals("")){
+					ressql += " and u.account_name like '%"+arg[11]+"%'";
+				}
+				if(arg.length>12 && !arg[12].equals("")){
+					ressql += " and c.status='"+arg[12]+"'";
+				}
 			}
 			break;
-
+		case "anchortxexecl":
+			if (current == 1) {
+				if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id  and c.c_type="+arg[7];
+					if(arg.length>8 &&! arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+					ressql += " order by c.time desc";
+				}else if(!arg[3].equals("")&&!arg[4].equals("")){
+					ressql="select * from cash_withdrawl c,user_data u where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  and c.c_type="+arg[7];
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+					ressql += " order by c.time desc";
+				}else{
+					ressql="select * from cash_withdrawl c,user_data u where c.user_id = u.id  and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%' ";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+					ressql+=" order by c.time desc";
+				}
+			}else{
+				if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+					ressql="select sum(cash) from cash_withdrawl  c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+"";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+				}else if(!arg[3].equals("")&&!arg[4].equals("")){
+					ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and  c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+				}else{
+					ressql="select sum(cash) from cash_withdrawl c,user_data u where c.user_id = u.id and c.c_type="+arg[7]+" and c.time like '%"+arg[6]+"%'";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql += " and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and u.tixian_account like '%"+arg[10]+"%'";
+					}
+					if(arg.length>11 && !arg[11].equals("")){
+						ressql += " and u.account_name like '%"+arg[11]+"%'";
+					}
+					if(arg.length>12 && !arg[12].equals("")){
+						ressql += " and c.status='"+arg[12]+"'";
+					}
+				}
+			}
+			break;
 		// 通过Id查询个人消费信息
 		case "pay_list":
 			if (current == 1) {

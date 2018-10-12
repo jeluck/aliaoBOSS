@@ -1270,6 +1270,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "payexecl":// 充值记录导出
 			payexecl(arg);
 			break;
+		case "anchortxexecl":// 充值记录导出
+			anchortxexecl(arg);
+			break;
 		case "agentist"://
 			agentist(arg);
 			break;
@@ -2744,11 +2747,11 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			sql = sqlmface.searchSqlface(1, arg);
 			log.send(DataType.basicType, "01162", "提现明细", sql);
 			list = sqlUtil.get_list(sql);
-			// sql = sqlmface.searchSqlface(2, arg);
-			// log.send(DataType.basicType, "01162", "提现明细", sql);
-			// //String sum = sqlUtil.get_string(sql);
-			// log.send(DataType.basicType, "01162", "提现明细---总和", sum);
-			// list.get(0).put("sum", sum);
+			 sql = sqlmface.searchSqlface(2, arg);
+			 log.send(DataType.basicType, "01162", "提现明细", sql);
+			 String sum = sqlUtil.get_string(sql);
+			 log.send(DataType.basicType, "01162", "提现明细---总和", sum);
+			 list.get(0).put("sum", sum);
 			if (arg[5].equals("tojsp")) {
 				if (arg[7].equals("0")) {
 					inOutUtil.return_listpage(list, pages,
@@ -2769,11 +2772,11 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			sql = sqlmface.searchSqlface(4, arg);
 			log.send(DataType.basicType, "01162", "提现明细", sql);
 			list = sqlUtil.get_list(sql);
-			// sql = sqlmface.searchSqlface(5, arg);
+			 sql = sqlmface.searchSqlface(5, arg);
 			log.send(DataType.basicType, "01162", "提现明细", sql);
-			// String sum = sqlUtil.get_string(sql);
-			// log.send(DataType.basicType, "01162", "提现明细---总和", sum);
-			// list.get(0).put("sum", sum);
+			 String sum = sqlUtil.get_string(sql);
+			 log.send(DataType.basicType, "01162", "提现明细---总和", sum);
+			 list.get(0).put("sum", sum);
 			if (arg[5].equals("tojsp")) {
 				if (arg[7].equals("0")) {
 					inOutUtil.return_listpage(list, pages,
@@ -3031,6 +3034,45 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		response.reset();
 		excelUtils.export("充值记录表"+getDateString(),listForExport,response);
 	}
+
+	public void anchortxexecl(String[] arg) throws SQLException, IOException,
+			ServletException {
+		List<List<String>> listForExport = new ArrayList<List<String>>();
+		String sql = sqlmface.searchSqlface(0, arg);
+		String sum = sqlUtil.get_string(sql);
+		List<String> listOne1 = new ArrayList<String>();
+		listOne1.add("总收入:");
+		listOne1.add(sum);
+		listForExport.add(listOne1);
+		sql = sqlmface.searchSqlface(1, arg);
+		log.send(DataType.basicType, "01162", "昵称修改",  sql);
+		list = sqlUtil.get_list(sql);
+		List<String> listOne = new ArrayList<String>();
+		listOne.add("ID");
+		listOne.add("用户昵称");
+		listOne.add("提现时间");
+		listOne.add("提现金额");
+		listOne.add("提现账号");
+		listOne.add("提现名称");
+		listOne.add("提现状态");
+		listOne.add("提现操作状态");
+		listForExport.add(listOne);
+		for (Map map : list) {
+			List<String> arrayList = new ArrayList<String>();
+			arrayList.add(map.get("user_id").toString());
+			arrayList.add(map.get("nickname").toString());
+			arrayList.add(map.get("time").toString());
+			arrayList.add(map.get("cash").toString()+"元");
+			arrayList.add(map.get("tixian_account").toString());
+			arrayList.add(map.get("account_name").toString());
+			arrayList.add(map.get("status").toString());
+			arrayList.add(map.get("msg").toString());
+			listForExport.add(arrayList);
+		}
+		response.reset();
+		excelUtils.export("主播提现明细"+getDateString(),listForExport,response);
+	}
+
 
 
 	/**

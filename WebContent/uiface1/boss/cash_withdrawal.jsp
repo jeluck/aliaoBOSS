@@ -58,8 +58,27 @@ String path = request.getContextPath()+"/uiface";
 			<div class="text-c" id="xx3">	
 			<input type="text" id="d244" onclick="WdatePicker({dateFmt:'yyyy'})" class="input-text Wdate" style="width:120px;"  />
 			</div>
+
+		  <div class="text-c" style="margin-top:10px;">
+
+		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID:
+		  <input type="text" class="input-text" style="width:150px"  placeholder="请输入id" id="uid" name="uid">
+		  用户昵称:
+		  <input type="text" class="input-text" style="width:150px"  placeholder="请输入昵称" id="nickname" name="nickname">
+		  提现账号:
+		  <input type="text" class="input-text" style="width:150px"  placeholder="请输入提现账号" id="txaccount" name="txaccount">
+		  提现名称:
+		  <input type="text" class="input-text" style="width:150px"  placeholder="请输入提现名称" id="txname" name="txname">
+		  提现状态:
+			  <select class="input-text" style="width:150px" id="txstatus" name="txstatus">
+				  <option value=""></option>
+				  <option value="拒绝提现">拒绝提现</option>
+				  <option value="提现成功">提现成功</option>
+			  </select>
+		  </div>
 		      <div class="text-c" style="margin-top:10px;">			
 				<button type="submit" class="btn btn-success radius" id="btn-search" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
+				  <button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div> 
 			<span id="sum1">总提现:${reList[0].sum}</span>
 		</div>
@@ -107,7 +126,7 @@ String path = request.getContextPath()+"/uiface";
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['cash']}"/>
 		</c:forEach>
 		<tr>
-		<td colspan="8">当页提现金额:${nodeValue}</td>
+		<td colspan="9">当页提现金额:${nodeValue}</td>
 		</tr>	
 		</tbody>
 	</table>
@@ -196,17 +215,18 @@ function fresh_page(pageIndex) {
 		startdate=$("#datemin").val();
 		enddate=$("#datemax").val();
 	}
-	
-	
-	
-	
-	
+	var nickname = $("#nickname").val();
+    var uid = $("#uid").val();
+    var txaccount = $("#txaccount").val();
+    var txname = $("#txname").val();
+    var txstatus = $("#txstatus").val();
+
 	$.ajax({
 		cache: true,
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
 		/* /rz?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp */
-		url:"<%=path%>/rp?p0=A-boss-search&p1=cash_withdrawal&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=0",
+		url:"<%=path%>/rp?p0=A-boss-search&p1=cash_withdrawal&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=0&p8="+uid+"&p9="+nickname+"&p10="+txaccount+"&p11="+txname+"&p12="+txstatus,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -245,7 +265,7 @@ function fresh_page(pageIndex) {
 				sum = sum+a;
 			}
 			content +='<tr>'
-					+'<td  colspan="8"> 当页收入:'+sum+'</td>'
+					+'<td  colspan="9"> 当页收入:'+sum+'</td>'
 					+'</tr>';
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
@@ -328,7 +348,30 @@ $("#check1").on("change",function(){
 		$("#xx3").hide();
 	}
 });
-
+$("#inputExcel").click(function(){
+    var pp="";
+    var startdate = $("#datemin").val();
+    var enddate = $("#datemax").val();
+    if($("option:selected","#check1").val() == '1'){
+        pp=$("#d243").val();
+        startdate="";
+        enddate="";
+    }else if($("option:selected","#check1").val() == '2'){
+        pp=$("#d244").val();
+        startdate="";
+        enddate="";
+    }else{
+        startdate=$("#datemin").val();
+        enddate=$("#datemax").val();
+    }
+    var nickname = $("#nickname").val();
+    var uid = $("#uid").val();
+    var txaccount = $("#txaccount").val();
+    var txname = $("#txname").val();
+    var txstatus = $("#txstatus").val();
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchortxexecl&p2=1&&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=0&p8="+uid+"&p9="+nickname+"&p10="+txaccount+"&p11="+txname+"&p12="+txstatus;
+    window.open(url);
+});
 </script>
 </body>
 </html>
