@@ -74,6 +74,7 @@ String path = request.getContextPath()+"/uiface";
 				  <option value=""></option>
 				  <option value="拒绝提现">拒绝提现</option>
 				  <option value="提现成功">提现成功</option>
+				  <option value="申请中">申请中</option>
 			  </select>
 		  </div>
 		      <div class="text-c" style="margin-top:10px;">			

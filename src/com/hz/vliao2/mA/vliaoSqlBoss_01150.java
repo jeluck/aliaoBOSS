@@ -324,58 +324,301 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				if(current==0){
 					if(arg[3].equals("")&&arg[4].equals("")){
 						ressql="select count(*) from tuiguang_detail c,user_data u where c.upuser_id=u.id ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}else{
 						ressql="select count(*) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}
 				}else if(current==1){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id   order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item+" ";	
+					   ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id    ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}else{
-						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  order by c.uptime desc limit "+arg[2]+","+JyHelpManager.item+" ";
+						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}
 				}else if(current==2){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select sum(able_money) from tuiguang_detail  ";	
+					   ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}else{
-						ressql="select sum(able_money) from tuiguang_detail where    uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}
 				}else if(current==3){
 					ressql="select count(*) from tuiguang_detail c,user_data u where c.upuser_id=u.id  and c.uptime like '%"+arg[6]+"%' ";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql+=" and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and c.money_type = '"+arg[10]+"'";
+					}
 				}else if(current==4){
-					ressql="select * from tuiguang_detail c,user_data u where c.upuser_id = u.id  and c.uptime like '%"+arg[6]+"%' order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item+"";
+					ressql="select * from tuiguang_detail c,user_data u where c.upuser_id = u.id  and c.uptime like '%"+arg[6]+"%' ";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql+=" and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and c.money_type = '"+arg[10]+"'";
+					}
+					ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
-					ressql="select sum(able_money) from tuiguang_detail where    uptime like '%"+arg[6]+"%'";
+					ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime like '%"+arg[6]+"%'";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql+=" and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and c.money_type = '"+arg[10]+"'";
+					}
 				}
 			}else{
 				if(current==0){
 					if(arg[3].equals("")&&arg[4].equals("")){
 						ressql="select count(*) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7];
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}else{
 						ressql="select count(*) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+" and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}
 				}else if(current==1){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+"  order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item+" ";	
+					   ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+" ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}else{
-						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+"  and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'  order by c.uptime desc limit "+arg[2]+","+JyHelpManager.item+" ";
+						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+"  and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'   ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}
 				}else if(current==2){
 					if(arg[3].equals("")&&arg[4].equals("")){
-					   ressql="select sum(able_money) from tuiguang_detail where upuser_id="+arg[7];	
+					   ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7];
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}else{
-						ressql="select sum(able_money) from tuiguang_detail where   upuser_id="+arg[7] +"  and uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7] +"  and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
 					}
 				}else if(current==3){
 					ressql="select count(*) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+" and c.uptime like '%"+arg[6]+"%' ";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql+=" and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and c.money_type = '"+arg[10]+"'";
+					}
 				}else if(current==4){
-					ressql="select * from tuiguang_detail c,user_data u where c.upuser_id = u.id and c.upuser_id="+arg[7]+" and c.uptime  like '%"+arg[6]+"%' order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item+"";
+					ressql="select * from tuiguang_detail c,user_data u where c.upuser_id = u.id and c.upuser_id="+arg[7]+" and c.uptime  like '%"+arg[6]+"%' ";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql+=" and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and c.money_type = '"+arg[10]+"'";
+					}
+					ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
-					ressql="select sum(able_money) from tuiguang_detail where  upuser_id="+arg[7]+" and   uptime like '%"+arg[6]+"%'";
+					ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.upuser_id="+arg[7]+" and c.uptime like '%"+arg[6]+"%'";
+					if(arg.length>8 && !arg[8].equals("")){
+						ressql+=" and u.id="+arg[8];
+					}
+					if(arg.length>9 && !arg[9].equals("")){
+						ressql+=" and u.nickname like '%"+arg[9]+"%'";
+					}
+					if(arg.length>10 && !arg[10].equals("")){
+						ressql += " and c.money_type = '"+arg[10]+"'";
+					}
 				}
 			}
 			
 			break;
-			
+		case "tgsrexecl":
+				if (current == 1) {
+					if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc";
+					}else if(!arg[3].equals("")&&!arg[4].equals("")){
+						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'   ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc";
+					}else{
+						ressql="select * from tuiguang_detail c,user_data u where c.upuser_id=u.id  and c.uptime like '%"+arg[6]+"%' ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+						ressql += " order by c.uptime desc";
+					}
+				}else{
+					if(arg[3].equals("")&&arg[4].equals("") && arg[6].equals("")) {
+						ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id ";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+					}else if(!arg[3].equals("")&&!arg[4].equals("")){
+						ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id  and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+					}else{
+						ressql="select sum(able_money) from tuiguang_detail c,user_data u where c.upuser_id=u.id and c.uptime like '%"+arg[6]+"%'";
+						if(arg.length>8 && !arg[8].equals("")){
+							ressql+=" and u.id="+arg[8];
+						}
+						if(arg.length>9 && !arg[9].equals("")){
+							ressql+=" and u.nickname like '%"+arg[9]+"%'";
+						}
+						if(arg.length>10 && !arg[10].equals("")){
+							ressql += " and c.money_type = '"+arg[10]+"'";
+						}
+					}
+				}
+				break;
 		// 消费记录
 		// p2开始时间 p4结束时间 p5 会员 p6积分
 		case "pay_table_search":

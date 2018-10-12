@@ -1273,6 +1273,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "anchortxexecl":// 充值记录导出
 			anchortxexecl(arg);
 			break;
+		case "tgsrexecl":// 充值记录导出
+			tgsrexecl(arg);
+			break;
 		case "agentist"://
 			agentist(arg);
 			break;
@@ -3035,6 +3038,45 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		excelUtils.export("充值记录表"+getDateString(),listForExport,response);
 	}
 
+	public void tgsrexecl(String[] arg) throws SQLException, IOException,
+			ServletException {
+		List<List<String>> listForExport = new ArrayList<List<String>>();
+		String sql = sqlmface.searchSqlface(0, arg);
+		String sum = sqlUtil.get_string(sql);
+		List<String> listOne1 = new ArrayList<String>();
+		listOne1.add("总收入:");
+		listOne1.add(sum);
+		listForExport.add(listOne1);
+		sql = sqlmface.searchSqlface(1, arg);
+		log.send(DataType.basicType, "01162", "昵称修改",  sql);
+		list = sqlUtil.get_list(sql);
+		List<String> listOne = new ArrayList<String>();
+		listOne.add("ID");
+		listOne.add("主播昵称");
+		listOne.add("收入来源");
+		listOne.add("收入价格");
+		listOne.add("结算状态");
+		listOne.add("结算时间");
+		listForExport.add(listOne);
+		for (Map map : list) {
+			List<String> arrayList = new ArrayList<String>();
+			arrayList.add(map.get("upuser_id").toString());
+			arrayList.add(map.get("nickname").toString());
+			if(map.get("money_type").toString().equals("充值")){
+				arrayList.add("用户充值");
+			}else if(map.get("money_type").toString().equals("提现")){
+				arrayList.add("主播提现");
+			}else{
+				arrayList.add("");
+			}
+			arrayList.add(map.get("able_money").toString()+"元");
+			arrayList.add("已结算");
+			arrayList.add(map.get("uptime").toString());
+			listForExport.add(arrayList);
+		}
+		response.reset();
+		excelUtils.export("推广收入明细"+getDateString(),listForExport,response);
+	}
 	public void anchortxexecl(String[] arg) throws SQLException, IOException,
 			ServletException {
 		List<List<String>> listForExport = new ArrayList<List<String>>();
