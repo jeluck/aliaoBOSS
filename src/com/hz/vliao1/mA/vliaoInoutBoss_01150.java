@@ -137,6 +137,18 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		sqlUtil.sql_exec(sql);
 		inOutUtil.return_ajax("1");
 	}
+	private void e_warning(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update warning set warning='"+arg[3]+"' where id="+arg[2];
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
+	private void e_wxcode(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update warning set wxcode='"+arg[3]+"' where id="+arg[2];
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
 
 	public static String getDate() {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -357,6 +369,12 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "czAmount":
 			czAmount(arg);
+			break;
+		case "e_warning":
+			e_warning(arg);
+			break;
+		case "e_wxcode":
+			e_wxcode(arg);
 			break;
 		case "czpass":
 			czpass(arg);
@@ -1466,6 +1484,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		case "automsg_search":
 			automsg_search(arg);
 			break;
+		case "jay_search":
+			jay_search(arg);
+			break;
 		case "admin_list":
 			admin_list(arg);
 			break;
@@ -1623,6 +1644,19 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		}
 
    }
+
+	private void jay_search(String[] arg) throws SQLException,
+			IOException, ServletException {
+		String sql = "select * from warning";
+		list = sqlUtil.get_list(sql);
+		if (arg[4].equals("tojsp")) {
+			inOutUtil.return_listpage(list, pages,
+					"/uiface1/boss/warning.jsp");
+		} else if (arg[4].equals("tojson")) {
+			inOutUtil.return_ajax(JsonUtil.listPageToJson(list, pages));
+		}
+
+	}
 
 
 

@@ -173,6 +173,7 @@ if(request.getSession().getAttribute("admin")!=null&&!"".equals(request.getSessi
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=fenxiang_search&p2=0&p4=&p3=tojsp" data-title="分销设置" href="javascript:void(0)">分销设置</a></li> 
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=notification_search&p2=0&p4=&p3=tojsp" data-title="系统通知" href="javascript:void(0)">系统通知</a></li> 
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=automsg_search&p2=0&p4=&p3=tojsp" data-title="自动打招呼" href="javascript:void(0)">自动打招呼</a></li>
+				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=jay_search&p2=1&p4=&p3=tojsp" data-title="警告语" href="javascript:void(0)">警告语</a></li>
 				</ul>
 			</dd>
 		</dl>
