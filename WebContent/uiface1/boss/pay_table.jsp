@@ -28,7 +28,7 @@ String path = request.getContextPath()+"/uiface";
 <nav class="breadcrumb">
 	<i class="Hui-iconfont">&#xe67f;</i> 首页 
 	<span class="c-gray en">&gt;</span> 充提管理
-	<span class="c-gray en">&gt;</span> 充值记录表 
+	<span class="c-gray en">&gt;</span> 充值记录表
 	<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
@@ -69,7 +69,8 @@ String path = request.getContextPath()+"/uiface";
 				</div>
 			</div>
 			<div class="text-c" style="margin-top:10px;">
-				用户昵称 <input type="text" style="width:230px" id = "nickName"class="input-text" placeholder="请输入内容"/>
+				ID: <input type="text" style="width:230px" id = "uid"class="input-text" placeholder="请输入ID"/>
+				用户昵称: <input type="text" style="width:230px" id = "nickName"class="input-text" placeholder="请输入内容"/>
 			</div>
 			<div class="text-c" style="margin-top:10px;">
 			<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜索充值记录</button>
@@ -89,9 +90,10 @@ String path = request.getContextPath()+"/uiface";
 				<th width="80">用户昵称</th>
 				<th width="80">付费方式</th>
 				<th width="80">付费价格</th>
-				<th width="80">A币数量</th>
+				<th width="80">钻石数量</th>
 				<th width="80">付费类型</th>
                 <th width="80">支付状态</th>
+				<th width="80">操作人员</th>
 				<th width="80">付费时间</th>
 				<th width="80">充值记录</th>
 			</tr>
@@ -106,7 +108,7 @@ String path = request.getContextPath()+"/uiface";
 				<td>${map['nickname']}</td>
 				<td>${map['pay_type']}</td>
 				<td>${map['pay_price']}元</td>
-				<td>${map['pay_value']}A币</td>
+				<td>${map['pay_value']}钻石</td>
 				<td>${map['pay_what']}</td>
 				<td>
 				<c:choose>
@@ -114,6 +116,7 @@ String path = request.getContextPath()+"/uiface";
 				     <c:when test="${map['pay_status']=='未付款'}"><span style="color:red">${map['pay_status']}</span></c:when>
 				</c:choose>
 				</td>
+				<td>${map['create_name']}</td>
 				<%-- <td>${map['pay_status']}</td> --%>
 				<td>${map['pay_time']}</td>
 				<td><a title="个人充值记录" href="javascript:;" onclick="client_geren('个人充值记录','<%=path%>/rp?p0=A-boss-search&p1=pay_list&p2=1&p3=${map['user_id']}&p4=tojsp','','','510')" class="ml-5" style="color:blue">个人充值记录</a></td>
@@ -242,6 +245,7 @@ function fresh_page(pageIndex) {
     var nickName = $("#nickName").val();
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
+    var uid = $("#uid").val();
     var pp = "";
     if($("option:selected","#check1").val() == '1'){
         pp=$("#d243").val();
@@ -260,7 +264,7 @@ function fresh_page(pageIndex) {
 		cache: true,
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
-		url:"<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2="+startdate+"&p3="+pageIndex+"&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName,
+		url:"<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2="+startdate+"&p3="+pageIndex+"&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName+"&p9="+uid,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -277,15 +281,20 @@ function fresh_page(pageIndex) {
 				}else{
 					zhi='<td style="color:red">'+json[i].pay_status+'</td>';
 				}
+				var create_name = "";
+				if(json[i].create_name != "null"){
+                    create_name = json[i].create_name;
+				}
 				content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].user_id+'</td>'
 					+'<td>'+json[i].nickname+'</td>'
 					+'<td>'+json[i].pay_type+'</td>'
 					+'<td>'+json[i].pay_price+'元</td>'
-					+'<td>'+json[i].pay_value+'A币</td>'
+					+'<td>'+json[i].pay_value+'钻石</td>'
 					+'<td>'+json[i].pay_what+'</td>'
 					+zhi
+                    +'<td>'+create_name+'</td>'
 					+'<td>'+json[i].pay_time+'</td>'
 					+'<td>'
 					+'<a title="个人充值记录" href="javascript:;" onclick="client_geren(\'个人充值记录\',\'<%=path%>/rp?p0=A-boss-search&p1=pay_list&p2=1&p3='+json[i].user_id+'&p4=tojsp\',\'\',\'\',\'510\')" class="ml-5" style="color:blue">个人充值记录</a>'
@@ -315,6 +324,7 @@ $("#inputExcel").click(function(){
     var nickName = $("#nickName").val();
     var startdate = $("#datemin").val();
     var enddate = $("#datemax").val();
+    var uid = $("#uid").val();
     var pp = "";
     if(startdate=="" && enddate!=""){
         alert('请选择开始时间');
@@ -335,7 +345,7 @@ $("#inputExcel").click(function(){
         startdate=$("#datemin").val();
         enddate=$("#datemax").val();
     }
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=payexecl&p2="+startdate+"&p3=1&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName;
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=payexecl&p2="+startdate+"&p3=1&p4="+enddate+"&p5="+searchname+"&p6="+pp+"&p7=tojson&p8="+nickName+"&p9="+uid;
     window.open(url);
 });
 function timec() {

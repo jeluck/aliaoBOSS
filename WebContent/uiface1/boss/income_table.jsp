@@ -32,7 +32,7 @@ String path = request.getContextPath()+"/uiface";
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
 </nav>
-<c:if test="${reList[0].pagesign == '1'}">
+<c:if test="${result[0].pagesign == '1'}">
 	<div  style="margin-top:10px;">
 		<button type="button" class="btn btn-primary radius" style="text-align: left;margin-left:10px;"  onclick="javascript:history.back(-1);"> 返回</button>
 	</div>
@@ -92,7 +92,8 @@ String path = request.getContextPath()+"/uiface";
 		  </div>
 
 		  <div class="text-c" style="margin-top:10px;">
-			  昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
+			  ID: <input type="text" style="width:230px" id = "uid"class="input-text" placeholder="请输入ID"/>
+			  昵称:<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
 			  邀请人昵称:<input type="text" class="input-text" style="width:250px"  placeholder="请输入邀请人昵称" id="yqnickname" name="yqnickname">
 		  </div>
 		  <div class="text-c" style="margin-top:10px;">
@@ -101,7 +102,7 @@ String path = request.getContextPath()+"/uiface";
 			  	<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			  </c:if>
 			</div>
-			<span id="sum1">总收入（A币）:${reList[0].sum}</span>
+			<span id="sum1">总收入（钻石）:${reList[0].sum}</span>
 		</div>
 		
 	<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper ">
@@ -129,7 +130,7 @@ String path = request.getContextPath()+"/uiface";
 				<td>${map['nickname']}</td>
 				<td>${map['type']}</td>
 				<td>${map['inviterName']}</td>
-				<td> <fmt:formatNumber type="number" value="${map['money']}" pattern="0.00" maxFractionDigits="2"/>(M币)</td>
+				<td> <fmt:formatNumber type="number" value="${map['money']}" pattern="0.00" maxFractionDigits="2"/>(钻石)</td>
 				<td>已结算</td>
 				<td>${map['time']}</td>
 				
@@ -137,7 +138,7 @@ String path = request.getContextPath()+"/uiface";
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['money']}"/>
 		</c:forEach>
 		<tr>
-		<td colspan="8">当页收入（A币）:${nodeValue}</td>
+		<td colspan="8">当页收入（钻石）:${nodeValue}</td>
 		</tr>	
 		</tbody>
 	</table>
@@ -250,6 +251,7 @@ function fresh_page(pageIndex) {
 	var enddate = $("#datemax").val();
     var mil_id = $("#searchtxt").val();
     var yqnickname = $("#yqnickname").val();
+    var uid = $("#uid").val();
 	if($("option:selected","#check1").val() == '1'){
 		pp=$("#d243").val();
 		startdate="";
@@ -272,7 +274,7 @@ function fresh_page(pageIndex) {
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
 		/* /rz?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp */
-        url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id+"&p10="+yqnickname,
+        url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id+"&p10="+yqnickname+"&p11="+uid,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -290,7 +292,7 @@ function fresh_page(pageIndex) {
 				+'<td>'+json[i].nickname+'</td>'
 				+'<td>'+json[i].type+'</td>'
                     +'<td>'+json[i].inviterName+'</td>'
-				+'<td>'+Number(json[i].money).toFixed(2)+'(M币)</td>'
+				+'<td>'+Number(json[i].money).toFixed(2)+'(钻石)</td>'
 				+'<td>已结算</td>'
 				+'<td>'+json[i].time+'</td>'
 				+'</tr>';
@@ -299,7 +301,7 @@ function fresh_page(pageIndex) {
 				sum = sum+a;
 			}
 			content +='<tr>'
-					+'<td  colspan="8"> 当页收入（M币）:'+sum+'</td>'
+					+'<td  colspan="8"> 当页收入（钻石）:'+sum+'</td>'
 					+'</tr>';
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
@@ -307,7 +309,7 @@ function fresh_page(pageIndex) {
 			$("#pagelast").html(json[json.length-1].lastcount);
 			$("#total").html(json[json.length-1].totle);
 			$("#currentpage").html(json[json.length-1].pagenum);
-			$("#sum1").html("总收入（M币）"+json[0].sum);
+			$("#sum1").html("总收入（钻石）"+json[0].sum);
 			
 		}
 	});
@@ -348,7 +350,7 @@ $("#inputExcel").click(function(){
     var enddate = $("#datemax").val();
     var mil_id = $("#searchtxt").val();
     var yqnickname = $("#yqnickname").val();
-
+    var uid = $("#uid").val();
     if(startdate=="" && enddate!=""){
         alert('请选择开始时间');
         return;
@@ -368,7 +370,7 @@ $("#inputExcel").click(function(){
         startdate=$("#datemin").val();
         enddate=$("#datemax").val();
     }
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorsrexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id+"&p10="+yqnickname;
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorsrexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id+"&p10="+yqnickname+"&p11="+uid;
     window.open(url);
 });
 function timec() {

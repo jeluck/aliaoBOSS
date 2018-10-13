@@ -125,6 +125,14 @@ public class JyInOutUtil {
 		request.getRequestDispatcher(jsp).forward(request, response);
 	}
 
+	public void return_listpage(ArrayList<Map<String, Object>> list, int[] no,ArrayList<Map<String, Object>> list2,
+								String jsp) throws ServletException, IOException {
+		request.setAttribute("reList", list);
+		request.setAttribute("result", list2);
+		request.setAttribute("pageNo", no);
+		request.getRequestDispatcher(jsp).forward(request, response);
+	}
+
 	// 返回列表1,页码信息,数字
 	public void return_listpage(ArrayList<Map<String, Object>> list, int[] no,
 			String num, String jsp) throws ServletException, IOException {

@@ -131,6 +131,13 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		inOutUtil.return_ajax("1");
 	}
 
+	private void czpass(String[] arg) throws SQLException, IOException,
+			ServletException {
+		String sql="update user_data set password='"+arg[3]+"' where id="+arg[2];
+		sqlUtil.sql_exec(sql);
+		inOutUtil.return_ajax("1");
+	}
+
 	public static String getDate() {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
 		return formatter.format(new Date());
@@ -350,6 +357,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			break;
 		case "czAmount":
 			czAmount(arg);
+			break;
+		case "czpass":
+			czpass(arg);
 			break;
 		case "anchor_phonenum":
 			anchor_phonenum(arg);
@@ -2511,10 +2521,12 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			IOException, ServletException {
 
 		if (arg[6].equals("")) {
-			boolean flag = false;
+			ArrayList<Map<String, Object>> result = new ArrayList<>();
 			if(arg[2].equals("")){
 				arg[2] = "1";
-				flag = true;
+				Map<String, Object> map = new HashMap<>();
+				map.put("pagesign", "1");
+				result.add(map);
 			}
 			String sql = sqlmface.searchSqlface(0, arg);
 			log.send(DataType.basicType, "01162", "提现明细", sql);
@@ -2530,12 +2542,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			log.send(DataType.basicType, "01162", "提现明细---总和", sum);
 			if (list.size() > 0) {
 				list.get(0).put("sum", sum);
-				if(flag){
-					list.get(0).put("pagesign", "1");
-				}
 			}
 			if (arg[5].equals("tojsp")) {
-				inOutUtil.return_listpage(list, pages,
+				inOutUtil.return_listpage(list, pages,result,
 						"/uiface1/boss/income_table.jsp");
 			} else {
 				inOutUtil.return_ajax(JsonUtil.listPageToJson(list, pages));
@@ -2569,6 +2578,13 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			IOException, ServletException {
 
 		if (arg[6].equals("")) {
+			ArrayList<Map<String, Object>> result = new ArrayList<>();
+			if(arg[2].equals("")){
+				arg[2] = "1";
+				Map<String, Object> map = new HashMap<>();
+				map.put("pagesign", "1");
+				result.add(map);
+			}
 			String sql = sqlmface.searchSqlface(0, arg);
 			log.send(DataType.basicType, "01162", "提现明细", sql);
 			int total = sqlUtil.get_int(sql);
@@ -2584,8 +2600,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			if (list.size() > 0) {
 				list.get(0).put("sum", sum);
 			}
+
 			if (arg[5].equals("tojsp")) {
-				inOutUtil.return_listpage(list, pages,
+				inOutUtil.return_listpage(list, pages,result,
 						"/uiface1/boss/income_table1.jsp");
 			} else {
 				inOutUtil.return_ajax(JsonUtil.listPageToJson(list, pages));

@@ -36,7 +36,7 @@ String path = request.getContextPath()+"/uiface";
 					<th width="100">用户ID</th>
 					<th width="100">付费类型</th>
 					<th width="100">付费价格</th>
-					<th width="100">A币数量</th>
+					<th width="100">钻石数量</th>
 					<th width="100">支付状态</th>
 					<th width="100">时间</th>
 				</tr>
@@ -49,7 +49,7 @@ String path = request.getContextPath()+"/uiface";
 						<td>${map['user_id']}</td>
 						<td>${map['pay_type']}</td>
 						<td>${map['pay_price']}元</td>
-						<td>${map['pay_value']}A币</td>
+						<td>${map['pay_value']}钻石</td>
 						<td>
 						<c:choose>
 						     <c:when test="${map['pay_status']=='已付款'}"><span style="color:green">${map['pay_status']}</span></c:when>
@@ -153,7 +153,7 @@ function fresh_page(pageIndex){
 					+'<td>'+json[i].user_id+'</td>'
 					+'<td>'+json[i].pay_type+'</td>'
 					+'<td>'+json[i].pay_price+'元</td>'
-					+'<td>'+json[i].pay_value+'A币</td>'
+					+'<td>'+json[i].pay_value+'钻石</td>'
 					+zhi
 					+'<td>'+json[i].pay_time+'</td>'; 
 			}

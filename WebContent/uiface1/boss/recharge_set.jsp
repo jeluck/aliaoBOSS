@@ -28,7 +28,7 @@ Boolean bool = true;
 <link rel="stylesheet" type="text/css"
 	href="<%=path %>1/boss/static/h-ui.admin/css/style.css" />
 
-<title>A币充值设置</title>
+<title>钻石充值设置</title>
 </head>
 <body>
 	<nav class="breadcrumb">
@@ -63,7 +63,7 @@ Boolean bool = true;
 					<thead>
 					<tr class="text-c">
 					<th width="30">序号</th>
-				   <th width="30">A币数量</th> 
+				   <th width="30">钻石数量</th>
 					<th width="40">价格(元)</th>
 					<th width="40">操作</th>
 					</tr>

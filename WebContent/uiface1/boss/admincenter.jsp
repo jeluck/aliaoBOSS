@@ -93,7 +93,7 @@ if(request.getSession().getAttribute("admin")!=null&&!"".equals(request.getSessi
 			<dt><i class="Hui-iconfont">&#xe63a;</i> 账务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2=&p3=1&p4=&p5=&p6=&p7=tojsp&p8=" data-title="充值记录表" href="javascript:void(0)">充值记录表</a></li>
+					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2=&p3=1&p4=&p5=&p6=&p7=tojsp&p8=&p9=" data-title="充值记录表" href="javascript:void(0)">充值记录表</a></li>
 					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="充值记录表" href="javascript:void(0)">主播收入明细</a></li>
 					
 					<% if(b.equals("1")){%>
@@ -168,7 +168,7 @@ if(request.getSession().getAttribute("admin")!=null&&!"".equals(request.getSessi
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=recycle_photo&p2=1&p3=tojsp" data-title="广告轮播图设置" href="javascript:void(0)">广告轮播图设置</a></li>
 				<%-- <li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=cash_set&p2=0&p4=&p3=tojsp" data-title="提现相关设置" href="javascript:void(0)">提现相关设置</a></li> --%>
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=fencheng_set&p2=0&p4=&p3=tojsp" data-title="主播分成相关设置" href="javascript:void(0)">主播分成相关设置</a></li> 
-				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=recharge_set&p2=0&p4=&p3=tojsp" data-title="A币充值设置" href="javascript:void(0)">A币充值设置</a></li> 
+				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=recharge_set&p2=0&p4=&p3=tojsp" data-title="钻石充值设置" href="javascript:void(0)">钻石充值设置</a></li>
 				<%-- <li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=fenxiao_search_set&p2=0&p4=&p3=tojsp" data-title="分销设置" href="javascript:void(0)">分销设置</a></li>  --%>
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=fenxiang_search&p2=0&p4=&p3=tojsp" data-title="分销设置" href="javascript:void(0)">分销设置</a></li> 
 				<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=notification_search&p2=0&p4=&p3=tojsp" data-title="系统通知" href="javascript:void(0)">系统通知</a></li> 

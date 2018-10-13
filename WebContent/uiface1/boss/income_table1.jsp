@@ -31,6 +31,11 @@ String path = request.getContextPath()+"/uiface";
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
 </nav>
+<c:if test="${result[0].pagesign == '1'}">
+	<div  style="margin-top:10px;">
+		<button type="button" class="btn btn-primary radius" style="text-align: left;margin-left:10px;"  onclick="javascript:history.back(-1);"> 返回</button>
+	</div>
+</c:if>
 <div class="page-container">
 	  <div class="mt-20">
 			<!-- <div class="text-c">	

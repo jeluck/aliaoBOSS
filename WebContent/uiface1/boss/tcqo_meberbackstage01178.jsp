@@ -78,7 +78,7 @@ String path = request.getContextPath()+"/uiface";
 				<%--<th width="40">城市</th>--%>
 				<th width="40">是否在线</th>
 				<th width="40">分享收入</th>
-
+				<th width="40">操作</th>
 			</tr>
 		</thead>
 		<tbody id="list-content">
@@ -103,7 +103,8 @@ String path = request.getContextPath()+"/uiface";
 							<c:when test="${map['online']=='1' }"><td>在线</td></c:when>
 							<c:when test="${map['online']=='2' }"><td>在聊</td></c:when>
 					</c:choose>
-					<td><a style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
+					<td><a style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
+					<td><button type="button" class="btn btn-success radius" id="czpass" onclick="czpass(${map['id']})" ><i class="Hui-iconfont"></i>重置密码</button></td>
 				</tr>
 			</c:forEach>
 			
@@ -246,7 +247,8 @@ function fresh_page(pageIndex){
 					+'<td>'+json[i].register_time+'</td>'
 					// +'<td>'+json[i].city+'</td>'
 					+'<td>'+online+'</td>'
-					+'<td><a  style="color: blue;" href="http://119.23.16.29:8091/uiface/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
+					+'<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p=income_table_search1&p2=&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
+				 	+'<td><button type="button" class="btn btn-success radius" id="czpass" onclick="czpass('+json[i].id+')" ><i class="Hui-iconfont"></i>重置密码</button></td>'
 					/* +'<td class="td-manage">'
 					+shezhi1+'</td>' */; 
 			}
@@ -353,6 +355,29 @@ function czAmount(id,m){
             $.ajax({
                 type:'POST',
                 url: '<%=path%>/rp?p0=A-boss-mod&p1=czAmount&p2='+id+'&p3='+men,
+                success: function(data){
+                    if(data='1'){
+                        fresh_page(Number($("#currentpage").html()));
+                        layer.msg('操作成功',{icon:1,time:1000});
+                    }else{
+                        layer.msg('操作失败',{icon:1,time:1000});
+                    }
+                },
+                error:function(data) {
+                    layer.msg('操作失败',{icon:1,time:1000});
+                },
+            });
+        });
+    }
+}
+
+function czpass(id){
+    var age = prompt("请输入密码","");
+    if(age!=null && age!=""){
+        layer.confirm('确认输入以上内容？',function(index){
+            $.ajax({
+                type:'POST',
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=czpass&p2='+id+'&p3='+age,
                 success: function(data){
                     if(data='1'){
                         fresh_page(Number($("#currentpage").html()));

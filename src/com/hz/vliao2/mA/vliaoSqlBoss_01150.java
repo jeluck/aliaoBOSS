@@ -158,6 +158,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
+						}
 					}else{
 						ressql="select count(*) from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
@@ -168,6 +171,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
 						}
 					}
 				}else if(current==1){
@@ -182,6 +188,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
+						}
 						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}else{
 						ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'   ";
@@ -193,6 +202,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
 						}
 						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}
@@ -208,6 +220,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
+						}
 					}else{
 						ressql="select sum(c.money) from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id=u.id and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
@@ -218,6 +233,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
 						}
 					}
 				}else if(current==3){
@@ -231,6 +249,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 					}
+					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+						ressql+=" and u.id="+arg[11];
+					}
 				}else if(current==4){
 					ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id = u.id  and c.time like '%"+arg[6]+"%' ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
@@ -241,6 +262,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+					}
+					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+						ressql+=" and u.id="+arg[11];
 					}
 					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
@@ -253,6 +277,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+					}
+					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+						ressql+=" and u.id="+arg[11];
 					}
 				}
 			}else{
@@ -268,6 +295,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
+						}
 					}else{
 						ressql="select count(*) from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id=u.id  and c.user_id="+arg[7]+" and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
@@ -278,6 +308,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
 						}
 					}
 				}else if(current==1){
@@ -292,6 +325,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
+						}
 						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}else{
 						ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id=u.id and c.user_id="+arg[7]+"  and c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
@@ -303,6 +339,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
 						}
 						ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 					}
@@ -318,7 +357,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 						}
-
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
+						}
 					}else{
 						ressql="select sum(c.money) from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id="+arg[7]+" and  c.time between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
@@ -329,6 +370,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						}
+						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+							ressql+=" and u.id="+arg[11];
 						}
 					}
 				}else if(current==3){
@@ -342,6 +386,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 					}
+					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+						ressql+=" and u.id="+arg[11];
+					}
 				}else if(current==4){
 					ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id = u.id and c.user_id="+arg[7]+" and c.time like '%"+arg[6]+"%'";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
@@ -352,6 +399,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+					}
+					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+						ressql+=" and u.id="+arg[11];
 					}
 					ressql+=" order by c.time desc limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
@@ -364,6 +414,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+					}
+					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+						ressql+=" and u.id="+arg[11];
 					}
 				}
 
@@ -389,6 +442,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 					ressql+=" and u2.nickname like '%"+arg[10]+"%'";
 				}
+				if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+					ressql+=" and u.id="+arg[11];
+				}
 				ressql+=" order by c.time desc";
 			}else{
 				ressql="select sum(c.money) from income_details c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.user_id=u.id ";
@@ -406,6 +462,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				}
 				if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
 					ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+				}
+				if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
+					ressql+=" and u.id="+arg[11];
 				}
 			}
 			break;
@@ -791,6 +850,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
+					}
 				} else if (!arg[2].equals("") && !arg[4].equals("")
 						&& arg[5].equals("")) {
 					ressql = "select count(*) " + "from order_management o,user_data b "
@@ -798,6 +860,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							+ " 00:00:01' and '" + arg[4] + " 23:59:59' and o.user_id=b.id  ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
 					}
 				} else if (!arg[2].equals("") && !arg[4].equals("")
 						&& !arg[5].equals("")) {
@@ -808,11 +873,17 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
+					}
 				}else if(arg[2].equals("") && arg[4].equals("") &&
 						arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && arg[5].equals("")){
 					ressql = "select count(*) " + "from order_management o,user_data b where o.user_id=b.id and o.pay_time like '%"+arg[6]+"%' ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
 					}
 				} else if(arg[2].equals("") && arg[4].equals("") &&
 						arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && !arg[5].equals("")){
@@ -820,11 +891,17 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
+					}
 				}else if(arg[2].equals("") && arg[4].equals("") &&
 						arg[6].equals("") && !arg[5].equals("")){
 					ressql = "select count(*) " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "'  ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
 					}
 				}
 			} else if (current == 1) {// 查询所有集合
@@ -832,6 +909,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					ressql = "select * " + "from order_management o,user_data b  where o.user_id=b.id ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
 					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				} else if (!arg[2].equals("") && !arg[4].equals("")
@@ -842,6 +922,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
+					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}  else if (!arg[2].equals("") && !arg[4].equals("") && !arg[5].equals("")) {
 					ressql = "select * " + "from order_management o,user_data b"
@@ -851,12 +934,18 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
+					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}else if(arg[2].equals("") && arg[4].equals("") &&
 						 arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && arg[5].equals("")){
 					ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_time like '%"+arg[6]+"%' ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
 					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}else if(arg[2].equals("") && arg[4].equals("") &&
@@ -865,6 +954,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
 					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
+					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}
 				else if(arg[2].equals("") && arg[4].equals("") &&
@@ -872,6 +964,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 					ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "'  ";
 					if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 						ressql+=" and b.nickName like '%"+arg[8]+"%'";
+					}
+					if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+						ressql+=" and b.id ="+arg[9];
 					}
 					ressql+=" order by o.pay_time desc limit "+arg[arg.length - 2]+","+JyHelpManager.item;
 				}
@@ -884,6 +979,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and b.nickName like '%"+arg[8]+"%'";
 						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and b.id ="+arg[9];
+						}
 					} else if (!arg[2].equals("") && !arg[4].equals("")
 							&& arg[5].equals("")) {
 						ressql = "select * " + "from order_management o,user_data b"
@@ -891,6 +989,9 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 								+ " 00:00:01' and '" + arg[4] + " 23:59:59' and o.user_id=b.id";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and b.id ="+arg[9];
 						}
 					}  else if (!arg[2].equals("") && !arg[4].equals("") && !arg[5].equals("")) {
 						ressql = "select * " + "from order_management o,user_data b"
@@ -900,11 +1001,17 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and b.nickName like '%"+arg[8]+"%'";
 						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and b.id ="+arg[9];
+						}
 					}else if(arg[2].equals("") && arg[4].equals("") &&
 							arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && arg[5].equals("")){
 						ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_time like '%"+arg[6]+"%' ";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and b.id ="+arg[9];
 						}
 					}else if(arg[2].equals("") && arg[4].equals("") &&
 							arg.length > 6 && StringUtils.isNotEmpty(arg[6]) && !arg[5].equals("")){
@@ -912,12 +1019,18 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and b.nickName like '%"+arg[8]+"%'";
 						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and b.id ="+arg[9];
+						}
 					}
 					else if(arg[2].equals("") && arg[4].equals("") &&
 							arg[6].equals("") && !arg[5].equals("")){
 						ressql = "select * " + "from order_management o,user_data b where o.user_id=b.id and o.pay_status='" + arg[5] + "'  ";
 						if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 							ressql+=" and b.nickName like '%"+arg[8]+"%'";
+						}
+						if(arg.length > 9 && StringUtils.isNotEmpty(arg[9])){
+							ressql+=" and b.id ="+arg[9];
 						}
 					}
 				}

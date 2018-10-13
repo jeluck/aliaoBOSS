@@ -114,7 +114,7 @@ String path = request.getContextPath()+"/uiface";
 						<c:when test="${map['star']=='5' }"><td  id="xing${map['id']}">活跃  <br></c:when>
 					</c:choose>
 					<%--<td  id="xing${map['id']}">${map['star']}星  <br>--%>
-					<a title="编辑" href="javascript:;"onclick="xingmod(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>
+					<a title="编辑" href="javascript:;"onclick="xingmod(${map['id']},'修改星级','<%=path%>1/boss/photo_add3.jsp','300','140')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>
 					<td>${map['phonenum']}<a title="编辑" href="javascript:;"onclick="anchor_phonenum(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<td>${map['money']} <a title="编辑" href="javascript:;"onclick="czAmount(${map['id']},${map['money']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<%--<td>${map['height']}</td>--%>
@@ -123,7 +123,7 @@ String path = request.getContextPath()+"/uiface";
 					<%--<td>${map['city']}</td>--%>
 					
 					<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
-					<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
+					<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
 					<c:choose>
 							<c:when test="${map['online']=='0' }"><td>离线</td></c:when>
 							<c:when test="${map['online']=='1' }"><td>在线</td></c:when>
@@ -286,7 +286,7 @@ function fresh_page(pageIndex){
 				 	+'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
 					+'<td>'+json[i].inviterName+'</td>'
 					+'<td id="xing"'+json[i].id+'>'+xj+'<br>'
-				 	+'<a title="编辑" href="javascript:;"onclick="xingmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
+				 	+'<a title="编辑" href="javascript:;"onclick="xingmod('+json[i].id+',\'修改星级\',\'<%=path%>1/boss/photo_add3.jsp\',\'300\',\'140\')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
 					+'<td>'+json[i].phonenum+''
 					 +'<a title="编辑" href="javascript:;"onclick="anchor_phonenum('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 					+'<td>'+json[i].money+''
@@ -296,7 +296,7 @@ function fresh_page(pageIndex){
 					// +'<td>'+json[i].constellation+'</td>'
 					// +'<td>'+json[i].city+'</td>'
 					+'<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
-					+'<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
+					+'<td><a style="color: blue;"  href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
 					+'<td>'+online+'</td>'
 					+tuijian
 					+'<td>'+json[i].sort_id+'<br><a title="编辑" href="javascript:;"onclick="sortmod('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
@@ -468,32 +468,20 @@ function sortmod(id){
 	}
 	
 }
-function xingmod(id){
+function xingmod111(id){
 	var age = prompt("请输入星级","");
 	if(age!=null && age!=""){
 		layer.confirm('确认输入以上内容？',function(index){ 
-
 			$.ajax({
 				type:'POST',
 				url: '<%=path%>/rp?p0=A-boss-mod&p1=xingmod&p2='+id+'&sortid='+age,
 				success: function(data){
-					/*$(obj).parents("tr").remove();*/
 					if(data='1'){
-						// $("#xing"+id).html(age+'星  <br><a title="编辑" href="javascript:;"onclick="xingmod('+id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> ');
                         fresh_page(Number($("#currentpage").html()));
 						layer.msg('操作成功',{icon:1,time:1000});
 					}else{
 						layer.msg('操作失败',{icon:1,time:1000});
 					}
-					/* if(data=='0'){
-						$("#tuijian"+id).html('<a title="设为推荐" onclick="tuijian('+id+')" class="ml-5" style="text-decoration:none;    color: blue;"><i class="Hui-iconfont">设为推荐</i></a>');
-					}else{
-						$("#tuijian"+id).html('<a title="取消推荐" onclick="tuijian('+id+')" class="ml-5" style="text-decoration:none;    color: red;"><i class="Hui-iconfont">取消推荐</i></a>');
-					} */
-					/* setTimeout(function () { 
-						javascript:location.replace(location.href);
-				    }, 1000); */
-					
 				},
 				error:function(data) {
 					layer.msg('操作失败',{icon:1,time:1000});
@@ -502,6 +490,10 @@ function xingmod(id){
 		 });
 	}
 	
+}
+function xingmod(id,title,url,w,h){
+    $("#aaid").val(id);
+    layer_show(title,url,w,h);
 }
 
 function anchor_nickname(id){
