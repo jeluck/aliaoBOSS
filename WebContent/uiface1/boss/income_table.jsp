@@ -27,7 +27,7 @@ String path = request.getContextPath()+"/uiface";
 <nav class="breadcrumb">
 	<i class="Hui-iconfont">&#xe67f;</i> 首页 
 	<span class="c-gray en">&gt;</span> 充提管理
-	<span class="c-gray en">&gt;</span> 提现明细
+	<span class="c-gray en">&gt;</span> 主播收入明细
 	<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
@@ -94,7 +94,7 @@ String path = request.getContextPath()+"/uiface";
 		  <div class="text-c" style="margin-top:10px;">
 			  ID: <input type="text" style="width:230px" id = "uid"class="input-text" placeholder="请输入ID"/>
 			  昵称:<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
-			  邀请人昵称:<input type="text" class="input-text" style="width:250px"  placeholder="请输入邀请人昵称" id="yqnickname" name="yqnickname">
+			  邀请人ID:<input type="text" class="input-text" style="width:250px"  placeholder="请输入邀请人昵称" id="yqnickname" name="yqnickname">
 		  </div>
 		  <div class="text-c" style="margin-top:10px;">
 				<button type="submit" class="btn btn-success radius" id="btn-search" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
@@ -114,7 +114,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="80">用户id</th>
 				<th width="80">主播昵称</th>
 				<th width="80">收入来源</th>
-				<th width="80">邀请人昵称</th>
+				<th width="80">邀请人ID</th>
 				<th width="80">收入价格</th>
 				<th width="80">结算状态</th>
                 <th width="80">结算时间</th>
@@ -129,7 +129,7 @@ String path = request.getContextPath()+"/uiface";
 				<td>${map['user_id']}</td>
 				<td>${map['nickname']}</td>
 				<td>${map['type']}</td>
-				<td>${map['inviterName']}</td>
+				<td>${map['up_agentid']}</td>
 				<td> <fmt:formatNumber type="number" value="${map['money']}" pattern="0.00" maxFractionDigits="2"/>(钻石)</td>
 				<td>已结算</td>
 				<td>${map['time']}</td>
@@ -291,7 +291,7 @@ function fresh_page(pageIndex) {
 				+'<td>'+json[i].user_id+'</td>'
 				+'<td>'+json[i].nickname+'</td>'
 				+'<td>'+json[i].type+'</td>'
-                    +'<td>'+json[i].inviterName+'</td>'
+                    +'<td>'+json[i].up_agentid+'</td>'
 				+'<td>'+Number(json[i].money).toFixed(2)+'(钻石)</td>'
 				+'<td>已结算</td>'
 				+'<td>'+json[i].time+'</td>'

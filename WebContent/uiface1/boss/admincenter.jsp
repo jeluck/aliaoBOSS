@@ -39,7 +39,7 @@ if(request.getSession().getAttribute("admin")!=null&&!"".equals(request.getSessi
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>A聊后台管理系统</title>
+<title>钻石后台管理系统</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -94,14 +94,14 @@ if(request.getSession().getAttribute("admin")!=null&&!"".equals(request.getSessi
 			<dd>
 				<ul>
 					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=pay_table_search&p2=&p3=1&p4=&p5=&p6=&p7=tojsp&p8=&p9=" data-title="充值记录表" href="javascript:void(0)">充值记录表</a></li>
-					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="充值记录表" href="javascript:void(0)">主播收入明细</a></li>
+					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="主播收入明细" href="javascript:void(0)">主播收入明细</a></li>
 					
 					<% if(b.equals("1")){%>
-					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="提现明细" href="javascript:void(0)">主播提现明细</a></li>
+					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="主播提现明细" href="javascript:void(0)">主播提现明细</a></li>
 					<% } %>
-					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="提现明细" href="javascript:void(0)">推广收入明细</a></li>
+					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=1&p3=&p4=&p5=tojsp&p6=&p7=0" data-title="推广收入明细" href="javascript:void(0)">推广收入明细</a></li>
 					<% if(b.equals("1")){%>
-					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp&p6=&p7=1" data-title="提现明细" href="javascript:void(0)">推广提现明细</a></li>
+					<li><a data-href="<%=path%>/rp?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp&p6=&p7=1" data-title="推广提现明细" href="javascript:void(0)">推广提现明细</a></li>
 				    <% } %>
 				</ul>
 			</dd>

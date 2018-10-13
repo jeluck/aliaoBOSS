@@ -47,8 +47,10 @@
 					<div class="portfoliobox">
 						<div class="picbox" style="line-height: 50px;">
 							<img src="${map}">
-							<span><a title="编辑" href="javascript:;" onclick="photo('${map}','修改图片','<%=path%>1/boss/renzheng_photosearch_edit.jsp','600','160')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></span>
-							<span><a title="删除" href="javascript:;" onclick="client_del('${map}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></span>
+							<p>
+								<span><a title="编辑" href="javascript:;" onclick="photo('${map}','修改图片','<%=path%>1/boss/renzheng_photosearch_edit.jsp','600','160')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></span>
+								<span><a title="删除" href="javascript:;" onclick="client_del('${map}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></span>
+							</p>
 						</div>
 					</div>
 				</li>

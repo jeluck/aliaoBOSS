@@ -26,7 +26,7 @@ String path = request.getContextPath()+"/uiface";
 <nav class="breadcrumb">
 	<i class="Hui-iconfont">&#xe67f;</i> 首页 
 	<span class="c-gray en">&gt;</span> 账务管理
-	<span class="c-gray en">&gt;</span> 收入明细
+	<span class="c-gray en">&gt;</span> 推广收入明细
 	<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
 		<i class="Hui-iconfont">&#xe68f;</i>
 	</a>
@@ -77,7 +77,7 @@ String path = request.getContextPath()+"/uiface";
 				  <option value="充值">用户充值</option>
 				  <option value="提现">主播提现</option>
 			  </select>
-			  邀请人昵称:<input type="text" class="input-text" style="width:150px"  placeholder="请输入邀请人昵称" id="yqnickname" name="yqnickname">
+			  邀请人ID:<input type="text" class="input-text" style="width:150px"  placeholder="请输入邀请人昵称" id="yqnickname" name="yqnickname">
 		  </div>
 		      <div class="text-c" style="margin-top:10px;">			
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
@@ -95,7 +95,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="80">用户id</th>
 				<th width="80">主播昵称</th>
 				<th width="80">收入来源</th>
-				<th width="80">邀请人昵称</th>
+				<th width="80">邀请人ID</th>
 				<th width="80">收入价格</th>
 				<th width="80">结算状态</th>
                 <th width="80">结算时间</th>
@@ -115,7 +115,7 @@ String path = request.getContextPath()+"/uiface";
 				     <c:when test="${map['money_type']=='提现'}"><span style="color:red">主播提现</span></c:when>
 				</c:choose>
 				</td>
-				<td>${map['inviterName']}</td>
+				<td>${map['up_agentid']}</td>
 				<td><fmt:formatNumber type="number" value="${map['able_money']}" pattern="0.00" maxFractionDigits="2"/>(元)</td>
 				<td>已结算</td>
 				<td>${map['uptime']}</td>
@@ -272,7 +272,7 @@ function fresh_page(pageIndex) {
 				+'<td>'+json[i].upuser_id+'</td>'
 				+'<td>'+json[i].nickname+'</td>'
 				+'<td>'+z+'</td>'
-				+'<td>'+json[i].inviterName+'</td>'
+				+'<td>'+json[i].up_agentid+'</td>'
 				+'<td>'+Number(json[i].able_money).toFixed(2)+'(元)</td>'
 				+'<td>已结算</td>'
 				+'<td>'+json[i].uptime+'</td>'

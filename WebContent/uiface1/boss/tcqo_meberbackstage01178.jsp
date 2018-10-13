@@ -67,7 +67,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">头像</th>
 				<th width="40">用户名</th>
 				<th width="40">昵称</th>
-				<th width="40">邀请人昵称</th>
+				<th width="40">邀请人ID</th>
 				<th width="40">性别</th>
 				<th width="40">手机号码</th>
 				<th width="40">账户余额</th>
@@ -89,7 +89,7 @@ String path = request.getContextPath()+"/uiface";
 					<td><img alt="" src="${map['photo']}" onclick="photo(${map['id']},'修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')" style="width:80px"></td>
 					<td>${map['username']}</td>
 					<td>${map['nickname']} <a title="编辑" href="javascript:;"onclick="anchor_nickname(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
-					<td>${map['inviterName']}</td>
+					<td>${map['up_agentid']}</td>
 					<td>${map['gender']}</td>
 					<td>${map['phonenum']} <a title="编辑" href="javascript:;"onclick="anchor_phonenum(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<td>${map['money']} <a title="编辑" href="javascript:;"onclick="czAmount(${map['id']},${map['money']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
@@ -235,7 +235,7 @@ function fresh_page(pageIndex){
 					+'<td>'+json[i].username+'</td>'
 					+'<td>'+json[i].nickname+''
 					 +'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
-				 	+'<td>'+json[i].inviterName+'</td>'
+				 	+'<td>'+json[i].up_agentid+'</td>'
 					+'<td>'+json[i].gender+'</td>'
 					+'<td>'+json[i].phonenum+''
 					 +'<a title="编辑" href="javascript:;"onclick="anchor_phonenum('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'

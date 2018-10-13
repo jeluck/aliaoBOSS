@@ -70,7 +70,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">认证图片</th>
 				<th width="40">用户名</th>
 				<th width="40">昵称</th>
-				<th width="40">邀请人昵称</th>
+				<th width="40">邀请人ID</th>
 				<th width="40">推荐分类</th>
 				<th width="40">手机号码</th>
 				<th width="40">账户余额</th>
@@ -105,7 +105,7 @@ String path = request.getContextPath()+"/uiface";
 					</td>
 					<td>${map['username']}</td>
 					<td>${map['nickname']}<a title="编辑" href="javascript:;"onclick="anchor_nickname(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
-					<td>${map['inviterName']}</td>
+					<td>${map['up_agentid']}</td>
 					<c:choose>
 						<c:when test="${map['star']=='1' }"><td  id="xing${map['id']}">热门  <br></c:when>
 						<c:when test="${map['star']=='2' }"><td  id="xing${map['id']}">${map['star']}星  <br></c:when>
@@ -284,7 +284,7 @@ function fresh_page(pageIndex){
 					+'<td>'+json[i].username+'</td>'
 					+'<td>'+json[i].nickname+''
 				 	+'<a title="编辑" href="javascript:;"onclick="anchor_nickname('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
-					+'<td>'+json[i].inviterName+'</td>'
+					+'<td>'+json[i].up_agentid+'</td>'
 					+'<td id="xing"'+json[i].id+'>'+xj+'<br>'
 				 	+'<a title="编辑" href="javascript:;"onclick="xingmod('+json[i].id+',\'修改星级\',\'<%=path%>1/boss/photo_add3.jsp\',\'300\',\'140\')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>'
 					+'<td>'+json[i].phonenum+''

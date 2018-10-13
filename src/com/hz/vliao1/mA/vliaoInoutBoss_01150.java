@@ -635,8 +635,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 					+ "\"payee_account\":\""
 					+ list.get(0).get("tixian_account").toString() + "\","
 					+ "\"amount\":\"" + list.get(0).get("cash").toString()
-					+ "\"," + "\"payer_show_name\":\"A聊\","
-					+ "\"payee_real_name\":\"\"," + "\"remark\":\"A聊提现\"" // +
+					+ "\"," + "\"payer_show_name\":\"钻石\","
+					+ "\"payee_real_name\":\"\"," + "\"remark\":\"钻石提现\"" // +
 																			// "\"payee_real_name\":\"张三\","
 					+ "}");
 			AlipayFundTransToaccountTransferResponse response = null;

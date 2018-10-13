@@ -156,7 +156,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -170,7 +170,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -186,7 +186,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -201,7 +201,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and c.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -218,7 +218,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -232,7 +232,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -247,7 +247,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[10]+"'";
 					}
 					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 						ressql+=" and u.id="+arg[11];
@@ -261,7 +261,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[10]+"'";
 					}
 					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 						ressql+=" and u.id="+arg[11];
@@ -276,7 +276,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[10]+"'";
 					}
 					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 						ressql+=" and u.id="+arg[11];
@@ -293,7 +293,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -307,7 +307,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -323,7 +323,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -338,7 +338,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -355,7 +355,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -369,7 +369,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql+=" and u.nickname like '%"+arg[9]+"%'";
 						}
 						if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-							ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[10]+"'";
 						}
 						if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 							ressql+=" and u.id="+arg[11];
@@ -384,7 +384,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[10]+"'";
 					}
 					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 						ressql+=" and u.id="+arg[11];
@@ -398,7 +398,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[10]+"'";
 					}
 					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 						ressql+=" and u.id="+arg[11];
@@ -413,7 +413,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql+=" and u.nickname like '%"+arg[9]+"%'";
 					}
 					if(arg.length > 10 && StringUtils.isNotEmpty(arg[10])){
-						ressql+=" and u2.nickname like '%"+arg[10]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[10]+"'";
 					}
 					if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 						ressql+=" and u.id="+arg[11];
@@ -484,7 +484,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}else{
 						ressql="select count(*) from tuiguang_detail c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
@@ -498,7 +498,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}
 				}else if(current==1){
@@ -514,7 +514,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}else{
@@ -529,7 +529,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}
@@ -546,7 +546,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}else{
 						ressql="select sum(c.able_money) from tuiguang_detail c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.upuser_id=u.id and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
@@ -560,7 +560,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}
 				}else if(current==3){
@@ -575,7 +575,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.money_type = '"+arg[10]+"'";
 					}
 					if(arg.length>11 && !arg[11].equals("")){
-						ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[11]+"'";
 					}
 				}else if(current==4){
 					ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from tuiguang_detail c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.upuser_id = u.id  and c.uptime like '%"+arg[6]+"%' ";
@@ -589,7 +589,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.money_type = '"+arg[10]+"'";
 					}
 					if(arg.length>11 && !arg[11].equals("")){
-						ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[11]+"'";
 					}
 					ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
@@ -604,7 +604,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.money_type = '"+arg[10]+"'";
 					}
 					if(arg.length>11 && !arg[11].equals("")){
-						ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[11]+"'";
 					}
 				}
 			}else{
@@ -621,7 +621,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}else{
 						ressql="select count(*) from tuiguang_detail c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.upuser_id=u.id and c.upuser_id="+arg[7]+" and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
@@ -635,7 +635,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}
 				}else if(current==1){
@@ -651,7 +651,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}else{
@@ -666,7 +666,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 						ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 					}
@@ -683,7 +683,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}else{
 						ressql="select sum(c.able_money) from tuiguang_detail c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.upuser_id=u.id and c.upuser_id="+arg[7] +"  and c.uptime between '"+arg[3]+" 00:00:01' and '"+arg[4]+" 23:59:59'";
@@ -697,7 +697,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 							ressql += " and c.money_type = '"+arg[10]+"'";
 						}
 						if(arg.length>11 && !arg[11].equals("")){
-							ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+							ressql+=" and u.up_agentid = '"+arg[11]+"'";
 						}
 					}
 				}else if(current==3){
@@ -712,7 +712,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.money_type = '"+arg[10]+"'";
 					}
 					if(arg.length>11 && !arg[11].equals("")){
-						ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[11]+"'";
 					}
 				}else if(current==4){
 					ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from tuiguang_detail c,user_data u left join  user_data u2 on u.up_agentid = u2.id where c.upuser_id = u.id and c.upuser_id="+arg[7]+" and c.uptime  like '%"+arg[6]+"%' ";
@@ -726,7 +726,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.money_type = '"+arg[10]+"'";
 					}
 					if(arg.length>11 && !arg[11].equals("")){
-						ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[11]+"'";
 					}
 					ressql += " order by c.uptime desc  limit "+arg[2]+","+JyHelpManager.item;
 				}else if(current==5){
@@ -741,7 +741,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 						ressql += " and c.money_type = '"+arg[10]+"'";
 					}
 					if(arg.length>11 && !arg[11].equals("")){
-						ressql+=" and u2.nickname like '%"+arg[11]+"%'";
+						ressql+=" and u.up_agentid = '"+arg[11]+"'";
 					}
 				}
 			}
