@@ -45,17 +45,14 @@ String path = request.getContextPath()+"/uiface";
 	<div class="text-c">
 		<div class="mt-20">
 			<div class="text-c">
-				昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
-				<%--<br/>--%>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入id" id="uid" name="uid">
-				<%--<br/>--%>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用&nbsp;&nbsp;户&nbsp;&nbsp;名:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入用户名" id="username" name="username">
-				<%--<br/>--%>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号码:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入手机号码" id="phonenum" name="phonenum">
+				昵称:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
+				ID:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入id" id="uid" name="uid">
+				用&nbsp;&nbsp;户&nbsp;&nbsp;名:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入用户名" id="username" name="username">
+				手机号码:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入手机号码" id="phonenum" name="phonenum">
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜用户</button>
 				<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div>	
@@ -102,7 +99,7 @@ String path = request.getContextPath()+"/uiface";
 					<td>${map['id']}</td>
 					<td><img alt="" src="${map['photo']}" style="width:80px" onclick="photo(${map['id']},'修改头像','<%=path%>1/boss/photo_add2.jsp','600','160')"></td>
 					<td><a href="javascript:;"
-					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2=${map['id'] }&p3=0','600','510')"
+					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch1&p2=${map['id'] }&p3=0','650','510')"
 					style="text-decoration: none;color:blue;" class="ml-5">点击查看图片</a>
 					</td>
 					<td>${map['username']}</td>

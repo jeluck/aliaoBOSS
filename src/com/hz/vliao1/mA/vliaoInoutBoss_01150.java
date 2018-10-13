@@ -2996,6 +2996,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("ID");
 		listOne.add("主播昵称");
 		listOne.add("收入来源");
+		listOne.add("邀请人昵称");
 		listOne.add("收入价格");
 		listOne.add("结算状态");
 		listOne.add("结算时间");
@@ -3005,6 +3006,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("user_id").toString());
 			arrayList.add(map.get("nickname").toString());
 			arrayList.add(map.get("type").toString());
+			arrayList.add(map.get("inviterName").toString());
 			arrayList.add(map.get("money").toString());
 			arrayList.add("已结算");
 			arrayList.add(map.get("time").toString());
@@ -3102,6 +3104,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("ID");
 		listOne.add("主播昵称");
 		listOne.add("收入来源");
+		listOne.add("邀请人昵称");
 		listOne.add("收入价格");
 		listOne.add("结算状态");
 		listOne.add("结算时间");
@@ -3117,6 +3120,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			}else{
 				arrayList.add("");
 			}
+			arrayList.add(map.get("inviterName").toString());
 			arrayList.add(map.get("able_money").toString()+"元");
 			arrayList.add("已结算");
 			arrayList.add(map.get("uptime").toString());

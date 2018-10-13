@@ -45,17 +45,14 @@ String path = request.getContextPath()+"/uiface";
 	<div class="text-c">
 		<div class="mt-20">
 			<div class="text-c">
-				昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
-				<%--<br/>--%>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入id" id="uid" name="uid">
-				<%--<br/>--%>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用&nbsp;&nbsp;户&nbsp;&nbsp;名:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入用户名" id="username" name="username">
-				<%--<br/>--%>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号码:
-				<input type="text" class="input-text" style="width:250px"  placeholder="请输入手机号码" id="phonenum" name="phonenum">
+				昵称:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入主播昵称" id="searchtxt" name="searchtxt">
+				ID:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入id" id="uid" name="uid">
+				用&nbsp;&nbsp;户&nbsp;&nbsp;名:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入用户名" id="username" name="username">
+				手机号码:
+				<input type="text" class="input-text" style="width:150px"  placeholder="请输入手机号码" id="phonenum" name="phonenum">
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name=""><i class="Hui-iconfont"></i>搜用户</button>
 				<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			</div>	

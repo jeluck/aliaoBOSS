@@ -72,6 +72,7 @@ String path = request.getContextPath()+"/uiface";
 				  <option value="充值">用户充值</option>
 				  <option value="提现">主播提现</option>
 			  </select>
+			  邀请人昵称:<input type="text" class="input-text" style="width:150px"  placeholder="请输入邀请人昵称" id="yqnickname" name="yqnickname">
 		  </div>
 		      <div class="text-c" style="margin-top:10px;">			
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
@@ -89,6 +90,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="80">用户id</th>
 				<th width="80">主播昵称</th>
 				<th width="80">收入来源</th>
+				<th width="80">邀请人昵称</th>
 				<th width="80">收入价格</th>
 				<th width="80">结算状态</th>
                 <th width="80">结算时间</th>
@@ -108,6 +110,7 @@ String path = request.getContextPath()+"/uiface";
 				     <c:when test="${map['money_type']=='提现'}"><span style="color:red">主播提现</span></c:when>
 				</c:choose>
 				</td>
+				<td>${map['inviterName']}</td>
 				<td><fmt:formatNumber type="number" value="${map['able_money']}" pattern="0.00" maxFractionDigits="2"/>(元)</td>
 				<td>已结算</td>
 				<td>${map['uptime']}</td>
@@ -236,13 +239,13 @@ function fresh_page(pageIndex) {
     var nickname = $("#nickname").val();
     var uid = $("#uid").val();
     var srly = $("#srly").val();
-	
+    var yqnickname = $("#yqnickname").val();
 	$.ajax({
 		cache: true,
 		type: "POST",
 		//p2开始时间 p3当前页数 p4结束时间 p5 会员 p6积分
 		/* /rz?p0=A-boss-search&p1=cash_withdrawal&p2=1&p3=&p4=&p5=tojsp */
-		url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}&p8="+uid+"&p9="+nickname+"&p10="+srly,
+		url:"<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2="+pageIndex+"&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}&p8="+uid+"&p9="+nickname+"&p10="+srly+"&p11="+yqnickname,
 		async: true,
 		error: function(request) {
 			alert("提交失败 ");
@@ -264,6 +267,7 @@ function fresh_page(pageIndex) {
 				+'<td>'+json[i].upuser_id+'</td>'
 				+'<td>'+json[i].nickname+'</td>'
 				+'<td>'+z+'</td>'
+				+'<td>'+json[i].inviterName+'</td>'
 				+'<td>'+Number(json[i].able_money).toFixed(2)+'(元)</td>'
 				+'<td>已结算</td>'
 				+'<td>'+json[i].uptime+'</td>'
@@ -281,7 +285,7 @@ function fresh_page(pageIndex) {
 			$("#pagelast").html(json[json.length-1].lastcount);
 			$("#total").html(json[json.length-1].totle);
 			$("#currentpage").html(json[json.length-1].pagenum);
-			$("#sum1").html("总收入（元）"+json[0].sum);
+			$("#sum1").html("总收入（元）:"+json[0].sum);
 			
 		}
 	});
@@ -340,8 +344,8 @@ $("#inputExcel").click(function(){
     var nickname = $("#nickname").val();
     var uid = $("#uid").val();
     var srly = $("#srly").val();
-
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=tgsrexecl&p2=1&&&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}&p8="+uid+"&p9="+nickname+"&p10="+srly;
+    var yqnickname = $("#yqnickname").val();
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=tgsrexecl&p2=1&&&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}&p8="+uid+"&p9="+nickname+"&p10="+srly+"&p11="+yqnickname;
     window.open(url);
 });
 function timec() {
