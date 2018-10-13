@@ -115,7 +115,7 @@ String path = request.getContextPath()+"/uiface";
 					<%--<td  id="xing${map['id']}">${map['star']}星  <br>--%>
 					<a title="编辑" href="javascript:;"onclick="xingmod(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a> </td>
 					<td>${map['phonenum']}<a title="编辑" href="javascript:;"onclick="anchor_phonenum(${map['id']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
-					<td>${map['money']} <a title="编辑" href="javascript:;"onclick="czAmount(${map['id']},${map['money']})" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
+					<td>${map['money']} <a title="编辑" href="javascript:;"onclick="czAmount(${map['id']},${map['money']},'<%=request.getSession().getAttribute("username") %>')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 					<%--<td>${map['height']}</td>--%>
 					<%--<td>${map['weight']}</td>--%>
 					<%--<td>${map['constellation']}</td>--%>
@@ -243,6 +243,7 @@ function fresh_page(pageIndex){
 			alert("提交失败 ");
 		},
 		success: function(data){
+			var user="<%=request.getSession().getAttribute("username")%>";
 			var json=eval("("+data+")");
 			var content = '';
 
@@ -289,7 +290,7 @@ function fresh_page(pageIndex){
 					+'<td>'+json[i].phonenum+''
 					 +'<a title="编辑" href="javascript:;"onclick="anchor_phonenum('+json[i].id+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 					+'<td>'+json[i].money+''
-					 +' <a title="编辑" href="javascript:;"onclick="czAmount('+json[i].id+','+json[i].money+')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
+					 +' <a title="编辑" href="javascript:;"onclick="czAmount('+json[i].id+','+json[i].money+',\''+user+'\')" class="ml-5" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a></td>'
 					// +'<td>'+json[i].height+'</td>'
 					// +'<td>'+json[i].weight+'</td>'
 					// +'<td>'+json[i].constellation+'</td>'
@@ -549,14 +550,14 @@ function anchor_phonenum(id){
     }
 }
 
-function czAmount(id,m){
+function czAmount(id,m,u){
     var age = prompt("请充值输入金额","");
     var men = parseInt(age)+parseInt(m);
     if(age!=null && age!=""){
         layer.confirm('确认输入以上内容？',function(index){
             $.ajax({
                 type:'POST',
-                url: '<%=path%>/rp?p0=A-boss-mod&p1=czAmount&p2='+id+'&p3='+men,
+                url: '<%=path%>/rp?p0=A-boss-mod&p1=czAmount&p2='+id+'&p3='+men+'&p4='+u,
                 success: function(data){
                     if(data='1'){
                         fresh_page(Number($("#currentpage").html()));

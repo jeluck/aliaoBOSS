@@ -14,7 +14,7 @@ String adminname ="";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="date" content="2013-10-23">
-<title>A聊商家管理后台</title>
+<title>钻石商家管理后台</title>
 
 <link href="<%=path %>1/boss/admin_login.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">

@@ -115,7 +115,7 @@ String path = request.getContextPath()+"/uiface";
 				     <c:when test="${map['money_type']=='提现'}"><span style="color:red">主播提现</span></c:when>
 				</c:choose>
 				</td>
-				<td>${map['up_agentid']}</td>
+				<td>${map['promoter_id']}</td>
 				<td><fmt:formatNumber type="number" value="${map['able_money']}" pattern="0.00" maxFractionDigits="2"/>(元)</td>
 				<td>已结算</td>
 				<td>${map['uptime']}</td>
@@ -272,7 +272,7 @@ function fresh_page(pageIndex) {
 				+'<td>'+json[i].upuser_id+'</td>'
 				+'<td>'+json[i].nickname+'</td>'
 				+'<td>'+z+'</td>'
-				+'<td>'+json[i].up_agentid+'</td>'
+				+'<td>'+json[i].promoter_id+'</td>'
 				+'<td>'+Number(json[i].able_money).toFixed(2)+'(元)</td>'
 				+'<td>已结算</td>'
 				+'<td>'+json[i].uptime+'</td>'

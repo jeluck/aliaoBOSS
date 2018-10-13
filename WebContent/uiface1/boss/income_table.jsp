@@ -129,7 +129,7 @@ String path = request.getContextPath()+"/uiface";
 				<td>${map['user_id']}</td>
 				<td>${map['nickname']}</td>
 				<td>${map['type']}</td>
-				<td>${map['up_agentid']}</td>
+				<td>${map['promoter_id']}</td>
 				<td> <fmt:formatNumber type="number" value="${map['money']}" pattern="0.00" maxFractionDigits="2"/>(钻石)</td>
 				<td>已结算</td>
 				<td>${map['time']}</td>
@@ -291,7 +291,7 @@ function fresh_page(pageIndex) {
 				+'<td>'+json[i].user_id+'</td>'
 				+'<td>'+json[i].nickname+'</td>'
 				+'<td>'+json[i].type+'</td>'
-                    +'<td>'+json[i].up_agentid+'</td>'
+                    +'<td>'+json[i].promoter_id+'</td>'
 				+'<td>'+Number(json[i].money).toFixed(2)+'(钻石)</td>'
 				+'<td>已结算</td>'
 				+'<td>'+json[i].time+'</td>'

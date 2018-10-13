@@ -124,8 +124,9 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		String sql="update user_data set money='"+arg[3]+"' where id="+arg[2];
 		log.send(DataType.basicType, "01162", "充值",  sql);
 		sqlUtil.sql_exec(sql);
-		sql = "INSERT INTO order_management(`user_id`, `pay_type`, `pay_price`, `pay_value`, `pay_what`, `pay_status`, `order_num`, `pay_time`) " +
-				"VALUES ("+arg[2]+", '现金', '"+money+"', '"+money+"', '充值', '已付款', '"+s+"', now());";
+		
+		sql = "INSERT INTO order_management(`user_id`, `pay_type`, `pay_price`, `pay_value`, `pay_what`, `pay_status`, `order_num`, `pay_time`,`create_name`) " +
+				"VALUES ("+arg[2]+", '现金', '"+money+"', '"+money+"', '充值', '已付款', '"+s+"', now(),'"+arg[4]+"');";
 		log.send(DataType.basicType, "01162", "充值记录", sql);
 		sqlUtil.sql_exec(sql);
 		inOutUtil.return_ajax("1");
@@ -2978,7 +2979,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("ID");
 		listOne.add("用户名");
 		listOne.add("昵称");
-		listOne.add("邀请人昵称");
+		listOne.add("邀请人ID");
 		listOne.add("推荐分类");
 		listOne.add("手机号码");
 		listOne.add("账户余额");
@@ -2992,7 +2993,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("id").toString());
 			arrayList.add(map.get("username").toString());
 			arrayList.add(map.get("nickname").toString());
-			arrayList.add(map.get("inviterName").toString());
+			arrayList.add(map.get("promoter_id").toString());
 			if(StringUtils.isNotEmpty(map.get("star").toString())){
 				if(map.get("star").toString().equals("1")){
 					arrayList.add("热门");
@@ -3047,7 +3048,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("ID");
 		listOne.add("主播昵称");
 		listOne.add("收入来源");
-		listOne.add("邀请人昵称");
+		listOne.add("邀请人ID");
 		listOne.add("收入价格");
 		listOne.add("结算状态");
 		listOne.add("结算时间");
@@ -3057,7 +3058,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("user_id").toString());
 			arrayList.add(map.get("nickname").toString());
 			arrayList.add(map.get("type").toString());
-			arrayList.add(map.get("inviterName").toString());
+			arrayList.add(map.get("promoter_id").toString());
 			arrayList.add(map.get("money").toString());
 			arrayList.add("已结算");
 			arrayList.add(map.get("time").toString());
@@ -3076,7 +3077,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("ID");
 		listOne.add("用户名");
 		listOne.add("昵称");
-		listOne.add("邀请人昵称");
+		listOne.add("邀请人ID");
 		listOne.add("性别");
 		listOne.add("手机号码");
 		listOne.add("账户余额");
@@ -3088,7 +3089,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("id").toString());
 			arrayList.add(map.get("username").toString());
 			arrayList.add(map.get("nickname").toString());
-			arrayList.add(map.get("inviterName").toString());
+			arrayList.add(map.get("promoter_id").toString());
 			arrayList.add(map.get("gender").toString());
 			arrayList.add(map.get("phonenum").toString());
 			arrayList.add(map.get("money").toString());
@@ -3155,7 +3156,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("ID");
 		listOne.add("主播昵称");
 		listOne.add("收入来源");
-		listOne.add("邀请人昵称");
+		listOne.add("邀请人ID");
 		listOne.add("收入价格");
 		listOne.add("结算状态");
 		listOne.add("结算时间");
@@ -3171,7 +3172,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			}else{
 				arrayList.add("");
 			}
-			arrayList.add(map.get("inviterName").toString());
+			arrayList.add(map.get("promoter_id").toString());
 			arrayList.add(map.get("able_money").toString()+"元");
 			arrayList.add("已结算");
 			arrayList.add(map.get("uptime").toString());
@@ -3526,8 +3527,10 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		ArrayList<Map<String, Object>> list = sqlUtil.get_list(sql1);
 		log.send(DataType.basicType, "01156", "admin_login()-list: ", list);
 		String power = list.get(0).get("power") + "";
+		String admin = list.get(0).get("username") + "";
 		HttpSession session = request.getSession();
 		session.setAttribute("admin", "success");
+		session.setAttribute("username", admin);
 		session.setAttribute("power", power);
 		session.setMaxInactiveInterval(60 * 60 * 5);
 		if (list.size() == 1) {
