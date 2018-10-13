@@ -27,6 +27,7 @@ String path = request.getContextPath()+"/uiface";
 <![endif]-->
 <style>
 	.td-manage .ml-5 .Hui-iconfont {
+
 		font-size: 18px;
 	}
 </style>
