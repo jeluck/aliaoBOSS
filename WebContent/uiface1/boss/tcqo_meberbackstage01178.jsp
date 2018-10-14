@@ -79,6 +79,8 @@ String path = request.getContextPath()+"/uiface";
 				<th width="40">是否在线</th>
 				<th width="40">分享收入</th>
 				<th width="40">操作</th>
+				<th width="40">账号状态</th>
+				<th width="40">操作</th>
 			</tr>
 		</thead>
 		<tbody id="list-content">
@@ -105,6 +107,14 @@ String path = request.getContextPath()+"/uiface";
 					</c:choose>
 					<td><a style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p1=income_table_search1&p2=&p3=&p4=&p5=tojsp&p6=&p7=${map['id']}" >查看详情</a></td>
 					<td><button type="button" class="btn btn-success radius" id="czpass" onclick="czpass(${map['id']})" ><i class="Hui-iconfont"></i>重置密码</button></td>
+					<c:choose>
+						<c:when test="${map['is_banned']!='1' }"><td>正常</td></c:when>
+						<c:when test="${map['is_banned']=='1' }"><td>封禁</td></c:when>
+					</c:choose>
+					<td class="td-manage">
+						<a title="封禁" onclick="banned(${map['id']})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">封禁</i></a>
+						<a title="解封" onclick="no_banned(${map['id']})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">解封</i></a>
+					</td>
 				</tr>
 			</c:forEach>
 			
@@ -229,6 +239,12 @@ function fresh_page(pageIndex){
 				}  else if(json[i].online=='2'){
 					online='在聊';
 				}
+                var banned="";
+                if(json[i].is_banned=='1'){
+                    banned='封禁';
+                }else{
+                    banned='正常';
+                }
 				 content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].id+'</td>'
@@ -250,8 +266,11 @@ function fresh_page(pageIndex){
 					+'<td>'+online+'</td>'
 					+'<td><a  style="color: blue;" href="<%=path%>/rp?p0=A-boss-search&p=income_table_search1&p2=&p3=&p4=&p5=tojsp&p6=&p7='+json[i].id+'" >查看详情</a></td>'
 				 	+'<td><button type="button" class="btn btn-success radius" id="czpass" onclick="czpass('+json[i].id+')" ><i class="Hui-iconfont"></i>重置密码</button></td>'
-					/* +'<td class="td-manage">'
-					+shezhi1+'</td>' */; 
+					+'<td>'+banned+'</td>'
+                     +'<td class="td-manage">'
+                     +'<a title="封禁" href="javascript:;" onclick="banned('+json[i].id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">封禁</i></a>'
+                     +'<a title="解封" href="javascript:;" onclick="no_banned('+json[i].id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">解封</i></a>'
+                     +'</td>'
 			}
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
@@ -371,7 +390,46 @@ function czAmount(id,m,u){
         });
     }
 }
+function banned(id){
+    /* age = prompt("请输入未通过原因","");
+    layer.confirm('确认输入以上内容？',function(index){ */
 
+    $.ajax({
+        type:'POST',
+        url: '<%=path%>/rp?p0=A-boss-mod&p1=anchor_banned&p2='+id,
+        success: function(data){
+            /*$(obj).parents("tr").remove();*/
+            layer.msg('操作成功',{icon:1,time:1000});
+            setTimeout(function () {
+                javascript:location.replace(location.href);
+            }, 1000);
+        },
+        error:function(data) {
+            alert('通过失败');
+        },
+    });
+    /* }); */
+}
+function no_banned(id){
+    /* age = prompt("请输入未通过原因","");
+    layer.confirm('确认输入以上内容？',function(index){ */
+
+    $.ajax({
+        type:'POST',
+        url: '<%=path%>/rp?p0=A-boss-mod&p1=banned_cancel&p2='+id,
+        success: function(data){
+            /*$(obj).parents("tr").remove();*/
+            layer.msg('操作成功',{icon:1,time:1000});
+            setTimeout(function () {
+                javascript:location.replace(location.href);
+            }, 1000);
+        },
+        error:function(data) {
+            alert('通过失败');
+        },
+    });
+    /* }); */
+}
 function czpass(id){
     var age = prompt("请输入密码","");
     if(age!=null && age!=""){
