@@ -130,8 +130,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 				"VALUES ("+id+", '现金', '"+czMoney+"', '"+czMoney+"', '充值', '已付款', '"+s+"', now(),'"+arg[4]+"');";
 		log.send(DataType.basicType, "01162", "充值记录", sql);
 		sqlUtil.sql_exec(sql);
-        sql="insert into income_details (user_id,time,type,money,operation) values ('"+id+"',now(),'充值',"+czMoney+",'已到账')";
-        sqlUtil.sql_exec(sql);
+//        sql="insert into income_details (user_id,time,type,money,operation) values ('"+id+"',now(),'充值',"+czMoney+",'已到账')";
+//        sqlUtil.sql_exec(sql);
 
         ArrayList<Map<String, Object>> listcast=null;
         ArrayList<Map<String, Object>> list1=null;
@@ -195,8 +195,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
                     sql = "update user_data set invite_price = invite_price+" + oneable_money + ",ableinvite_price=ableinvite_price+" + oneable_money + " where id=" + oneid + " ";
                     log.send("01158", "sql", sql);
                     sqlUtil.sql_exec(sql);
-                    sql = "insert into income_details (user_id,time,type,money,operation,pay_id)values(" + oneid + ",now(),'充值分成','" + oneable_money + "','已到账','" + id + "')";
-                    sqlUtil.sql_exec(sql);
+//                    sql = "insert into income_details (user_id,time,type,money,operation,pay_id)values(" + oneid + ",now(),'充值分成','" + oneable_money + "','已到账','" + id + "')";
+//                    sqlUtil.sql_exec(sql);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -219,8 +219,8 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 					sql = "update user_data set invite_price = invite_price+" + twoable_money + ",ableinvite_price=ableinvite_price+" + twoable_money + " where id=" + twoid + " ";
 					log.send("01158", "sql", sql);
 					sqlUtil.sql_exec(sql);
-					sql = "insert into income_details (user_id,time,type,money,operation,pay_id)values(" + twoid + ",now(),'充值分成','" + twoable_money + "','已到账','" + id + "')";
-					sqlUtil.sql_exec(sql);
+//					sql = "insert into income_details (user_id,time,type,money,operation,pay_id)values(" + twoid + ",now(),'充值分成','" + twoable_money + "','已到账','" + id + "')";
+//					sqlUtil.sql_exec(sql);
 				}
             }
         }
