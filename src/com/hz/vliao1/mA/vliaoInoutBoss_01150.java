@@ -3160,6 +3160,15 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("money") == null?"":map.get("money").toString());
 			arrayList.add("已结算");
 			arrayList.add(map.get("time") == null?"":map.get("time").toString());
+            if(StringUtils.isNotEmpty(map.get("is_banned").toString())){
+                if(map.get("is_banned").toString().equals("1")){
+                    arrayList.add("封禁");
+                }else{
+                    arrayList.add("正常");
+                }
+            }else{
+                arrayList.add("正常");
+            }
 			listForExport.add(arrayList);
 		}
 		response.reset();
@@ -3182,6 +3191,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("账户余额");
 		listOne.add("注册时间");
 		listOne.add("是否在线");
+        listOne.add("账号状态");
 		listForExport.add(listOne);
 		for (Map map : list) {
 			List<String> arrayList = new ArrayList<String>();
