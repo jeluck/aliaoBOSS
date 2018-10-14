@@ -117,18 +117,114 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	}
 
 	private void czAmount(String[] arg) throws SQLException, IOException,
-			ServletException {
-		int i=(int)(Math.random()*900)+100;
-		String s = getDate() + i;
-		String money = sqlUtil.get_string("select (" + arg[3] + "-money) mo from user_data where id=" + arg[2]);
-		String sql="update user_data set money='"+arg[3]+"' where id="+arg[2];
+            ServletException {
+		int y=(int)(Math.random()*900)+100;
+		String s = getDate() + y;
+		String id = arg[2];
+        String money = arg[3];
+		String czMoney = sqlUtil.get_string("select (" + money + "-money) mo from user_data where id=" + id);
+		String sql="update user_data set money='"+money+"' where id="+id;
 		log.send(DataType.basicType, "01162", "充值",  sql);
 		sqlUtil.sql_exec(sql);
-		
 		sql = "INSERT INTO order_management(`user_id`, `pay_type`, `pay_price`, `pay_value`, `pay_what`, `pay_status`, `order_num`, `pay_time`,`create_name`) " +
-				"VALUES ("+arg[2]+", '现金', '"+money+"', '"+money+"', '充值', '已付款', '"+s+"', now(),'"+arg[4]+"');";
+				"VALUES ("+id+", '现金', '"+czMoney+"', '"+czMoney+"', '充值', '已付款', '"+s+"', now(),'"+arg[4]+"');";
 		log.send(DataType.basicType, "01162", "充值记录", sql);
 		sqlUtil.sql_exec(sql);
+        sql="insert into income_details (user_id,time,type,money,operation) values ('"+id+"',now(),'充值',"+czMoney+",'已到账')";
+        sqlUtil.sql_exec(sql);
+
+        ArrayList<Map<String, Object>> listcast=null;
+        ArrayList<Map<String, Object>> list1=null;
+        ArrayList<Map<String, Object>> list2=null;
+        ArrayList<Map<String, Object>> list3=null;
+        int realmoney=Integer.parseInt(czMoney);
+        //一级分销
+        sql="select * from user_data where id="+id;
+        log.send("01158", "sql", sql);
+        list1=sqlUtil.get_list(sql);
+
+
+        if(list1.get(0).get("gender").equals("女")&&!list1.get(0).get("is_anchor").equals("1")&&!list1.get(0).get("is_v").equals("1")){
+			inOutUtil.return_ajax("1");
+            return;
+        }
+        if(list1.size() > 0) {
+            String oneid = list1.get(0).get("promoter_id").toString();
+            log.send("01115", "支付成功的回调：--上级ID", oneid);
+            if (!oneid.equals("") && !oneid.equals("0")) {
+                try {
+                    sql = "select * from user_data where id='" + oneid + "'";
+                    list3 = sqlUtil.get_list(sql);
+                    Date date = new Date();
+                    SimpleDateFormat smp = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date1 = smp.parse(list1.get(0).get("register_time") + "");
+                    int a = (int) ((date.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+                    log.send("01115", "支付成功的回调：相差多少天", a);
+                    int invite_amountthisweek = Integer.parseInt(list3.get(0).get("invite_amountthisweek") + "");
+                    sql = "select * from reward_percentmanager";
+                    list2 = sqlUtil.get_list(sql);
+                    log.send("01115", "支付成功的回调：--查询动态奖励表", sql);
+                    sql = "select * from fixed_percentmanager";
+                    listcast = sqlUtil.get_list(sql);
+                    log.send("01115", "支付成功的回调：--查询固定奖励表", sql);
+                    String reward_percent = "";
+                    String isv = "0";
+                    Double oneable_money = 0.0;
+                    if (a < 90) {
+                        if (invite_amountthisweek < 21) {
+                            reward_percent = list2.get(0).get("male_percent") + "";
+                            oneable_money = Double.parseDouble(reward_percent) * realmoney;
+                        } else if (invite_amountthisweek >= 21 && invite_amountthisweek < 50) {
+                            reward_percent = list2.get(1).get("male_percent") + "";
+                            oneable_money = Double.parseDouble(reward_percent) * realmoney;
+
+                        } else {
+                            reward_percent = list2.get(2).get("male_percent") + "";
+                            oneable_money = Double.parseDouble(reward_percent) * realmoney;
+                        }
+                    } else if (a > 90 && a < 180) {
+                        reward_percent = listcast.get(0).get("male_percent") + "";
+                        oneable_money = Double.parseDouble(reward_percent) * realmoney;
+                    } else {
+                        reward_percent = listcast.get(1).get("male_percent") + "";
+                        oneable_money = Double.parseDouble(reward_percent) * realmoney;
+                    }
+                    sql = "insert into tuiguang_detail (upuser_id,downuser_id,is_dv,levle,money_type,money_num,scale_num,able_money,uptime) values ('" + oneid + "','" + id + "','" + isv + "',1,'充值','" + realmoney + "','" + reward_percent + "','" + oneable_money + "',now())";
+                    log.send("01158", "sql", sql);
+                    sqlUtil.sql_exec(sql);
+                    sql = "update user_data set invite_price = invite_price+" + oneable_money + ",ableinvite_price=ableinvite_price+" + oneable_money + " where id=" + oneid + " ";
+                    log.send("01158", "sql", sql);
+                    sqlUtil.sql_exec(sql);
+                    sql = "insert into income_details (user_id,time,type,money,operation,pay_id)values(" + oneid + ",now(),'充值分成','" + oneable_money + "','已到账','" + id + "')";
+                    sqlUtil.sql_exec(sql);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            //二级分销
+            sql = "select * from user_data where id=" + id;
+            log.send("01158", "sql", sql);
+            list1 = sqlUtil.get_list(sql);
+
+            if (list1.size() > 0) {
+                String isv = "0";
+				String twoid = list1.get(0).get("twopromoter_id").toString();
+				if(StringUtils.isNotEmpty(twoid) && !twoid.equals("0")){
+					list1 = sqlUtil.get_list("select * from cash_set");
+					String sacletwo = list1.get(0).get("cash_twofee").toString();
+					Double twoable_money = Double.parseDouble(sacletwo) * realmoney;
+					sql = "insert into tuiguang_detail (upuser_id,downuser_id,is_dv,levle,money_type,money_num,scale_num,able_money,uptime) values ('" + twoid + "','" + id + "','" + isv + "',2,'充值','" + realmoney + "','" + sacletwo + "','" + twoable_money + "',now())";
+					log.send("01158", "sql", sql);
+					sqlUtil.sql_exec(sql);
+					sql = "update user_data set invite_price = invite_price+" + twoable_money + ",ableinvite_price=ableinvite_price+" + twoable_money + " where id=" + twoid + " ";
+					log.send("01158", "sql", sql);
+					sqlUtil.sql_exec(sql);
+					sql = "insert into income_details (user_id,time,type,money,operation,pay_id)values(" + twoid + ",now(),'充值分成','" + twoable_money + "','已到账','" + id + "')";
+					sqlUtil.sql_exec(sql);
+				}
+            }
+        }
+
 		inOutUtil.return_ajax("1");
 	}
 
@@ -598,7 +694,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	private void jujue_money(String[] arg) throws SQLException, IOException,
 			ServletException {
 		// TODO Auto-generated method stub
-
+		sqlUtil.sql_exec("update cash_withdrawl set create_name='"+arg[3]+"' where id="+arg[2]);
 		String sql = sqlmface.modSqlface(0, arg);
 		log.send(DataType.basicType, "01162", "修改分销提成比例-sql", sql);
 		sqlUtil.sql_exec(sql);
@@ -616,6 +712,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 	 */
 	private void response_money(String[] arg) throws SQLException, IOException,
 			ServletException {
+
 		String sql = sqlmface.modSqlface(0, arg);
 		list = sqlUtil.get_list(sql);
 		if (list.size() == 1) {
@@ -736,6 +833,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 							+ list.get(0).get("cash").toString()
 							+ " 元的提现申请已经通过，请注意查看！");
 					send.run();
+					sqlUtil.sql_exec("update cash_withdrawl set create_name='"+arg[3]+"' where id="+arg[2]);
 					inOutUtil.return_ajax(jsonadd);
 				} else {
 					String[] newarg = new String[3];
@@ -3205,6 +3303,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("提现名称");
 		listOne.add("提现状态");
 		listOne.add("提现操作状态");
+		listOne.add("操作人");
 		listForExport.add(listOne);
 		for (Map map : list) {
 			List<String> arrayList = new ArrayList<String>();
@@ -3216,6 +3315,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("account_name").toString());
 			arrayList.add(map.get("status").toString());
 			arrayList.add(map.get("msg").toString());
+			arrayList.add(map.get("create_name")==null?"":map.get("create_name").toString());
 			listForExport.add(arrayList);
 		}
 		response.reset();
@@ -3243,6 +3343,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("提现名称");
 		listOne.add("提现状态");
 		listOne.add("提现操作状态");
+		listOne.add("操作人");
 		listForExport.add(listOne);
 		for (Map map : list) {
 			List<String> arrayList = new ArrayList<String>();
@@ -3254,6 +3355,7 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("account_name").toString());
 			arrayList.add(map.get("status").toString());
 			arrayList.add(map.get("msg").toString());
+			arrayList.add(map.get("create_name")==null?"":map.get("create_name").toString());
 			listForExport.add(arrayList);
 		}
 		response.reset();

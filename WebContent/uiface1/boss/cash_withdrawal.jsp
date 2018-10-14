@@ -32,7 +32,8 @@ String path = request.getContextPath()+"/uiface";
 </nav>
 <div class="page-container">
 	  <div class="mt-20">
-			<!-- <div class="text-c">	
+		  <input type="hidden" name="xxusername" id="xxusername" value="<%=request.getSession().getAttribute("username") %>"  />
+			<!-- <div class="text-c">
 			                日期范围：
 				<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;" name="">
 				
@@ -97,6 +98,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="80">提现名称</th>
 				<th width="80">提现状态</th>
 				<th width="80">提现操作状态</th>
+				<th width="80">操作人</th>
 		   <!-- <th width="100">提现明细</th> -->
 			</tr>
 		</thead>
@@ -115,19 +117,19 @@ String path = request.getContextPath()+"/uiface";
 					<c:choose>
 						<c:when test="${map['status']=='已提现'}"><span>提现成功</span></c:when>
 						<c:when test="${map['status']=='拒绝提现'}"><span>拒绝提现</span></c:when>
-						<c:when test="${map['status']=='申请中'}"><input  type="button" href="javascript:;" class="btn btn-success radius" onclick="response_money(this,${map['id']})" value="确定">
-						
-						<input  type="button" href="javascript:;" class="btn btn-warning radius" onclick="jujue_money(this,${map['id']})" value="拒绝">
-						
+						<c:when test="${map['status']=='申请中'}">
+							<input  type="button" href="javascript:;" class="btn btn-success radius" onclick="response_money(this,${map['id']})" value="确定">
+							<input  type="button" href="javascript:;" class="btn btn-warning radius" onclick="jujue_money(this,${map['id']})" value="拒绝">
 						</c:when>
 					</c:choose>
 				</th>
 				<td>${map['msg']}</td>
+				<td>${map['create_name']}</td>
 			</tr>
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['cash']}"/>
 		</c:forEach>
 		<tr>
-		<td colspan="9">当页提现金额:${nodeValue}</td>
+		<td colspan="10">当页提现金额:${nodeValue}</td>
 		</tr>	
 		</tbody>
 	</table>
@@ -248,7 +250,10 @@ function fresh_page(pageIndex) {
 				}else if(json[i].status=='拒绝提现'){
 					z = '<span>拒绝提现</span>';
 				}
-				
+               	var cname = "";
+				if(json[i].create_name != "" && json[i].create_name!= "null"){
+                    cname = json[i].create_name;
+				}
 				
 				content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
@@ -260,13 +265,14 @@ function fresh_page(pageIndex) {
 					+'<td>'+json[i].account_name+'</td>'
 					+'<td>'+z+'</td>'
 					+'<td>'+json[i].msg+'</td>'
+					+'<td>'+cname+'</td>'
 					/* +'<td>'+b+'</td>' */
 					+'</tr>';
 				var a = Number(json[i].cash);
 				sum = sum+a;
 			}
 			content +='<tr>'
-					+'<td  colspan="9"> 当页收入:'+sum+'</td>'
+					+'<td  colspan="10"> 当页收入:'+sum+'</td>'
 					+'</tr>';
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
@@ -281,11 +287,12 @@ function fresh_page(pageIndex) {
 }
 
 		function jujue_money(obj,id){
+            var xxusername = $("#xxusername").val();
 			layer.confirm('拒绝提现给用户？',function(index){
 
 				$.ajax({
 					type: 'POST',
-					url: '<%=path%>/rp?p0=A-boss-mod&p1=jujue_money&p2='+id,
+					url: '<%=path%>/rp?p0=A-boss-mod&p1=jujue_money&p2='+id+'&p3='+xxusername,
 					success: function(data){
 						/*$(obj).parents("tr").remove();*/
 						layer.msg(data,{icon:1,time:1000});
@@ -300,11 +307,11 @@ function fresh_page(pageIndex) {
 			});
 		}
 function response_money(obj,id){
+    var xxusername = $("#xxusername").val();
 	layer.confirm('确认提现给用户？',function(index){
-
 		$.ajax({
 			type: 'POST',
-			url: '<%=path%>/rp?p0=A-boss-mod&p1=response_money&p2='+id,
+			url: '<%=path%>/rp?p0=A-boss-mod&p1=response_money&p2='+id+'&p3='+xxusername,
 			success: function(data){
 				/*$(obj).parents("tr").remove();*/
 				layer.msg(data,{icon:1,time:1000});

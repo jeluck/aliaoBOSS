@@ -22,7 +22,7 @@ String path = request.getContextPath()+"/uiface";
 </head>
 <body>
 <nav class="breadcrumb">
-	<i class="Hui-iconfont">&#xe67f;</i> 首页 
+	<i class="Hui-iconfont">&#xe67f;</i> 首页
 	<span class="c-gray en">&gt;</span> 充提管理
 	<span class="c-gray en">&gt;</span> 推广提现明细
 	<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
@@ -30,6 +30,7 @@ String path = request.getContextPath()+"/uiface";
 	</a>
 </nav>
 <div class="page-container">
+	<input type="hidden" name="xxusername" id="xxusername" value="<%=request.getSession().getAttribute("username") %>"  />
 	  <div class="mt-20">
 			<div class="text-c">
 	          <span>查询方式</span>
@@ -87,7 +88,7 @@ String path = request.getContextPath()+"/uiface";
 				<th width="80">提现名称</th>
 				<th width="80">提现状态</th>
 				<th width="80">提现操作状态</th>
-	
+				<th width="80">操作人</th>
 			</tr>
 		</thead>
 		<tbody id="list-content" >
@@ -118,12 +119,13 @@ String path = request.getContextPath()+"/uiface";
 					</c:choose>
 				</th>
 				<td>${map['msg']}</td>
+				<td>${map['create_name']}</td>
 				<%-- <td><a title="个人提现明细" href="javascript:;" onclick="client_geren('个人提现明细','<%=path%>/rp/p0=A-boss-search&p1=cashwithdrawal&p2=1&p3=${map['user_id']}&p4=tojsp','600','510')" style="color:blue">个人提现明细</a></td> --%>
 			</tr>
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['cash']}"/>
 		</c:forEach>
 		<tr>
-		<td colspan="9">当页提现金额:${nodeValue}</td>
+		<td colspan="10">当页提现金额:${nodeValue}</td>
 		</tr>	
 		</tbody>
 	</table>
@@ -247,7 +249,12 @@ function fresh_page(pageIndex) {
 				}else if(json[i].status=='拒绝提现'){
 					z = '<span>拒绝提现</span>';
 				}
-				content +='<tr class="text-c">'
+                var cname = "";
+                if(json[i].create_name != "" && json[i].create_name!= "null"){
+                    cname = json[i].create_name;
+                }
+
+                content +='<tr class="text-c">'
 					+'<td>'+(Number(json[json.length-1].current)+1+i)+'</td>'
 					+'<td>'+json[i].user_id+'</td>'
 					+'<td>'+json[i].nickname+'</td>'
@@ -257,13 +264,14 @@ function fresh_page(pageIndex) {
 					+'<td>'+json[i].account_name+'</td>'
 					+'<td>'+z+'</td>'
 					+'<td>'+json[i].msg+'</td>'
+                    +'<td>'+cname+'</td>'
 					/* +'<td>'+b+'</td>' */
 					+'</tr>';
 				var a = Number(json[i].cash);
 				sum = sum+a;
 			}
 			content +='<tr>'
-					+'<td  colspan="9"> 当页收入:'+sum+'</td>'
+					+'<td  colspan="10"> 当页收入:'+sum+'</td>'
 					+'</tr>';
 			$("#list-content").html(content);
 			totalpage = Number(json[json.length-1].totlePage);
@@ -277,11 +285,12 @@ function fresh_page(pageIndex) {
 }
 
 function jujue_money(obj,id){
+    var xxusername = $("#xxusername").val();
 	layer.confirm('拒绝提现给用户？',function(index){
 
 		$.ajax({
 			type: 'POST',
-			url: '<%=path%>/rp?p0=A-boss-mod&p1=jujue_money&p2='+id,
+			url: '<%=path%>/rp?p0=A-boss-mod&p1=jujue_money&p2='+id+'&p3='+xxusername,
 			success: function(data){
 				/*$(obj).parents("tr").remove();*/
 				layer.msg(data,{icon:1,time:1000});
@@ -296,11 +305,12 @@ function jujue_money(obj,id){
 	});
 }
 function response_money(obj,id){
+    var xxusername = $("#xxusername").val();
 	layer.confirm('确认提现给用户？',function(index){
 
 		$.ajax({
 			type: 'POST',
-			url: '<%=path%>/rp?p0=A-boss-mod&p1=response_money&p2='+id,
+			url: '<%=path%>/rp?p0=A-boss-mod&p1=response_money&p2='+id+'&p3='+xxusername,
 			success: function(data){
 				/*$(obj).parents("tr").remove();*/
 				layer.msg(data,{icon:1,time:1000});

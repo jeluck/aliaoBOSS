@@ -22,7 +22,10 @@
 <title>认证进度查看</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 认证管理 <span class="c-gray en">&gt;</span> <!-- 文章列表  --><a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb">
+	<i class="Hui-iconfont">&#xe67f;</i> 首页
+	<span class="c-gray en">&gt;</span> 认证管理
+	<span class="c-gray en">&gt;</span> 待审核 <!-- 文章列表  --><a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="mt-20">
 	<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper ">
@@ -37,7 +40,7 @@
 				<!--<th width="40">身高</th>-->
 				<!--<th width="40">体重</th>-->
 				<th width="40">认证图片</th>
-			
+				<th width="40">视频</th>
 				<!--<th width="40">星座</th>-->
 				<th width="40">所在城市</th>
 				<th width="40">个人介绍</th>
@@ -61,6 +64,7 @@
 					onclick="system_category_edit('认证图片','<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch&p2=${map['user_id'] }&p3=0','600','510')"
 					style="text-decoration: none;color:blue;" class="ml-5">点击查看图片</a>
 				</td>
+				<td><a href="javascript:;" onclick="view_video('视频','${map['video'] }','600','600')"  style="text-decoration: none;color:blue;" class="ml-5">点击查看视频</a> </td>
 				<!--<td>${map['constellation'] }</td>-->
 				<td>${map['city'] }</td>
 				<td>${map['intro'] }</td>
@@ -108,20 +112,16 @@ function fresh_page(pageIndex) {
 				var json=eval("("+data+")");
 				var content = '';
 				for(var i = 0;i<json.length-1;i++){
-					
-				
-						
-					
+
+					var video = "'"+json[i].video+"'";
 					content += '<tr class = "text-c">'
 							+'<td>' +(Number(json[json.length-1].current)+1+i)+'</td>'
 							+'<td>'+json[i].user_id+'</td>'
 							+'<td>'+json[i].nickname+'</td>'
 							+'<td>'+json[i].phonenum+'</td>'
-							+'<td>'+json[i].height+'</td>'
-							+'<td>'+json[i].weight+'</td>'
 						    +'<td><a href="javascript:;" onclick="system_category_edit(\'认证图片\',\'<%=path %>/rp?p0=A-boss-search&p1=renzheng_photosearch&p2='+json[i].id+'&p3=0\',\'600\',\'510\')"  ><span style="color:blue;">点击查看图片</span></a></td>'
-						  
-						    +'<td>'+json[i].constellation+'</td>'
+						  	+'<td><a href="javascript:;" onclick="view_video(\'视频\','+video+',\'600\',\'600\')"  style="text-decoration: none;color:blue;" class="ml-5">点击查看视频</a> </td>'
+						    // +'<td>'+json[i].constellation+'</td>'
 						    +'<td>'+json[i].city+'</td>'
 						    +'<td>'+json[i].intro+'</td>'
 						    +'<td>'+json[i].label+'</td>'
@@ -197,6 +197,14 @@ $("#btn-search").click(function(){
 function system_category_edit(title,url,w,h){
 	layer_show(title,url,w,h);
 }
+
+ function view_video(title,url,w,h){
+    if(url == "" ||url == "null" ){
+        layer.msg('不存在视频',{icon:1,time:1000});
+        return;
+	}
+     layer_show(title,url,w,h);
+ }
 function system_category_edit1(id,userid,job){
 	//layer_show(title,url,w,h);
 	
