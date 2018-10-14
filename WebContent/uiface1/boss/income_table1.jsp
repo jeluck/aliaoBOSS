@@ -81,7 +81,9 @@ String path = request.getContextPath()+"/uiface";
 		  </div>
 		      <div class="text-c" style="margin-top:10px;">			
 				<button type="submit" class="btn btn-success radius" id="searchbtn" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
-				  <button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
+				  <c:if test="${result[0].pagesign != '1'}">
+				 	 <button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
+				  </c:if>
 			</div> 
 			<span id="sum1">总收入（元）:${reList[0].sum}</span>
 		</div>

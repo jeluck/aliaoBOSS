@@ -426,12 +426,17 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			break;
 		case "anchorsrexecl":
 			if(current==0){
-				ressql="select c.*,u.*,IFNULL(u2.nickname, '') inviterName from income_details c,user_data u left join  user_data u2 on u.promoter_id = u2.id  where c.user_id = u.id  ";
+				if(arg.length > 12 && StringUtils.isNotEmpty(arg[12])){
+					ressql="select *,IFNULL((select nickname from user_data u2 where c.user_id=u2.id),\"\") nickname," +
+							"IFNULL((select promoter_id from user_data u2 where c.user_id=u2.id),\"\") promoter_id from income_details c ";
+				}else{
+					ressql="select * from income_details c,user_data u where c.user_id = u.id  ";
+				}
 				if(arg.length > 4 && StringUtils.isNotEmpty(arg[3]) && StringUtils.isNotEmpty(arg[4])) {
-					ressql += "and c.time between '" + arg[3] + " 00:00:01' and '" + arg[4] + " 23:59:59'";
+					ressql += " and c.time between '" + arg[3] + " 00:00:01' and '" + arg[4] + " 23:59:59'";
 				}
 				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])) {
-					ressql += "and c.time like '%" + arg[6] + "%'";
+					ressql += " and c.time like '%" + arg[6] + "%'";
 				}
 				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 					ressql +=" and c.type='"+arg[8]+"'";
@@ -445,14 +450,14 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 				if(arg.length > 11 && StringUtils.isNotEmpty(arg[11])){
 					ressql+=" and u.id="+arg[11];
 				}
-				ressql+=" order by c.time desc";
+				//ressql+=" order by c.time desc";
 			}else{
-				ressql="select sum(c.money) from income_details c,user_data u left join  user_data u2 on u.promoter_id = u2.id where c.user_id=u.id ";
+				ressql="select sum(c.money) from income_details c,user_data u  where c.user_id=u.id ";
 				if(arg.length > 4 && StringUtils.isNotEmpty(arg[3]) && StringUtils.isNotEmpty(arg[4])) {
-					ressql += "and c.time between '" + arg[3] + " 00:00:01' and '" + arg[4] + " 23:59:59'";
+					ressql += " and c.time between '" + arg[3] + " 00:00:01' and '" + arg[4] + " 23:59:59'";
 				}
 				if(arg.length > 6 && StringUtils.isNotEmpty(arg[6])) {
-					ressql += "and c.time like '%" + arg[6] + "%'";
+					ressql += " and c.time like '%" + arg[6] + "%'";
 				}
 				if(arg.length > 8 && StringUtils.isNotEmpty(arg[8])){
 					ressql +=" and c.type='"+arg[8]+"'";

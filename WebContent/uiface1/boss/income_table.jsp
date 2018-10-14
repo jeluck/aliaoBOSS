@@ -98,7 +98,7 @@ String path = request.getContextPath()+"/uiface";
 		  </div>
 		  <div class="text-c" style="margin-top:10px;">
 				<button type="submit" class="btn btn-success radius" id="btn-search" name="search" onclick="seek()"><i class="Hui-iconfont"></i> 查询</button>
-			  <c:if test="${reList[0].pagesign != '1'}">
+			  <c:if test="${result[0].pagesign != '1'}">
 			  	<button type="submit" class="btn btn-success radius" id="inputExcel" name=""><i class="Hui-iconfont"></i>导出EXCEL</button>
 			  </c:if>
 			</div>
@@ -370,7 +370,11 @@ $("#inputExcel").click(function(){
         startdate=$("#datemin").val();
         enddate=$("#datemax").val();
     }
-    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorsrexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=${param.p7}"+"&p8="+sourceIncome+"&p9="+mil_id+"&p10="+yqnickname+"&p11="+uid;
+    var xx = "";
+    if(startdate == "" &&enddate==""&&mil_id==""&&yqnickname==""&&sourceIncome==""&&uid==""&&pp==""){
+        xx = "111";
+	}
+    var url = "<%=path%>/rp?p0=A-boss-user-execl&p1=anchorsrexecl&p2=1&p3="+startdate+"&p4="+enddate+"&p5=tojson&p6="+pp+"&p7=1"+"&p8="+sourceIncome+"&p9="+mil_id+"&p10="+yqnickname+"&p11="+uid+"&p12="+xx;
     window.open(url);
 });
 function timec() {

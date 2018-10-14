@@ -3055,17 +3055,18 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listForExport.add(listOne);
 		for (Map map : list) {
 			List<String> arrayList = new ArrayList<String>();
-			arrayList.add(map.get("user_id").toString());
-			arrayList.add(map.get("nickname").toString());
-			arrayList.add(map.get("type").toString());
-			arrayList.add(map.get("promoter_id").toString());
-			arrayList.add(map.get("money").toString());
+			arrayList.add(map.get("user_id") == null?"":map.get("user_id").toString());
+			arrayList.add(map.get("nickname") == null?"":map.get("nickname").toString());
+			arrayList.add(map.get("type") == null?"":map.get("type").toString());
+			arrayList.add(map.get("promoter_id") == null?"":map.get("promoter_id").toString());
+			arrayList.add(map.get("money") == null?"":map.get("money").toString());
 			arrayList.add("已结算");
-			arrayList.add(map.get("time").toString());
+			arrayList.add(map.get("time") == null?"":map.get("time").toString());
 			listForExport.add(arrayList);
 		}
 		response.reset();
 		excelUtils.export("主播收入明细"+getDateString(),listForExport,response);
+
 	}
 
 	public void userDateExcel(String[] arg) throws SQLException, IOException,
@@ -3119,9 +3120,10 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 		listOne.add("昵称");
 		listOne.add("付费方式");
 		listOne.add("付费价格");
-		listOne.add("A币数量");
+		listOne.add("钻石数量");
 		listOne.add("付费类型");
 		listOne.add("支付状态");
+		listOne.add("操作人员");
 		listOne.add("付费时间");
 		listForExport.add(listOne);
 		for (Map map : list) {
@@ -3130,9 +3132,10 @@ public class vliaoInoutBoss_01150 extends vliaoInOutManager implements
 			arrayList.add(map.get("nickname").toString());
 			arrayList.add(map.get("pay_type").toString());
 			arrayList.add(map.get("pay_price").toString()+"元");
-			arrayList.add(map.get("pay_value").toString()+"A币");
+			arrayList.add(map.get("pay_value").toString()+"钻石");
 			arrayList.add(map.get("pay_what").toString());
 			arrayList.add(map.get("pay_status").toString());
+			arrayList.add(map.get("create_name") == null?"":map.get("create_name").toString());
 			arrayList.add(map.get("pay_time").toString());
 			listForExport.add(arrayList);
 		}
