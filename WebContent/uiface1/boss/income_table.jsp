@@ -71,8 +71,8 @@ String path = request.getContextPath()+"/uiface";
 				  <option value="0" >全部</option>
 				  <option value="1" >付费短视频提成</option>
 				  <option value="2" >付费短视频收入提成</option>
-				  <option value="3" >充值</option>
-				  <option value="4" >充值分成</option>
+				  <%--<option value="3" >充值</option>--%>
+				  <%--<option value="4" >充值分成</option>--%>
 				  <option value="5" >充值提成</option>
 				  <option value="6" >打赏分成</option>
 				  <option value="7" >短视频收入</option>
@@ -125,7 +125,7 @@ String path = request.getContextPath()+"/uiface";
 		<c:set var="nodeValue" scope="page" value="0"/>
 		<c:forEach var="map" items="${reList}" varStatus="status">
 			<tr class="text-c">
-				<td>${status.count}</td>			
+				<td>${status.count}</td>
 				<td>${map['user_id']}</td>
 				<td>${map['nickname']}</td>
 				<td>${map['type']}</td>
@@ -133,7 +133,7 @@ String path = request.getContextPath()+"/uiface";
 				<td> <fmt:formatNumber type="number" value="${map['money']}" pattern="0.00" maxFractionDigits="2"/>(钻石)</td>
 				<td>已结算</td>
 				<td>${map['time']}</td>
-				
+
 			</tr>
 			<c:set var="nodeValue" scope="page" value="${nodeValue+map['money']}"/>
 		</c:forEach>
