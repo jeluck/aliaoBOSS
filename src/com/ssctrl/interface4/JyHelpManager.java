@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class JyHelpManager {
-	public static int item = 10;// 每页显示多少条
+	public static int item = 5;// 每页显示多少条
 	public static int shouyeitem = 8;
 	int n = 2;
 
