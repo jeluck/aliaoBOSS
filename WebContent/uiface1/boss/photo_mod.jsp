@@ -51,9 +51,9 @@ String path = basePath+"/uiface";
 <body>
 	<article class="page-container">
 		<form action="<%=path%>/rp?a=A-boss-mod&b=photo_mod" method="post"
-			class="form form-horizontal" id="form-article-add" name="ThisForm">
+			class="form form-horizontal"  name="ThisForm">
 			<div class="row cl">
-			   <input type="hidden" value="${reList[0]['id']}"  name="myid">
+			   <input type="hidden" value="${reList[0]['id']}"  name="myid" id="id">
 			
 			</div>
 			
@@ -82,7 +82,7 @@ String path = basePath+"/uiface";
 			</div>
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-					<button class="btn btn-primary radius" type="submit">
+					<button class="btn btn-primary radius" type="button" onclick="submit1(${reList[0]['id']})"  name="">
 						<i class="Hui-iconfont">&#xe632;</i> 保存并提交
 					</button>
 					<button onClick="layer_close();" class="btn btn-default radius"
@@ -151,7 +151,7 @@ $("#form-article-add").validate({
 	submitHandler:function(form){
 		
 		//document.ThisForm.submit();
-		$("#form-article-add").ajaxSubmit();
+		//$("#form-article-add").ajaxSubmit();
 		setTimeout(function () {
 			var index = parent.layer.getFrameIndex(window.name);
 			//parent.$('.btn-refresh').click();
@@ -171,7 +171,7 @@ function upimg(){
 		var formdata = new FormData(); 
 		formdata.append("imgFile", file); 
 		$.ajax({ 
-			url :"<%=path%>/JyFileUploadServlet", 
+			url :"<%=path%>/UploadFtpServlet", 
 			type : 'post', 
 			data : formdata, 
 			cache : false, 
@@ -188,8 +188,34 @@ function upimg(){
 	}  else{
 		alert("请选择需要上传的图片");
 	}
-	
 }
+	//主播头像
+	function submit1(id){
+		var imgsrc=$("#imges").val();
+		var text=$("#changeprice").val();
+		var id=$("#id").val();
+	    if(imgsrc == ""){
+	        layer.msg('操作失败',{icon:1,time:1000});
+	        return;
+		}
+	   // var currentpageindex =  Number(this.parent.$("#currentpage").html());
+	    $.ajax({
+	        type:'POST',
+	        url: '<%=path%>/rp?a=A-boss-mod&b=photo_mod&p2='+id+'&p3='+imgsrc+'&p4='+text,
+	        success: function(data){
+	            if(data='1'){
+	                var index = parent.layer.getFrameIndex(window.name);
+	                parent.layer.close(index);
+	            }else{
+	                layer.msg('操作失败',{icon:1,time:1000});
+	            }
+	        },
+	        error:function(data) {
+	            layer.msg('操作失败',{icon:1,time:1000});
+	        },
+	    });
+	    window.parent.reload_page();
+	}
 </script>
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>

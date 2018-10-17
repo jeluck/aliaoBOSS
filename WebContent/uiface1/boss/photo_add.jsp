@@ -168,7 +168,7 @@ function upimg(){
 		var formdata = new FormData(); 
 		formdata.append("imgFile", file); 
 		$.ajax({ 
-			url :"<%=path%>/JyFileUploadServlet", 
+			url :"<%=path%>/UploadFtpServlet", 
 			type : 'post', 
 			data : formdata, 
 			cache : false, 

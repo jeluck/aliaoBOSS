@@ -221,6 +221,9 @@ function client_del(obj,id){
 		});		
 	});
 }
+function reload_page(){
+	window.location.reload()
+}
 </script>
 </body>
 </html>

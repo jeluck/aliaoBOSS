@@ -2129,7 +2129,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 
 			break;
 		case "photo_add":
-			 ressql="insert into recycle_photo(photo,photo_item) values('http://taovip88.cn"+arg[2]+"','"+arg[3]+"') ";
+			 ressql="insert into recycle_photo(photo,photo_item) values('"+arg[2]+"','"+arg[3]+"') ";
 			break;
 		case "photo2":
 			ressql="select * from recycle_photo where id='"+arg[2]+"'";
@@ -2340,7 +2340,7 @@ public class vliaoSqlBoss_01150 extends vliaoSqlManager implements vliaoSqlMFace
 			}
 			break;
 		case "photo_mod":
-			ressql="update recycle_photo set photo='http://119.23.16.29:8091"+arg[3]+"',photo_item='"+arg[4]+"' where id='"+arg[2]+"'";
+			ressql="update recycle_photo set photo='"+arg[3]+"',photo_item='"+arg[4]+"' where id='"+arg[2]+"'";
 		break;
 		case "fencheng_mod":
 			 if(current==0){
